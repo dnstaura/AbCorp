@@ -1,0 +1,13 @@
+CREATE PROCEDURE _eliminarRol
+@RolId varchar(1000)
+
+AS
+
+BEGIN
+
+	DELETE FROM AspNetUserRoles WHERE RoleId = @RolId
+
+	DELETE FROM AspNetRoles WHERE Id = @RolId
+
+
+END

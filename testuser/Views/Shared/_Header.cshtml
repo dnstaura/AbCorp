@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    if (Session["ImagenPerfil"] == null)
+    {
+        Response.Redirect("/Account/Login", false);
+    }
+    var imagen = Convert.ToString(Session["ImagenPerfil"]);
+ }
+<header class="main-header">
+    @* BEGIN Logo *@
+    <a href="@Url.Action("Index", "Home")" class="logo">
+        @* Mini logo for sidebar 50x50 pixels *@
+        <span class="logo-mini"><b>AC</b></span>
+        @* Logo for regular state and mobile devices *@
+        <span class="logo-lg"><b>Abogados </b>Corp</span>
+    </a>
+    @* END Logo *@
+    @* BEGIN Header *@
+    <nav class="navbar navbar-static-top" role="navigation">
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <!---->
+                @Html.Partial("_Notificaciones")
+                <!---->
+                @* BEGIN User Account Menu *@
+                @if (Request.IsAuthenticated)
+                {
+                    <li class="dropdown user user-menu">
+                        @*@Html.Partial("_LoginPartial")*@
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            @if (imagen != "")
+                            {
+                                <img src="@Url.Content(imagen)" class="user-image" alt="User Image">
+                            }
+                            <span class="hidden-xs">@User.Identity.GetUserName()</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="user-header bg-blue-gradient">
+                                @if (imagen != "")
+                                {
+                                    <img src="@Url.Content(imagen)" class="img-circle" alt="User Image">
+
+                                }
+                                <p>
+                                    @User.Identity.GetUserName()
+                                    <small>Miembro desde @Session["FechaRegistro"]</small>
+                                </p>
+                            </li>
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        @*<a href="#" class="btn btn-default btn-flat">Perfil</a>*@
+                                        @Html.ActionLink("Perfil", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "btn btn-default btn-flat", title = "Manage" })
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+
+                @* END User Account Menu *@
+            </ul>
+        </div>
+    </nav>
+</header>

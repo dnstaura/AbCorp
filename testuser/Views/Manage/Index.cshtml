@@ -1,0 +1,159 @@
+﻿@model testuser.Models.IndexViewModel
+@{
+    /**/
+
+    ViewBag.Title = "Gestionar";
+}
+<!---->
+<style>
+
+    input[type=text], input[type=password] {
+        height: 30px;
+        border: 0;
+        width: calc(100% - 2px);
+        margin-left: 1px;
+        box-shadow: -8px 10px 0px -7px #ebebeb, 8px 10px 0px -7px #ebebeb;
+        -webkit-transition: box-shadow 0.3s;
+        transition: box-shadow 0.3s;
+    }
+
+        input[type=text]:focus {
+            outline: none;
+            box-shadow: -7px 10px 0px -7px #00C0EF, 7px 10px 0px -7px #00C0EF;
+        }
+
+        input[type=password]:focus {
+            outline: none;
+            box-shadow: -7px 10px 0px -7px #00C0EF, 7px 10px 0px -7px #00C0EF;
+        }
+
+
+    .shadow {
+        -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    }
+</style>
+<!---->
+
+@if (ViewBag.StatusMessage != "")
+{
+    <div class="alert alert-success" id="success-password" role="alert">
+        @ViewBag.StatusMessage
+    </div>
+}
+@if (ViewBag.Error != "")
+{
+    <div class="alert alert-danger" id="danger-password" role="alert">
+        @ViewBag.Error
+    </div>
+}
+<section class="content">
+    <div class="row">
+        <div class="col-md-4">
+            <!-- Profile Image -->
+            <div class="box box-primary shadow">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="@Url.Content(Model.Imagen)" alt="User profile picture">
+                    <!---->
+                    <h3 class="profile-username text-center">@Model.Nombres</h3>
+                    @using (Html.BeginForm("CambiarImagen", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @*<input type="file" name="Imagen" />*@
+                                <label for="document" class="btn btn-default subir" id="doc">
+                                    <span class="glyphicon glyphicon-paperclip"></span> Buscar Imagen
+                                </label>
+                                <input id="document" name="Imagen" onchange="contar(this, 'info')" type="file" style='display: none;' />
+                                <div id="info"></div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group" id="botonImagen">
+                                    <input type="submit" value="Cambiar imagen" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-8">
+            <div class="nav-tabs-custom shadow">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#activity" data-toggle="tab">Información personal</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="activity">
+                        <!-- Post -->
+                        <div class="post">
+                            @using (Html.BeginForm("CambiarNombre", "Manage", FormMethod.Post))
+                            {
+                                <div class="form-horizontal">
+                                    <label for="nombres" style="margin-bottom:10px;">Nombres</label>
+                                    <input type="text" class="form-control col-md-10" value="@Model.Nombres" id="nombres" name="Nombres" style="margin-bottom:20px;">
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" value="Cambiar Nombre" />
+                                </div>
+
+                            }
+                        </div>
+                        <!-- /.post -->
+                        <!-- Post -->
+                        <!-- /.post -->
+                        <!-- Post -->
+                        <div class="post">
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    @Html.Partial("_PasswordChange", Model)
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.post -->
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#botonImagen").hide();
+
+            $("#success-password").fadeTo(3000, 500).slideUp(500, function () {
+                $("#success-password").slideUp(500);
+            });
+
+            $("#danger-password").fadeTo(3000, 500).slideUp(500, function () {
+                $("#danger-password").slideUp(500);
+            });
+        });
+
+
+        function contar(elem, idGlosa) {
+            var glosa = document.getElementById(idGlosa);
+            if (elem.files.length == 0) {
+                glosa.innerText = "Ningún archivo seleccionado";
+                $("#doc").css("background", "#E9ECEC");
+                $("#botonImagen").hide();
+            } else {
+                var pdrs = elem.files[0].name;
+                glosa.innerText = pdrs;
+                $("#doc").css("background", "#68D57E");
+                $("#botonImagen").show();
+            }
+        }
+    </script>
+}

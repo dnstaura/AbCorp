@@ -1,0 +1,128 @@
+﻿@model IEnumerable<testuser.Models.Notifications>
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Notificaciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var usuario = User.Identity.GetUserId();
+    var cantidadSinLeer = testuser.ViewModels.clsNotification.cantidadNotificacionesSinLeer(/*usuario*/);
+    var cantidadLeidas = testuser.ViewModels.clsNotification.cantidadNotificacionesLeidas(/*usuario*/);
+}
+
+<style>
+    .shadow {
+        -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2 class="text-uppercase text-bold text-blue">Notificaciones</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="box box-solid shadow">
+            <div class="box-header with-border">
+                <h3 class="box-title">Opciones</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+
+            <div class="box-body no-padding">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active">
+                        <a href="@Url.Action("NotificacionesLeidas", "Manage")">
+                            <i class="fa fa-inbox"></i>
+                            Leídas
+                            <span class="label label-primary pull-right">@cantidadLeidas</span>
+                        </a>
+                    </li>
+                    <li>
+                        @if (cantidadSinLeer > 0)
+                        {
+                            <a href="@Url.Action("NotificacionesSinLeer", "Manage")">
+                                <i class="fa fa-inbox"></i>
+                                Sin leer
+                                <span class="label label-primary pull-right">@cantidadSinLeer</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a>
+                                <i class="fa fa-inbox"></i>
+                                Sin leer
+                                <span class="label label-primary pull-right">@cantidadSinLeer</span>
+                            </a>
+                        }
+                    </li>
+                    <li>
+                        @if (cantidadSinLeer > 0)
+                        {
+                            <a href="@Url.Action("ViewedAllNotifications", "Manage")" class="text text-uppercase text-bold text-blue">
+                                <i class="fa fa-check"></i>
+                                Marcar todas como leído
+                            </a>
+                        }
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="box box-solid shadow">
+            <div class="box-header">
+                <h3 class="box-title text-blue text-bold text-uppercase">Historial de notificaciones</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                @foreach (var item in Model)
+                {
+                    <ul class="timeline">
+                        <!-- timeline time label -->
+                        <li class="time-label">
+                            <span class="bg-red">
+                                @item.Date.Day/@item.Date.Month/@item.Date.Year
+                            </span>
+                        </li>
+                        <!-- /.timeline-label -->
+                        <!-- timeline item -->
+                        <li>
+                            <!-- timeline icon -->
+                            <i class="fa fa-envelope bg-blue"></i>
+                            <div class="timeline-item">
+                                <span class="time text-black" style="font-size:16px;"><i class="fa fa-clock-o"></i>@item.Date.TimeOfDay</span>
+                                <h3 class="timeline-header"><a href="#" class="text-bold text-uppercase">Modulo afectado: @item.Module</a></h3>
+                                <div class="timeline-body" style="font-size:16px;">
+                                    El usuario <label class="text-uppercase text-blue">@item.Usuario.Nombres : </label> @item.Message
+                                </div>
+                                <div class="timeline-footer">
+                                    @if (!item.Viewed)
+                                    {
+                                        @Html.ActionLink(" ", "MarcarLeido", "Manage", new { id = item.Id }, new { @class = "btn btn-primary btn-xs glyphicon glyphicon-ok", @title = "Marcar como leído", @data_toggle = "tooltip", @data_placement = "top" })
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink(" ", "EliminarNotificacion", "Manage", new { id = item.Id }, new { @class = "btn btn-danger btn-xs glyphicon glyphicon-trash", @title = "Eliminar notificación", @data_toggle = "tooltip", @data_placement = "top" })
+                                    }
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>$(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+
+        });</script>
+}

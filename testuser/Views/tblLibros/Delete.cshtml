@@ -1,0 +1,102 @@
+﻿@model testuser.Models.SysModel.tblLibros
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h4 class="box-title text-info"><strong>Esta seguro de eliminar esta informacion?</strong></h4>
+            </div>
+
+            <div class="box-body">
+                <div>
+                    <hr style="margin-top:-10px;" />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblAfavorde.nombres)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.tblAfavorde.nombres)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblOtorgante.nombres)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.tblOtorgante.nombres)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblPersonal.Nombres)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.tblPersonal.Nombres)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.fecha)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.fecha)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.instrumento)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.instrumento)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.folios)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.folios)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.libro)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.libro)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.img)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.img)
+                        </dd>
+
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+                            @Html.ActionLink("Regresar", "Index",new { },new { @class="btn btn-default"})
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3"></div>
+</div>
+
+

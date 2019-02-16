@@ -1,0 +1,36 @@
+﻿@model testuser.Models.RoleView
+
+@{
+    ViewBag.Title = "Eliminar Rol";
+    Layout = null;
+}
+<div class="col-md-12">
+    <h2 class="text-bold text-danger">¿Está seguro de eliminar este rol?</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+        </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <div class="col-lg-offset-3 col-md-11">
+                    <input type="submit" value="Eliminar" class="btn btn-danger" />
+                </div>        
+            </div>
+
+
+        }
+    </div>
+</div>
+
+
+

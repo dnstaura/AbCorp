@@ -1,0 +1,128 @@
+﻿@model IEnumerable<testuser.Models.SysModel.tblLibros>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-blue-gradient shadow">
+            <span class="info-box-icon"><i class="fa fa-book"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text"><strong>Libros</strong></span>
+                <span class="info-box-number">@ViewBag.lb</span>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width: 100%"></div>
+                </div>
+                <span class="progress-description">
+                    Total registrados
+                </span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h4 class="box-title text-info"><strong>Listado de "Libros" </strong></h4>
+
+                <div class="box-tools">
+                    <form action="Index" method="post">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="txtBuscar" class="form-control pull-right" placeholder="Search">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="box-body table-responsive">
+                <p>
+                    @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
+                    <a href="../tblAfavorde/Index" class="btn bg-navy">A/F</a>
+                    <a href="../TblOtorgante/Index" class="btn bg-navy">Otorgantes</a>
+                </p>
+                <table class="table table-hover table-striped table-condensed">
+                    <tr>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.tblAfavorde.nombres)*@
+                            A/F
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.tblOtorgante.nombres)*@
+                            Otorgante
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.tblPersonal.Nombres)*@
+                            Personal
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.fecha)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.instrumento)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.folios)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.libro)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.img)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tblAfavorde.nombres)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tblOtorgante.nombres)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tblPersonal.Nombres)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.fecha)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.instrumento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.folios)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.libro)
+                            </td>
+                            <td>
+                                <a href="@Html.DisplayFor(modelItem => item.img)" class="btn bg-green fa fa-eye" target="_blank"></a>
+                            </td>
+                            <td>
+                                @Html.ActionLink(" ", "Edit", new { id = item.idlibros }, new { @class = "fa fa-edit btn bg-orange" }) |
+                                @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy " }) |
+                                @Html.ActionLink(" ", "Delete", new { id = item.idlibros }, new { @class = "fa fa-trash btn bg-red " })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            

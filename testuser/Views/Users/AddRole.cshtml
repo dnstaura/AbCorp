@@ -1,0 +1,40 @@
+﻿@model testuser.Models.UserView
+
+@{
+    ViewBag.Title = "AddRole";
+}
+
+<div class="row">
+    <div class="col-lg-offset-4 col-sm-4">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title text-bold text-info" style="font-size:16px;">Agregar rol para el usuario: @Model.Name</h2>
+                <h3 class="text-bold text-danger" style="font-size:14px;">@ViewBag.Error</h3>
+            </div>
+            <div class="box-body">
+                @using (Html.BeginForm("AddRole", "Users", new { userID = Model.UserID }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Role.RoleID, "Rol", htmlAttributes: new { @class = "control-label col-md-3" })
+                            <div class="col-md-7">
+                                @Html.DropDownList("RoleID", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Role.RoleID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-lg-offset-3">
+                            @Html.ActionLink("Regresar", "Roles", new { userID = Model.UserID }, new { @class = "btn btn-info" })
+                            <input type="submit" value="Agregar rol" class="btn btn-success" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

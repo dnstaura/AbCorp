@@ -1,0 +1,81 @@
+﻿@model List<testuser.Models.RoleView>
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+<div class="row">
+    <div class="col-lg-offset-4 col-sm-4">
+        <div class="box box-info ">
+            <div class="box-header">
+                <h4 class="box-title text-bold text-info">Listado de roles</h4>
+                @*<div class="box-tools pull-right">
+                    <span class="fa fa-group"></span>
+                </div>*@
+            </div>
+            <div class="box-body table-responsive">
+                <p>
+                    <a href="#" class="btn bg-navy btnAgregarRol" title="Registrar nuevo rol">Nuevo rol</a>
+                    <a href="../users/Index" class="btn bg-navy" title="Lista de usuarios">Lista de usuarios</a>
+                </p>
+                <table id="example" class="table table-condensed table-hover table-striped">
+                    <tr>
+                        <th>
+                            Nombre del rol
+                        </th>
+                        <th>Acciones</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @*@Html.ActionLink("Editar", "EditarRol", new { id=item.RoleID }, new { @class = "btn btn-warning"})*@
+                                <a href="#" class="btn btn-danger glyphicon glyphicon-trash btnEliminaRol" title="Eliminar rol" data-value="@item.RoleID"></a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <div class="modal fade" id="rolesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div id="contentRoles">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        @*</div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /**/
+
+            $(".btnAgregarRol").click(function () {
+                $("#contentRoles").load("/Roles/CrearRol/", function () {
+                    $('#rolesModal').modal("show");
+                });
+            });
+
+            $(".btnEliminaRol").click(function () {
+
+                var id = $(this).data("value");
+                $("#contentRoles").load("/Roles/EliminarRol/" + id, function () {
+                    $('#rolesModal').modal("show");
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,138 @@
+﻿@model testuser.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Registrarse";
+    Layout = null;
+}
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<!-- Bootstrap 3.3.7 -->
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+<!-- Ionicons -->
+<!-- Theme style -->
+<link href="~/Content/css/AdminLTE.min.css" rel="stylesheet" />
+<!-- iCheck -->
+<link href="~/Content/css/icheck/blue.min.css" rel="stylesheet" />
+
+<style>
+
+    input[type=text], input[type=password] {
+        height: 30px;
+        border: 0;
+        width: calc(100% - 2px);
+        margin-left: 1px;
+        box-shadow: -7px 10px 0px -7px #ebebeb, 7px 10px 0px -7px #ebebeb;
+        -webkit-transition: box-shadow 0.3s;
+        transition: box-shadow 0.3s;
+    }
+
+        input[type=text]:focus {
+            outline: none;
+            box-shadow: -7px 10px 0px -7px #00C0EF, 7px 10px 0px -7px #00C0EF;
+        }
+
+        input[type=password]:focus {
+            outline: none;
+            box-shadow: -7px 10px 0px -7px #00C0EF, 7px 10px 0px -7px #00C0EF;
+        }
+</style>
+
+<body class="hold-transition login-page">
+    <div class="login-box box box-info">
+        <div class="login-logo">
+            <a href="Login"><b>Abogados Corp</b></a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <p class="login-box-msg"><b>Datos de usuario.</b></p>
+            <hr style="border-color:#00C0EF; margin-top:-10px; margin-bottom:40px;" />
+            <div class="row">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group has-feedback">
+                        @*@Html.LabelFor(m => m.Email, new { @class = "col-md-5 control-label" })*@
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Correo Electrónico", required = "required"})
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        @*@Html.LabelFor(m => m.Email, new { @class = "col-md-5 control-label" })*@
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.Nombres, new { @class = "form-control", placeholder = "Nombre Completo", required = "required" })
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        @*@Html.LabelFor(m => m.Email, new { @class = "col-md-5 control-label" })*@
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", id = "telefono", placeholder = "Numero Telefónico", required = "required" })
+                            <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        @*@Html.LabelFor(m => m.Password, new { @class = "col-md-5 control-label" })*@
+                        <div class="col-md-12">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Contraseña", required = "required" })
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        @*@Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-5 control-label" })*@
+                        <div class="col-md-12">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirmar contraseña", required = "required" })
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        @if (Model.Roles.Count > 0)
+                        {
+                            <div class="col-md-12">
+                                <p>Seleccione uno o más roles para este usuario:</p><br />
+                                @foreach (var item in Model.Roles)
+                                {
+                                    <input type="checkbox" name="SelectedRoles" value="@item.Value" />
+                                    <label for="@item.Text">@item.Text</label><br />
+                                }
+                            </div>
+                        }
+
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-offset-4 col-md-10">
+
+                            <input type="submit" class="btn btn-success" value="Registrarse" />
+                            @*<a href="~/Views/Account/Login" class="col-lg-offset-0 btn bg-navy">Regresar</a>*@
+
+                        </div>
+
+                    </div>
+                }
+            </div>
+            <!-- /.login-box-body -->
+        </div>
+    </div>
+</body>
+
+    @*<div class="col-sm-4"></div>*@
+    <script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/plugins/inputmask/jquery.inputmask.bundle.min.js"></script>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+    @*<script>
+            $(document).ready(function () {
+
+                $('#telefono').inputmask("9999-9999");
+
+            });
+        </script>*@

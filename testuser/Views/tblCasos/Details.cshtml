@@ -1,0 +1,107 @@
+﻿@model testuser.Models.SysModel.tblCasos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblCasos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tblCategorias.Nombre_Categoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblCategorias.Nombre_Categoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblClientes.Nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblClientes.Nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblDepartamentos.Departamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblDepartamentos.Departamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblEstadosCasos.Id_EstadoCaso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblEstadosCasos.Id_EstadoCaso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblJuzgados.Juzgado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblJuzgados.Juzgado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblMunicipios.Municipio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblMunicipios.Municipio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero_Caso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_Caso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Audiencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Audiencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Agregado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Agregado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Caso }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

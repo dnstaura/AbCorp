@@ -1,0 +1,109 @@
+﻿@using testuser.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Iniciar sesión";
+    Layout = "";
+}
+
+@*<h2>@ViewBag.Title.</h2>*@
+<style>
+    input[type=text], input[type=password] {
+        height: 30px;
+        border: 0;
+        width: calc(100% - 2px);
+        margin-left: 1px;
+        box-shadow: -7px 10px 0px -7px #ebebeb, 7px 10px 0px -7px #ebebeb;
+        -webkit-transition: box-shadow 0.3s;
+        transition: box-shadow 0.3s;
+    }
+
+        input[type=text]:focus {
+            outline: none;
+            box-shadow: -7px 10px 0px -7px #00C0EF, 7px 10px 0px -7px #00C0EF;
+        }
+        input[type=password]:focus {
+            outline: none;
+            box-shadow: -7px 10px 0px -7px #00C0EF, 7px 10px 0px -7px #00C0EF;
+        }
+</style>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<!-- Bootstrap 3.3.7 -->
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+<!-- Ionicons -->
+<!-- Theme style -->
+<link href="~/Content/css/AdminLTE.min.css" rel="stylesheet" />
+<!-- iCheck -->
+<link href="~/Content/css/icheck/blue.min.css" rel="stylesheet" />
+
+<body class="hold-transition login-page">
+    <div class="login-box box box-info">
+        <div class="login-logo">
+            <a href="Login"><b>Abogados Corp</b></a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <p class="login-box-msg">Use una cuenta local para iniciar sesión.</p>
+            <hr style="border-color:#00C0EF; margin-top:-10px; margin-bottom:40px;" />
+
+            <div class="row">
+                <div class="col-md-12">
+                    <section id="loginForm">
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group has-feedback">
+                                @*@Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })*@
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email / Correo electronico", required="required" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                @*@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })*@
+                                <div class="col-md-12">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Contraseña", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                </div>
+                            </div>
+                            @*<div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
+                        </div>*@
+                            <div class="form-group">
+                                <div class="col-md-offset-0 col-md-10">
+                                    <input type="submit" value="Iniciar sesión" class="btn btn-info" />
+                                    <a href="Register" class="btn btn-default col-lg-offset-0" style="margin-top:10px;">Registrar nuevo usuario</a>
+                                </div>
+                            </div>
+                            // Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
+                        }
+                    </section>
+                </div>
+
+            </div>
+            <!-- /.login-box-body -->
+        </div>
+    </div>
+</body>
+
+<!---->
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

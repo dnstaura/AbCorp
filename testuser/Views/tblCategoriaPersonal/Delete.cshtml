@@ -1,0 +1,49 @@
+﻿@model testuser.Models.SysModel.tblCategoriaPersonal
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="box box-primary">
+            <div class="box-header" align="right">
+                <h4 class="box-title text-info"><strong>Esta seguro de eliminar esta informacion?</strong></h4>
+            </div>
+
+            <div class="box-body">
+
+                <div>
+                    <hr style="margin-top:-10px;" />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CategoriaPersonal)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.CategoriaPersonal)
+                        </dd>
+
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color col-lg-offset-2">
+                            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+                            @Html.ActionLink("Regresar", "Index",new { },new { @class="btn btn-default"})
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+
+
+

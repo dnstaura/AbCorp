@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    var usuario = User.Identity.GetUserId();
+    var listado = testuser.ViewModels.clsNotification.notificacionesPendientes(/*usuario*/);
+    var cantidad = testuser.ViewModels.clsNotification.cantidadNotificacionesSinLeer(/*usuario*/);
+}
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>
+
+<li class="dropdown notifications-menu">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+        <i class="fa fa-bell-o">
+        </i>
+        <span class="label label-info" style="font-family:'Century Gothic', Times, serif; font-size:15px;">@cantidad</span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="header">Tienes @cantidad notificaciones</li>
+        <li>
+            <ul class="menu">
+                @if (cantidad == 0)
+                {
+                    <li>
+                        No hay notificaciones pendientes
+                    </li>
+                }
+                else
+                {
+                    foreach (var item in listado)
+                    {
+                        <li>
+                            <a>
+                                <i class="fa fa-users text-aqua"></i>
+                                <label>@item.Message</label>
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </li>
+        <li class="footer">
+            @Html.ActionLink("Ver todas", "VerNotificaciones", "Manage")
+        </li>
+    </ul>
+</li>
+
+

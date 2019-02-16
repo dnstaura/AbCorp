@@ -1,0 +1,109 @@
+﻿@model testuser.Models.SysModel.tblOtorgante
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h4 class="box-title text-info"><strong>Esta seguro de eliminar esta informacion?</strong></h4>
+            </div>
+
+            <div class="box-body">
+                <div>
+                    <hr style="margin-top:-10px;"/>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.nombres)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.nombres)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.apellidos)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.apellidos)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.redsocial)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.redsocial)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.telefono)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.telefono)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.correo)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.correo)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.fechanacimiento)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.fechanacimiento)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.lugarnacimiento)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.lugarnacimiento)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.municipio)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.municipio)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.departamento)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.departamento)
+                        </dd>
+
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+                            @Html.ActionLink("Regresar", "Index", new { }, new { @class="btn btn-default"})
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+

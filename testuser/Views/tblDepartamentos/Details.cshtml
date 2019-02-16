@@ -1,0 +1,38 @@
+﻿@model testuser.Models.SysModel.tblDepartamentos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-offset-4 col-sm-4">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h4 class="box-title text-info">Detalles de departamento</h4>
+            </div>
+            <div class="box-body">
+                <div>
+                    <hr style="margin-top:-10px;"/>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Departamento)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Departamento)
+                        </dd>
+
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_Departamento },new { @class="btn bg-orange"}) |
+                    @Html.ActionLink("Regresar", "Index", new { },new { @class="btn btn-default"})
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
