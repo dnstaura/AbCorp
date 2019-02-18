@@ -274,6 +274,7 @@
     <Compile Include="Models\SysModel\tblOtorgante.cs" />
     <Compile Include="Models\SysModel\tblPersonal.cs" />
     <Compile Include="ViewModels\clsNotification.cs" />
+    <Compile Include="ViewModels\HistorialView.cs" />
     <Compile Include="ViewModels\RoleView.cs" />
     <Compile Include="ViewModels\UserView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

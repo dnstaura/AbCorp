@@ -1,107 +1,116 @@
 ﻿@model testuser.Models.SysModel.tblCasos
-
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="box box-primary">
+            <div class="box-header" align="left">
+                <h4 class="box-title text-info"><strong>Detalles de Caso</strong></h4>
+            </div>
 
-<div>
-    <h4>tblCasos</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.tblCategorias.Nombre_Categoria)
-        </dt>
+            <div class="box-body">
+                <div>
+                    <hr style="margin-top:-10px;" />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblCategorias.Nombre_Categoria)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tblCategorias.Nombre_Categoria)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.tblCategorias.Nombre_Categoria)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tblClientes.Nombres)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblClientes.Nombres)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tblClientes.Nombres)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.tblClientes.Nombres)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tblDepartamentos.Departamento)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblDepartamentos.Departamento)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tblDepartamentos.Departamento)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.tblDepartamentos.Departamento)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tblEstadosCasos.Id_EstadoCaso)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblEstadosCasos.Id_EstadoCaso)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tblEstadosCasos.Id_EstadoCaso)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.tblEstadosCasos.Id_EstadoCaso)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tblJuzgados.Juzgado)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblJuzgados.Juzgado)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tblJuzgados.Juzgado)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.tblJuzgados.Juzgado)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tblMunicipios.Municipio)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblMunicipios.Municipio)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tblMunicipios.Municipio)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.tblMunicipios.Municipio)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Titulo)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Titulo)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Titulo)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Numero_Caso)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Numero_Caso)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Numero_Caso)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Numero_Caso)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fecha_Inicio)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Fecha_Inicio)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fecha_Inicio)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Fecha_Inicio)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fecha_Audiencia)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Fecha_Audiencia)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fecha_Audiencia)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Fecha_Audiencia)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fecha_Agregado)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Fecha_Agregado)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fecha_Agregado)
-        </dd>
-
-    </dl>
+                        <dd>
+                            @Html.DisplayFor(model => model.Fecha_Agregado)
+                        </dd>
+                    </dl>
+                </div>
+                <p class="col-lg-offset-2">
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_Caso }, new { @class = "btn bg-orange" }) |
+                    @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-default" })
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Caso }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
