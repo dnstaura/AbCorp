@@ -1,2 +1,0 @@
-# AbCorp
-AbCorp.
