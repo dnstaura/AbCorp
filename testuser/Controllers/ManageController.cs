@@ -97,6 +97,24 @@ namespace testuser.Controllers
             return RedirectToAction("VerNotificaciones");
         }
 
+        public ActionResult DeleteAllNotifications()
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            var elnot = (from n in db.Notification
+                         select n).ToList();
+
+            foreach (var item in elnot)
+            {
+                if (item.Viewed == true)
+                {
+                    db.Notification.Remove(item);
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("VerNotificaciones");
+        }
+
         public ActionResult MarcarLeido(int id)
         {
             ApplicationDbContext db = new ApplicationDbContext();
