@@ -91,15 +91,8 @@ namespace testuser.Controllers
                 /*Fin Usuarios con rol secretaria*/
             }
 
-
-
-
             /*Fin Contadores*/
-
-
-
-
-            /*Paginador*/
+        /*Paginador*/
             var cantidadRegistrosPorPagina = 8;
 
             var usuarios = db.Users.OrderBy(u => u.Fecha)
@@ -137,6 +130,84 @@ namespace testuser.Controllers
             modelo.PaginaActual = pagina;
             modelo.TotalRegistros = totalDeRegistros;
             modelo.RegistrosPorPaginas = cantidadRegistrosPorPagina;
+
+            /*Contadores*/
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            var rollist = roleManager.Roles.ToList();
+
+            var userss = userManager.Users.ToList();
+            var usersView = new List<UserView>();
+
+            foreach (var user in userss)
+            {
+                var userView = new UserView
+                {
+                    Email = user.Email,
+                    Name = user.Nombres,
+                    Estado = user.Estado,
+                    UserID = user.Id
+                };
+                usersView.Add(userView);
+            }
+
+            /*Contadores*/
+
+            /*Usuarios registrados*/
+            var Usuarios = usersView.Where(x => x.UserID == x.UserID).Count();
+            ViewBag.Users = Usuarios;
+            /*Fin Usuarios registrados*/
+
+            /*Usuarios Activos*/
+            var usac = userss.Where(x => x.Estado == true).Count();
+            ViewBag.UA = usac;
+            /*Fin Usuarios Activos*/
+
+            /*Usuarios Inactivos*/
+            var usin = userss.Where(x => x.Estado == false).Count();
+            ViewBag.UI = usin;
+            /*Fin Usuarios Inactivos*/
+
+
+            if (roleManager.RoleExists("Administrador"))
+            {
+                /*Usuarios con rol administrador*/
+                var usad = rollist.Where(x => x.Name == "Administrador").First();
+                var usadJoin = db.UserRoles.Where(x => x.RoleId == usad.Id).Count();
+                ViewBag.Ad = usadJoin;
+                /*Fin Usuarios con rol administrador*/
+            }
+
+            if (roleManager.RoleExists("Notario"))
+            {
+                /*Usuarios con rol Notario*/
+                var usno = rollist.Where(x => x.Name == "Notario").First();
+                var usnoJoin = db.UserRoles.Where(x => x.RoleId == usno.Id).Count();
+                ViewBag.No = usnoJoin;
+                /*Fin Usuarios con rol Notario*/
+            }
+
+            if (roleManager.RoleExists("Abogacia"))
+            {
+
+                /*Usuarios con rol Abogacia*/
+                var usab = rollist.Where(x => x.Name == "Abogacia").First();
+                var usabJoin = db.UserRoles.Where(x => x.RoleId == usab.Id).Count();
+                ViewBag.Ab = usabJoin;
+                /*Fin Usuarios con rol Abogacia*/
+            }
+            if (roleManager.RoleExists("Secretaria"))
+            {
+
+                /*Usuarios con rol Secretaria*/
+                var usse = rollist.Where(x => x.Name == "Secretaria").First();
+                var usseJoin = db.UserRoles.Where(x => x.RoleId == usse.Id).Count();
+                ViewBag.Se = usseJoin;
+                /*Fin Usuarios con rol secretaria*/
+            }
+
+            /*Fin Contadores*/
+            /*Paginador*/
+
             return View(modelo);
 
         }
