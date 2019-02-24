@@ -10,9 +10,9 @@
 
 <style>
     .shadow {
-        -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     }
 </style>
 
@@ -35,7 +35,7 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li class="active">
                         <a href="@Url.Action("NotificacionesLeidas", "Manage")">
-                            <i class="fa fa-inbox"></i>
+                            <i class="fa fa-eye"></i>
                             Leídas
                             <span class="label label-primary pull-right">@cantidadLeidas</span>
                         </a>
@@ -44,7 +44,7 @@
                         @if (cantidadSinLeer > 0)
                         {
                             <a href="@Url.Action("NotificacionesSinLeer", "Manage")">
-                                <i class="fa fa-inbox"></i>
+                                <i class="fa fa-eye-slash"></i>
                                 Sin leer
                                 <span class="label label-primary pull-right">@cantidadSinLeer</span>
                             </a>
@@ -52,7 +52,7 @@
                         else
                         {
                             <a>
-                                <i class="fa fa-inbox"></i>
+                                <i class="fa fa-eye-slash"></i>
                                 Sin leer
                                 <span class="label label-primary pull-right">@cantidadSinLeer</span>
                             </a>
@@ -82,7 +82,7 @@
     </div>
 
     <div class="col-md-9">
-        <div class="box box-solid shadow">
+        <div class="box box-solid shadow" style="overflow-y:scroll; height:500px;">
             <div class="box-header">
                 <h3 class="box-title text-blue text-bold text-uppercase">Historial de notificaciones</h3>
                 <div class="box-tools pull-right">
