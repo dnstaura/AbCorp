@@ -22,6 +22,8 @@
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
+    @Html.Hidden("Get", Url.Action("NotificacionesPendientes", "Manage"))
+    @Html.Hidden("Canti", Url.Action("ContarNotificaciones", "Manage"))
 
     <style>
         .shadow {
@@ -57,5 +59,64 @@
     @RenderSection("ViewSpecificJavascript", required: false)
     @RenderSection("scripts", required: false)
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="~/Scripts/jquery.signalR-2.4.0.min.js"></script>
+
+    <script src="~/signalr/hubs" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var not = $.connection.notificationHub;
+
+
+            not.client.displayNotifications = function () {
+                getData();
+                getCantidad();
+            };
+
+            $.connection.hub.start();
+            getData();
+            getCantidad();
+        });
+
+        function getData() {
+            var $lst = $('#listaNotificaciones');
+            $.ajax({
+                url: $("#Get").val(),
+                type: 'GET',
+                datatype: 'json',
+                success: function (data) {
+                    $lst.empty();
+
+                    $.each(data.listEmp, function (i, model) {
+                        $lst.append
+                            (
+                            `<li>
+                                        <a>
+                                            <i class='fa fa-users text-aqua'></i>`
+                            + model.Message +
+                            `</a>
+                                    </li>`
+                            );
+                    });
+                }
+            })
+        }
+
+        function getCantidad() {
+            var $cant = $("#cantidad");
+            $.ajax({
+                url: $("#Canti").val(),
+                type: 'GET',
+                datatype: 'json',
+                success: function (data) {
+                    $cant.empty();
+                    $cant.append((data.cantNot.Cantidad).toString());
+                    console.log(data.cantNot.Cantidad);
+                }
+            })
+        }
+
+    </script>
 </body>
 </html>

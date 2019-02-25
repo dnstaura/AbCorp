@@ -11,6 +11,8 @@ using testuser.Models;
 using System.Data.Entity;
 using System.Net;
 using testuser.Controllers;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace testuser
 {
@@ -37,6 +39,13 @@ namespace testuser
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            SqlDependency.Start(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+        }
+
+        protected void Application_End()
+        {
+            SqlDependency.Stop(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
         }
 
         //protected void Application_Error(object sender, EventArgs e)

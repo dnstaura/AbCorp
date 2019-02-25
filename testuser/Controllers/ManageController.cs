@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +10,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using testuser.Hubs;
 using testuser.Models;
 
 namespace testuser.Controllers
@@ -163,6 +167,74 @@ namespace testuser.Controllers
         }
         //FIN NOTIFICACIONES
 
+        /*Tiempo real notificaciones*/
+        public JsonResult NotificacionesPendientes()
+        {
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(string.Format(@"SELECT [Message] FROM [dbo].[Notifications] WHERE [Viewed] <> 1"), connection))
+                {
+                    command.Notification = null;
+
+                    SqlDependency dependency = new SqlDependency(command);
+                    dependency.OnChange += new OnChangeEventHandler(dependency_OnChange);
+
+                    if (connection.State == System.Data.ConnectionState.Closed)
+                    {
+                        connection.Open();
+                    }
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    var listEmp = reader.Cast<IDataRecord>()
+                        .Select(x => new
+                        {
+                            Message = (string)x["Message"]
+                        }).ToList();
+
+                    return Json(new { listEmp = listEmp }, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+
+        public JsonResult ContarNotificaciones()
+        {
+
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(string.Format(@"SELECT COUNT(*) FROM [dbo].[Notifications] WHERE Viewed <> 1"), connection))
+                {
+                    command.Notification = null;
+
+                    SqlDependency dependency = new SqlDependency(command);
+                    dependency.OnChange += new OnChangeEventHandler(dependency_OnChange);
+
+                    if (connection.State == System.Data.ConnectionState.Closed)
+                    {
+                        connection.Open();
+                    }
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+
+                    var cantNot = reader.Cast<IDataRecord>()
+                        .Select(x => new
+                        {
+                            Cantidad = (int)x[0]
+                        }).First();
+
+                    return Json(new { cantNot = cantNot }, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+
+        private void dependency_OnChange(object sender, SqlNotificationEventArgs e)
+        {
+            NotificationHub.Show();
+        }
+        /*Fin Tiempo real notificaciones*/
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
