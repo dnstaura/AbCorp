@@ -532,17 +532,6 @@ namespace testuser.Controllers
 
                     if (result.Succeeded)
                     {
-                        ApplicationDbContext db = new ApplicationDbContext();
-                        Notifications notificacion = new Notifications();
-                        notificacion.Module = "Usuarios";
-                        notificacion.Message = string.Format("Cambió su nombre correctamente");
-                        notificacion.Date = DateTime.Now;
-                        notificacion.Viewed = false;
-                        notificacion.Usuario_Id = User.Identity.GetUserId();
-
-                        db.Notification.Add(notificacion);
-                        db.SaveChanges();
-
                         return RedirectToAction("Index", new { Message = ManageMessageId.ChangeNameSuccess });
                     }
 

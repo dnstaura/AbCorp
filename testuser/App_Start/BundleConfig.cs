@@ -15,6 +15,7 @@ namespace testuser
     .Include("~/Content/css/bootstrap-clockpicker.css")
     .Include("~/Content/css/bootstrap-datepicker3.min.css")
     .Include("~/Content/css/iziModal.min.css")
+    .Include("~/Content/datatables.min.css")
     .Include("~/Content/css/font-awesome.min.css", new CssRewriteUrlTransformAbsolute())
     .Include("~/Content/css/icheck/blue.min.css", new CssRewriteUrlTransformAbsolute())
     .Include("~/Content/css/AdminLTE.css", new CssRewriteUrlTransformAbsolute())
@@ -42,6 +43,7 @@ namespace testuser
                 .Include("~/Content/js/plugins/inputmask/jquery.inputmask.bundle.js")
                 .Include("~/Content/js/plugins/iziModal/iziModal.min.js")
                 .Include("~/Content/js/adminlte.js")
+                .Include("~/Content/datatables.min.js")
                 .Include("~/Content/js/init.js"));
 
 
