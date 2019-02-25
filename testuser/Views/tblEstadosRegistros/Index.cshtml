@@ -23,7 +23,7 @@
                     @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
                 </p>
                 <br />
-                <table class="table table-hover table table-striped" id="dtprueba">
+                <table class="table table-hover table table-striped" id="dtTable">
                     <thead>
                         <tr>
                             <th>
@@ -87,7 +87,7 @@
 
         };
 
-        $('#dtprueba').DataTable({
+        $('#dtTable').DataTable({
             responsive: true,
             language: espanol,
         });

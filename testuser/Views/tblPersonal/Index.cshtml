@@ -4,132 +4,174 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/datatables.min.css" rel="stylesheet" />
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>
+<script src="~/Content/datatables.min.js"></script>
 
 
 <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box bg-blue-gradient shadow">
-                <span class="info-box-icon"><i class="fa fa-users"></i></span>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-blue-gradient shadow">
+            <span class="info-box-icon"><i class="fa fa-users"></i></span>
 
-                <div class="info-box-content">
-                    <span class="info-box-text"><strong>Personal</strong></span>
-                    <span class="info-box-number">@ViewBag.pe</span>
+            <div class="info-box-content">
+                <span class="info-box-text"><strong>Personal</strong></span>
+                <span class="info-box-number">@ViewBag.pe</span>
 
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 100%"></div>
-                    </div>
-                    <span class="progress-description">
-                        <strong>Total registrados</strong>
-                    </span>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 100%"></div>
                 </div>
-                <!-- /.info-box-content -->
+                <span class="progress-description">
+                    <strong>Total registrados</strong>
+                </span>
             </div>
-            <!-- /.info-box -->
+            <!-- /.info-box-content -->
         </div>
+        <!-- /.info-box -->
+    </div>
 </div>
 
-        <div class="row">
-            <div class="col-xs-12 col-md-12">
-                <div class="box box-primary">
-                    <div class="box-header">
-                        <h4 class="box-title text-info"><strong>Listado de "Personal" </strong></h4>
-                        <div class="box-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="buscar" class="form-control pull-right" placeholder="Search">
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                </div>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h4 class="box-title text-info"><strong>Listado de "Personal" </strong></h4>
+                @*<div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="buscar" class="form-control pull-right" placeholder="Search">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                             </div>
                         </div>
-                    </div>
-                    <div class="box-body table-responsive">
-                        <p>
-                            @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
-                        </p>
-                        <h3>@ViewBag.Notii</h3>
-                        <table class="table table-condensed table-striped table-hover">
-                            <tr>
+                    </div>*@
+            </div>
+            <div class="box-body">
+                <p>
+                    @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
+                </p>
+                <h3>@ViewBag.Notii</h3>
+                <table class="table table-condensed table-striped table-hover" id="dtTable">
 
-                                <th>
-                                    @*@Html.DisplayNameFor(model => model.Nombres)*@
-                                    Nombre completo
-                                </th>
-                                @*<th>
-                                    </th>*@
-                                <th>
-                                    @Html.DisplayNameFor(model => model.redsocial)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Telefono)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Correo)
-                                </th>
-                                @*<th>
-                                        @Html.DisplayNameFor(model => model.Direccion)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Fecha_Nacimiento)
-                                    </th>*@
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Fecha_Agregado)
+                    <thead>
+                        <tr>
+                            <th>
+                                @*@Html.DisplayNameFor(model => model.Nombres)*@
+                                Nombre completo
+                            </th>
+                            @*<th>
+                                </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.redsocial)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Telefono)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Correo)
+                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.Direccion)
                                 </th>
                                 <th>
-                                    @*@Html.DisplayNameFor(model => model.tblCategoriaPersonal.CategoriaPersonal)*@
-                                    Categoria
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.tblEstadosRegistros.Estado)
-                                </th>
-                                <th></th>
-                            </tr>
+                                    @Html.DisplayNameFor(model => model.Fecha_Nacimiento)
+                                </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha_Agregado)
+                            </th>
+                            <th>
+                                @*@Html.DisplayNameFor(model => model.tblCategoriaPersonal.CategoriaPersonal)*@
+                                Categoria
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tblEstadosRegistros.Estado)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-                            @foreach (var item in Model)
-                            {
-                                <tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
 
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Nombres)
-                                        @Html.DisplayFor(modelItem => item.Apellidos)
-                                    </td>
-                                    @*<td>
-                                        </td>*@
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.redsocial)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Telefono)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Correo)
-                                    </td>
-                                    @*<td>
-                                            @Html.DisplayFor(modelItem => item.Direccion)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Fecha_Nacimiento)
-                                        </td>*@
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Fecha_Agregado)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.tblCategoriaPersonal.CategoriaPersonal)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.tblEstadosRegistros.Estado)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink(" ", "Edit", new { id = item.Id_Personal }, new { @class = "fa fa-edit btn bg-orange" }) |
-                                        @Html.ActionLink(" ", "Details", new { id = item.Id_Personal }, new { @class = "fa fa-folder-open btn bg-navy " }) |
-                                        @Html.ActionLink(" ", "Delete", new { id = item.Id_Personal }, new { @class = "fa fa-trash btn bg-red " })
-                                    </td>
-                                </tr>
-                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombres)
+                                @Html.DisplayFor(modelItem => item.Apellidos)
+                            </td>
+                            @*<td>
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.redsocial)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Telefono)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Correo)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.Direccion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha_Nacimiento)
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Fecha_Agregado)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tblCategoriaPersonal.CategoriaPersonal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tblEstadosRegistros.Estado)
+                            </td>
+                            <td>
+                                @Html.ActionLink(" ", "Edit", new { id = item.Id_Personal }, new { @class = "fa fa-edit btn bg-orange" }) |
+                                @Html.ActionLink(" ", "Details", new { id = item.Id_Personal }, new { @class = "fa fa-folder-open btn bg-navy " }) |
+                                @Html.ActionLink(" ", "Delete", new { id = item.Id_Personal }, new { @class = "fa fa-trash btn bg-red " })
+                            </td>
+                        </tr>
+                    }
 
-                        </table>
-                    </div>
-                </div>
+                </table>
             </div>
         </div>
+    </div>
+</div>
 
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        var espanol =
+        {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla",
+            "sInfo": "Registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+
+        };
+
+        $('#dtTable').DataTable({
+            responsive: true,
+            language: espanol,
+        });
+
+
+    });
+</script>
