@@ -12,102 +12,125 @@
     <h4>tblCasos</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.tblCategorias.Nombre_Categoria)
-        </dt>
+        
+</div>
 
-        <dd>
-            @Html.DisplayFor(model => model.tblCategorias.Nombre_Categoria)
-        </dd>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="box box-primary">
+            <div class="box-header" align="left">
+                <h4 class="box-title text-info"><strong>¿Esta seguro de eliminar esta informacion?</strong></h4>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tblClientes.Nombres)
-        </dt>
+            <div class="box-body">
 
-        <dd>
-            @Html.DisplayFor(model => model.tblClientes.Nombres)
-        </dd>
+                <div>
+                    <hr style="margin-top:-10px;" />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblCategorias.Nombre_Categoria)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tblDepartamentos.Departamento)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tblCategorias.Nombre_Categoria)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.tblDepartamentos.Departamento)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblClientes.Nombres)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tblEstadosCasos.Id_EstadoCaso)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tblClientes.Nombres)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.tblEstadosCasos.Id_EstadoCaso)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblDepartamentos.Departamento)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tblJuzgados.Juzgado)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tblDepartamentos.Departamento)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.tblJuzgados.Juzgado)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblEstadosCasos.Id_EstadoCaso)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tblMunicipios.Municipio)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tblEstadosCasos.Id_EstadoCaso)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.tblMunicipios.Municipio)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblJuzgados.Juzgado)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tblJuzgados.Juzgado)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Titulo)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tblMunicipios.Municipio)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Numero_Caso)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tblMunicipios.Municipio)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Numero_Caso)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Titulo)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fecha_Inicio)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Titulo)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fecha_Inicio)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Numero_Caso)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fecha_Audiencia)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Numero_Caso)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fecha_Audiencia)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Fecha_Inicio)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fecha_Agregado)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Fecha_Inicio)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fecha_Agregado)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Fecha_Audiencia)
+                        </dt>
 
-    </dl>
+                        <dd>
+                            @Html.DisplayFor(model => model.Fecha_Audiencia)
+                        </dd>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Fecha_Agregado)
+                        </dt>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                        <dd>
+                            @Html.DisplayFor(model => model.Fecha_Agregado)
+                        </dd>
+
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color col-lg-offset-2">
+                        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+                        @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-default" })
+                    </div>
+                    }
+                </div>
+
+            </div>
         </div>
-    }
+    </div>
+    <div class="col-sm-4"></div>
 </div>

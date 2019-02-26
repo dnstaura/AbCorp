@@ -15,11 +15,26 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblHistorials
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
+            /*Retorna lista de historiales*/
             var tblHistorial = db.tblHistorial.Include(t => t.tblCasos);
+
+            /*retorna lista de casos en historial*/
+            var casoshistorial = db.tblHistorial.Where(x => x.Id_Caso == id).ToList();
+
+            if (casoshistorial.Count > 0)
+            {
+            ViewBag.casehistory = casoshistorial;
+            }
+            else
+            {
+
+            }
+
             return View(tblHistorial.ToList());
         }
+
 
         // GET: tblHistorials/Details/5
         public ActionResult Details(int? id)

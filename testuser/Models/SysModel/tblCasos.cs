@@ -39,13 +39,19 @@ namespace testuser.Models.SysModel
         [StringLength(10)]
         public string Numero_Caso { get; set; }
 
-        [Column(TypeName = "date")]
+        [Display(Name = "Fecha de Inicio")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Fecha_Inicio { get; set; }
 
-        [Column(TypeName = "date")]
+        [Display(Name = "Fecha de Audiencia")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? Fecha_Audiencia { get; set; }
 
-        [Column(TypeName = "date")]
+        [Display(Name = "Fecha de Agregado")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Fecha_Agregado { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

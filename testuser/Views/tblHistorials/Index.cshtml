@@ -5,60 +5,139 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.tblCasos.Numero_Caso)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha_Inicio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha_Final)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Archivo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha_Agregado)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h4 class="box-title text-info"><strong>Listado de Documentos de Historial de Caso </strong></h4>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.tblCasos.Numero_Caso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha_Inicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha_Final)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Archivo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha_Agregado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Historial }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_Historial }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Historial })
-        </td>
-    </tr>
-}
+                <div class="box-tools">
+                    <form action="Index" method="post">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="txtBuscar" class="form-control pull-right" placeholder="Buscar">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="box-body table-responsive">
+                <p>
+                    @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
+                </p>
+                @if (ViewBag.casehistory == null)
+                    {          
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tblCasos.Numero_Caso)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha_Inicio)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha_Final)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Archivo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha_Agregado)
+                            </th>
+                            <th></th>
+                        </tr>
 
-</table>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tblCasos.Numero_Caso)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha_Inicio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha_Final)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Archivo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha_Agregado)
+                                </td>
+                                <td>
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Historial }, new { @class = "fa fa-edit btn bg-teal " }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Id_Historial }, new { @class = "fa fa-folder-open btn bg-navy " }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id_Historial }, new { @class = "fa fa-trash btn bg-red " })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                }
+                else {
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tblCasos.Numero_Caso)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha_Inicio)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha_Final)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Archivo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha_Agregado)
+                            </th>
+                            <th></th>
+                        </tr>
+                        @foreach (var item2 in ViewBag.casehistory)
+                        {
+                            <tr>
+                                <td>
+                                    @item2.tblCasos.Numero_Caso
+                                </td>
+                                <td>
+                                    @item2.Fecha_Inicio
+                                </td>
+                                <td>
+                                    @item2.Fecha_Final
+                                </td>
+                                <td>
+                                    @item2.Descripcion
+                                </td>
+                                <td>
+                                    @item2.Archivo
+                                </td>
+                                <td>
+                                    @item2.Fecha_Agregado
+                                </td>
+                                <td>
+                                    @Html.ActionLink(" ", "Edit", new { id = item2.Id_Historial }, new { @class = "fa fa-edit btn bg-teal " }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item2.Id_Historial }, new { @class = "fa fa-folder-open btn bg-navy " }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item2.Id_Historial }, new { @class = "fa fa-trash btn bg-red " })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+</div>
+        </div>
+    </div>
+</div>
+
