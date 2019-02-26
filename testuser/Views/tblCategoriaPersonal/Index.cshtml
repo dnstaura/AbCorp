@@ -8,6 +8,15 @@
 <script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>
 <script src="~/Content/datatables.min.js"></script>
 
+<style>
+    .dataTables_length {
+        margin-left: 2%;
+    }
+
+    .dataTables_filter {
+        margin-right: 5%;
+    }
+</style>
 
     <div class="row">
         <div class="col-sm-3"></div>
@@ -49,7 +58,7 @@
                                     @Html.DisplayFor(modelItem => item.CategoriaPersonal)
                                 </td>
                                 <td>
-                                    @Html.ActionLink(" ", "Edit", new { id = item.id_CategoriaPersonal }, new { @class = "fa fa-edit btn bg-orange" }) |
+                                    @Html.ActionLink(" ", "Edit", new { id = item.id_CategoriaPersonal }, new { @class = "fa fa-edit btn bg-teal" }) |
 
                                     @Html.ActionLink(" ", "Details", new { id = item.id_CategoriaPersonal }, new { @class = "fa fa-folder-open btn bg-navy" }) |
 

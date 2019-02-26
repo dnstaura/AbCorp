@@ -8,6 +8,15 @@
 <script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>
 <script src="~/Content/datatables.min.js"></script>
 
+<style>
+    .dataTables_length {
+        margin-left: 2%;
+    }
+
+    .dataTables_filter {
+        margin-right: 5%;
+    }
+</style>
 
 <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -124,7 +133,7 @@
                                 @Html.DisplayFor(modelItem => item.tblEstadosRegistros.Estado)
                             </td>
                             <td>
-                                @Html.ActionLink(" ", "Edit", new { id = item.Id_Personal }, new { @class = "fa fa-edit btn bg-orange" }) |
+                                @Html.ActionLink(" ", "Edit", new { id = item.Id_Personal }, new { @class = "fa fa-edit btn bg-teal" }) |
                                 @Html.ActionLink(" ", "Details", new { id = item.Id_Personal }, new { @class = "fa fa-folder-open btn bg-navy " }) |
                                 @Html.ActionLink(" ", "Delete", new { id = item.Id_Personal }, new { @class = "fa fa-trash btn bg-red " })
                             </td>
@@ -143,7 +152,7 @@
         var espanol =
         {
             "sProcessing": "Procesando...",
-            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sLengthMenu": "Cantidad de registros _MENU_",
             "sZeroRecords": "No se encontraron resultados",
             "sEmptyTable": "Ningún dato disponible en esta tabla",
             "sInfo": "Registros del _START_ al _END_ de un total de _TOTAL_ registros",

@@ -6,12 +6,26 @@
 <script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
 <script src="~/Content/js/plugins/iziModal/iziModal.min.js"></script>
 
+
+<!--Datatables-->
+<link href="~/Content/datatables.min.css" rel="stylesheet" />
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>
+<script src="~/Content/datatables.min.js"></script>
+
 <style>
     .shadow {
         -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
         -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
         box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
     }
+    .dataTables_length{
+        margin-left:2%;
+    }
+
+    .dataTables_filter {
+        margin-right: 2%;
+    }
+
 </style>
 
 <div class="row">
@@ -36,7 +50,7 @@
             </div>
             <!-- /.info-box -->
         </div>
-        
+
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box bg-green-gradient shadow">
                 <span class="info-box-icon"><i class="fa fa-battery-4"></i></span>
@@ -56,7 +70,7 @@
             </div>
             <!-- /.info-box -->
         </div>
-        
+
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box bg-red-gradient shadow">
                 <span class="info-box-icon"><i class="fa fa-battery-0"></i></span>
@@ -91,7 +105,7 @@
             </button>
             <!--BOTON MODAL PARA GRAFICAS-->
             <a href="#" class="btn bg-navy" data-izimodal-open="#modal" data-izimodal-transitionin="fadeInDown" style="margin-left:10px;">
-            Grafica de roles
+                Grafica de roles
             </a>
 
             <!--Boton para agregar roles-->
@@ -99,8 +113,7 @@
 
             <div id="modal">
                 <div class="col-sm-12">
-                    <canvas id="myChart">
-                    </canvas>
+                    <canvas id="myChart"></canvas>
                 </div>
             </div>
             <!--FIN BOTON MODAL PARA GRAFICAS-->
@@ -112,20 +125,11 @@
             <div class="box-header">
                 <h3 class="box-title text-info" style="font-size:16px;"><strong>Lista de usuarios</strong></h3>
 
-                <div class="box-tools form ">
-                    <form action="Index" method="post">
-                        <div class="input-group input-group-sm" style="width:150px;">
-                            <input type="text" name="busqueda" class="form-control pull-right" placeholder="Busqueda" />
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
             <!--/Fin Header-->
             <div class="box-body table-responsive no-padding">
-                <table class="table table-hover">
+                <table class="table table-hover" id="dtTables">
+                    <thead>
                     <tr>
                         <th>
                             Nombres
@@ -139,8 +143,8 @@
                         <th>
                             Acciones
                         </th>
-                        <th></th>
                     </tr>
+                    </thead>
                     @foreach (var item in Model.Usuarios)
                     {
                         <tr>
@@ -171,10 +175,11 @@
         </div>
     </div>
 </div>
-<div class="row">
+
+@*<div class="row">
     <div class="col-sm-4"></div>
     @{ Html.RenderPartial("_Paginador", Model);}
-</div>
+</div>*@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -191,7 +196,7 @@
                 </button>
 
                 <div id="contenidoUsuario">
-                    @Html.ValidationSummary(true, "", new { @class="text-danger"})
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-left:80%;">Cerrar</button>
@@ -206,7 +211,37 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            var espanol =
+            {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Cantidad de registros _MENU_",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
 
+            };
+
+            $('#dtTables').DataTable({
+                responsive: true,
+                language: espanol,
+            });
             /*iziModal*/
             $("#modal").iziModal({
                 title: ' ',
@@ -293,7 +328,9 @@
                     }
                 });
 
-            });
+            });   
+
+            
         });
     </script>
 }
