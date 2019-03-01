@@ -631,6 +631,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Editables\" />
     <Folder Include="Content\js\plugins\ToggleSwitch\" />
     <Folder Include="Content\Libros\" />
   </ItemGroup>

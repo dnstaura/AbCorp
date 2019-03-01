@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 using testuser.Models.SysModel;
 
 namespace testuser.Controllers.SysControllers
@@ -50,9 +51,20 @@ namespace testuser.Controllers.SysControllers
         {
             if (ModelState.IsValid)
             {
-                db.tblEditables.Add(tblEditables);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (Request.Files.Count > 0)
+                {
+                    HttpPostedFileBase file = Request.Files[0];
+                    if (file.ContentLength > 0)
+                    {
+                        var img = (file.FileName).ToLower();
+                        tblEditables.img = "/Content/Editables/" + img;
+                        file.SaveAs(Server.MapPath("~/Content/Editables/") + img);
+
+                    }
+                    db.tblEditables.Add(tblEditables);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
 
             return View(tblEditables);
@@ -82,6 +94,18 @@ namespace testuser.Controllers.SysControllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files.Count > 0)
+                {
+                    HttpPostedFileBase file = Request.Files[0];
+                    if (file.ContentLength > 0)
+                    {
+                        var img = (file.FileName).ToLower();
+                        tblEditables.img = "/Editables/Libros/" + img;
+                        file.SaveAs(Server.MapPath("~/Editables/Libros/") + img);
+
+                    }
+
+                }
                 db.Entry(tblEditables).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
