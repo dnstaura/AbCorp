@@ -6,48 +6,40 @@ using System.Web;
 
 namespace testuser.Models.SysModel
 {
-    public partial class tblLibros
+    public partial class tblEditables
     {
         [Key]
-        public int idlibros { get; set; }
+        public int idEditable { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Fecha")]
         public DateTime? fecha { get; set; }
 
+        [Display(Name = "Entidad/Persona")]
+        [StringLength(100)]
+        public string entidad { get; set; }
+
         [Display(Name = "Instrumento")]
         [StringLength(100)]
         public string instrumento { get; set; }
 
-        [Display(Name = "Folio")]
+        [Display(Name = "Documento")]
         [StringLength(100)]
-        public string folios { get; set; }
+        public string documento { get; set; }
 
-        [Display(Name = "Libro")]
+        [Display(Name = "Tipo de Documento")]
         [StringLength(100)]
-        public string libro { get; set; }
+        public string tipo_documento { get; set; }
 
-        [Display(Name = "Archivo PDF")]
+        [Display(Name = "Archivo Editable")]
         public string img { get; set; }
 
         [Display(Name ="Descripción")]
         [StringLength(1000)]
         public string descripcion { get; set; }
+        
 
-        [Display(Name = "Otorgante")]
-        public int idotorgante { get; set; }
 
-        [Display(Name = "A favor de")]
-        public int idfavorde { get; set; }
-
-        [Display(Name = "Notario")]
-        public int id_Personal { get; set; }
-
-        public virtual tblAfavorde tblAfavorde { get; set; }
-
-        public virtual tblOtorgante tblOtorgante { get; set; }
-
-        public virtual tblPersonal tblPersonal { get; set; }
     }
 }

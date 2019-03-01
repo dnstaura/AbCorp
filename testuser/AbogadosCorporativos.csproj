@@ -226,6 +226,7 @@
     <Compile Include="Controllers\SysControllers\tblCategoriasController.cs" />
     <Compile Include="Controllers\SysControllers\tblClientesController.cs" />
     <Compile Include="Controllers\SysControllers\tblDepartamentosController.cs" />
+    <Compile Include="Controllers\SysControllers\tblEditablesController.cs" />
     <Compile Include="Controllers\SysControllers\tblEstadosCasosController.cs" />
     <Compile Include="Controllers\SysControllers\tblEstadosRegistrosController.cs" />
     <Compile Include="Controllers\SysControllers\tblHistorialsController.cs" />
@@ -272,6 +273,7 @@
     <Compile Include="Models\SysModel\tblCategorias.cs" />
     <Compile Include="Models\SysModel\tblClientes.cs" />
     <Compile Include="Models\SysModel\tblDepartamentos.cs" />
+    <Compile Include="Models\SysModel\tblEditables.cs" />
     <Compile Include="Models\SysModel\tblEstadosCasos.cs" />
     <Compile Include="Models\SysModel\tblEstadosRegistros.cs" />
     <Compile Include="Models\SysModel\tblEventCalendar.cs" />
@@ -620,6 +622,11 @@
     <Content Include="Views\tblHistorials\Details.cshtml" />
     <Content Include="Views\tblHistorials\Edit.cshtml" />
     <Content Include="Views\tblHistorials\Index.cshtml" />
+    <Content Include="Views\tblEditables\Create.cshtml" />
+    <Content Include="Views\tblEditables\Delete.cshtml" />
+    <Content Include="Views\tblEditables\Details.cshtml" />
+    <Content Include="Views\tblEditables\Edit.cshtml" />
+    <Content Include="Views\tblEditables\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

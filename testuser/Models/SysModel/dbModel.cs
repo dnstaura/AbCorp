@@ -19,6 +19,7 @@ namespace testuser.Models.SysModel
         public virtual DbSet<tblCategorias> tblCategorias { get; set; }
         public virtual DbSet<tblClientes> tblClientes { get; set; }
         public virtual DbSet<tblDepartamentos> tblDepartamentos { get; set; }
+        public virtual DbSet<tblEditables> tblEditables { get; set; }
         public virtual DbSet<tblEstadosCasos> tblEstadosCasos { get; set; }
         public virtual DbSet<tblEstadosRegistros> tblEstadosRegistros { get; set; }
         public virtual DbSet<tblEventCalendar> tblEventCalendar { get; set; }
@@ -150,6 +151,26 @@ namespace testuser.Models.SysModel
                 .HasMany(e => e.tblMunicipios)
                 .WithRequired(e => e.tblDepartamentos)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<tblEditables>()
+                .Property(e => e.entidad)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<tblEditables>()
+                .Property(e => e.instrumento)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<tblEditables>()
+                .Property(e => e.documento)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<tblEditables>()
+                .Property(e => e.tipo_documento)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<tblEditables>()
+                .Property(e => e.img)
+                .IsUnicode(false);
 
             modelBuilder.Entity<tblEstadosCasos>()
                 .HasMany(e => e.tblCasos)
