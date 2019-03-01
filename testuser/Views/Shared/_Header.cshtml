@@ -1,12 +1,15 @@
 ﻿@using Microsoft.AspNet.Identity
 
+@*@{
+       if (Session["ImagenPerfil"] == null)
+       {
+           Response.Redirect("/Account/Login", false);
+       }
+       var imagen = Convert.ToString(Session["ImagenPerfil"]);
+    }*@
 @{
-    if (Session["ImagenPerfil"] == null)
-    {
-        Response.Redirect("/Account/Login", false);
-    }
-    var imagen = Convert.ToString(Session["ImagenPerfil"]);
- }
+    var usuario = testuser.ViewModels.FuncionesEstaticas.ObtenerHeader(User.Identity.GetUserId());
+}
 <header class="main-header">
     @* BEGIN Logo *@
     <a href="@Url.Action("Index", "Home")" class="logo">
@@ -32,22 +35,22 @@
                     <li class="dropdown user user-menu">
                         @*@Html.Partial("_LoginPartial")*@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            @if (imagen != "")
+                            @if (usuario.Imagen != "")
                             {
-                                <img src="@Url.Content(imagen)" class="user-image" alt="User Image">
+                                <img src="@Url.Content(usuario.Imagen)" class="user-image" alt="User Image">
                             }
-                            <span class="hidden-xs">@User.Identity.GetUserName()</span>
+                            <span class="hidden-xs">@usuario.Nombre</span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header bg-blue-gradient">
-                                @if (imagen != "")
+                                @if (usuario.Imagen != "")
                                 {
-                                    <img src="@Url.Content(imagen)" class="img-circle" alt="User Image">
+                                    <img src="@Url.Content(usuario.Imagen)" class="img-circle" alt="User Image">
 
                                 }
                                 <p>
                                     @User.Identity.GetUserName()
-                                    <small>Miembro desde @Session["FechaRegistro"]</small>
+                                    <small>Miembro desde @usuario.FechaRegistro</small>
                                 </p>
                             </li>
                             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))

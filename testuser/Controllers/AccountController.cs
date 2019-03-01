@@ -104,8 +104,8 @@ namespace testuser.Controllers
                 {
                     case SignInStatus.Success:
 
-                        Session["FechaRegistro"] = string.Format("{0:dd/MM/yyy}", usuario.Fecha);
-                        Session["ImagenPerfil"] = usuario.Imagen;
+                        //Session["FechaRegistro"] = string.Format("{0:dd/MM/yyy}", usuario.Fecha);
+                        //Session["ImagenPerfil"] = usuario.Imagen;
 
                         ApplicationDbContext dbs = new ApplicationDbContext();
                         Notifications notificacion = new Notifications();
