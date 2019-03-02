@@ -4,6 +4,20 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/datatables.min.css" rel="stylesheet" />
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>
+<script src="~/Content/datatables.min.js"></script>
+
+<style>
+    .dataTables_length {
+        margin-left: 2%;
+    }
+
+    .dataTables_filter {
+        margin-right: 5%;
+    }
+</style>
+
 
 <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -32,59 +46,52 @@
             <div class="box-header">
                 <h4 class="box-title text-info"><strong>Listado de "Casos" </strong></h4>
 
-                <div class="box-tools">
-                    <form action="Index" method="post">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="txtBuscar" class="form-control pull-right" placeholder="Buscar">
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
             <div class="box-body table-responsive">
                 <p>
-                    @Html.ActionLink("Nuevo registro", "Create",new { },new { @class="btn bg-navy"})
+                    @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
                 </p>
-                <table class="table">
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.tblCategorias.Nombre_Categoria)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.tblClientes.Nombres)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.tblDepartamentos.Departamento)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.tblEstadosCasos.Id_EstadoCaso)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.tblJuzgados.Juzgado)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.tblMunicipios.Municipio)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Titulo)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Numero_Caso)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Fecha_Inicio)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Fecha_Audiencia)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Fecha_Agregado)
-                        </th>
-                        <th></th>
-                    </tr>
+                <table class="table table-hover table-striped" id="dtTable">
+                    <thead>
 
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tblCategorias.Nombre_Categoria)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tblClientes.Nombres)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tblDepartamentos.Departamento)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tblEstadosCasos.Id_EstadoCaso)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tblJuzgados.Juzgado)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tblMunicipios.Municipio)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Titulo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Numero_Caso)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha_Inicio)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha_Audiencia)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha_Agregado)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                    </thead>
                     @foreach (var item in Model)
                     {
                         <tr>
@@ -126,7 +133,7 @@
                                 @Html.ActionLink("Details", "Details", new { id = item.Id_Caso }, new { @class = "fa fa-folder-open btn bg-navy " }) |
                                 @Html.ActionLink("Delete", "Delete", new { id = item.Id_Caso }, new { @class = "fa fa-trash btn bg-red " })
                                 @*<a class="fa fa-history btn bg-gray" href="~/tblHistorials/Index"></a>*@
-                                @Html.ActionLink("asdsa ", "Index", "tblHistorials", new { id = item.Id_Caso }, new{@class= "fa fa-history btn bg-gray" })
+                                @Html.ActionLink("asdsa ", "Index", "tblHistorials", new { id = item.Id_Caso }, new { @class = "fa fa-history btn bg-gray" })
                             </td>
                         </tr>
                     }
@@ -138,4 +145,41 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        var espanol =
+        {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Cantidad de registros _MENU_",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla",
+            "sInfo": "Registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+
+        };
+
+        $('#dtTable').DataTable({
+            responsive: true,
+            language: espanol,
+        });
+
+
+    });
+</script>
 

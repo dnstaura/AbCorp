@@ -4,6 +4,20 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/datatables.min.css" rel="stylesheet" />
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>
+<script src="~/Content/datatables.min.js"></script>
+
+<style>
+    .dataTables_length {
+        margin-left: 2%;
+    }
+
+    .dataTables_filter {
+        margin-right: 5%;
+    }
+</style>
+
 <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box bg-blue-gradient shadow">
@@ -26,33 +40,27 @@
     </div>
 </div>
 
-<div class="col-xs-12 col-md-12">
-    <div class="row">
+<div class="row">
+    <div class="col-xs-12 col-md-12">
         <div class="box box-primary">
             <div class="box-header">
                 <h4 class="box-title text-info"><strong>Listado de "A favor de" </strong></h4>
-                <div class="box-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="buscar" class="form-control pull-right" placeholder="Search">
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="box-body table-responsive">
                 <p>
-                    @Html.ActionLink("Nuevo Registro", "Create",new { }, new { @class="btn bg-navy"})
+                    @Html.ActionLink("Nuevo Registro", "Create", new { }, new { @class = "btn bg-navy" })
                 </p>
-                <table class="table table-condensed table-hover">
+                <table class="table table-condensed table-hover" id="dtTable">
+                  <thead>
+
                     <tr>
                         <th>
                             @*@Html.DisplayNameFor(model => model.nombres)*@
                             Nombre completo
                         </th>
                         @*<th>
-                    @Html.DisplayNameFor(model => model.apellidos)
-                </th>*@
+                                @Html.DisplayNameFor(model => model.apellidos)
+                            </th>*@
                         <th>
                             @*@Html.DisplayNameFor(model => model.redsocial)*@
                             Red social
@@ -64,20 +72,21 @@
                             @Html.DisplayNameFor(model => model.correo)
                         </th>
                         @*<th>
-                    @Html.DisplayNameFor(model => model.fechanacimiento)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.lugarnacimiento)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.municipio)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.departamento)
-                </th>*@
+                                @Html.DisplayNameFor(model => model.fechanacimiento)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.lugarnacimiento)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.municipio)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.departamento)
+                            </th>*@
                         <th></th>
                     </tr>
 
+                  </thead>
                     @foreach (var item in Model)
                     {
                         <tr>
@@ -86,8 +95,8 @@
                                 @Html.DisplayFor(modelItem => item.apellidos)
                             </td>
                             @*<td>
-                        @Html.DisplayFor(modelItem => item.apellidos)
-                    </td>*@
+                                    @Html.DisplayFor(modelItem => item.apellidos)
+                                </td>*@
                             <td>
                                 @Html.DisplayFor(modelItem => item.redsocial)
                             </td>
@@ -98,21 +107,21 @@
                                 @Html.DisplayFor(modelItem => item.correo)
                             </td>
                             @*<td>
-                        @Html.DisplayFor(modelItem => item.fechanacimiento)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.lugarnacimiento)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.municipio)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.departamento)
-                    </td>*@
+                                    @Html.DisplayFor(modelItem => item.fechanacimiento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.lugarnacimiento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.municipio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.departamento)
+                                </td>*@
                             <td>
-                                @Html.ActionLink(" ", "Edit", new { id = item.idfavorde }, new { @class = "fa fa-edit btn bg-teal" }) |
-                                @Html.ActionLink(" ", "Details", new { id = item.idfavorde }, new { @class = "fa fa-folder-open btn bg-navy " }) |
-                                @Html.ActionLink(" ", "Delete", new { id = item.idfavorde }, new { @class = "fa fa-trash btn bg-red " })
+                                @Html.ActionLink(" ", "Edit", new { id = item.idfavorde }, new { @class = "fa fa-edit btn bg-teal" }) |
+                                @Html.ActionLink(" ", "Details", new { id = item.idfavorde }, new { @class = "fa fa-folder-open btn bg-navy " }) |
+                                @Html.ActionLink(" ", "Delete", new { id = item.idfavorde }, new { @class = "fa fa-trash btn bg-red " })
                             </td>
                         </tr>
                     }
@@ -122,3 +131,40 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var espanol =
+        {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Cantidad de registros _MENU_",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla",
+            "sInfo": "Registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+
+        };
+
+        $('#dtTable').DataTable({
+            responsive: true,
+            language: espanol,
+        });
+
+
+    });
+</script>
