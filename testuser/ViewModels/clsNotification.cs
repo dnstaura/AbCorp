@@ -14,7 +14,7 @@ namespace testuser.ViewModels
             {
                 var notifications = (from n in db.Notification
                                      where n.Viewed == false /*&& n.Usuario.Id == userId*/
-                                     orderby n.Id descending
+                                     orderby n.Id ascending
                                      select n).ToList();
 
                 return notifications;
@@ -26,7 +26,7 @@ namespace testuser.ViewModels
             {
                 var notifications = (from n in db.Notification
                                      //where n.Usuario.Id == userId
-                                     orderby n.Id descending
+                                     orderby n.Id ascending
                                      select n).ToList();
 
                 return notifications;
