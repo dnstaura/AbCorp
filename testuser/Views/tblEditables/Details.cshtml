@@ -4,72 +4,81 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="box box-primary">
+            <div class="box-header" align="left">
+                <h4 class="box-title text-info"><strong>Detalles del Editable</strong></h4>
+            </div>
 
-<h2>Details</h2>
+            <div class="box-body">
+                <div>
+                    <hr style="margin-top:-10px;" />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.fecha)
+                        </dt>
 
-<div>
-    <h4>tblEditables</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.fecha)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.fecha)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.fecha)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.entidad)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.entidad)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.entidad)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.entidad)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.instrumento)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.instrumento)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.instrumento)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.instrumento)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.documento)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.documento)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.documento)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.documento)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tipo_documento)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tipo_documento)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tipo_documento)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.tipo_documento)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.img)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.img)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.img)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.img)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.descripcion)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.descripcion)
-        </dd>
-
-    </dl>
+                        <dd>
+                            @Html.DisplayFor(model => model.descripcion)
+                        </dd>
+                    </dl>
+                </div>
+                <p class="col-lg-offset-2">
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.idEditable }, new { @class = "btn bg-orange" }) |
+                    @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-default" })
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idEditable }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

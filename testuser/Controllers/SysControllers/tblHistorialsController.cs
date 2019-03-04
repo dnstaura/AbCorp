@@ -67,9 +67,21 @@ namespace testuser.Controllers.SysControllers
         {
             if (ModelState.IsValid)
             {
-                db.tblHistorial.Add(tblHistorial);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (Request.Files.Count > 0)
+                {
+                    HttpPostedFileBase file = Request.Files[0];
+                    if (file.ContentLength > 0)
+                    {
+                        var img = (file.FileName).ToLower();
+                        tblHistorial.Archivo = "/Content/Historial/" + img;
+                        file.SaveAs(Server.MapPath("~/Content/Historial/") + img);
+
+                    }
+                    db.tblHistorial.Add(tblHistorial);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+              
             }
 
             ViewBag.Id_Caso = new SelectList(db.tblCasos, "Id_Caso", "Numero_Caso", tblHistorial.Id_Caso);
@@ -101,6 +113,18 @@ namespace testuser.Controllers.SysControllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files.Count > 0)
+                {
+                    HttpPostedFileBase file = Request.Files[0];
+                    if (file.ContentLength > 0)
+                    {
+                        var img = (file.FileName).ToLower();
+                        tblHistorial.Archivo = "/Content/Historial/" + img;
+                        file.SaveAs(Server.MapPath("~/Content/Historial/") + img);
+
+                    }
+
+                }
                 db.Entry(tblHistorial).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

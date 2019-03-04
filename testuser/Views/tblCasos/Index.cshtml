@@ -98,7 +98,7 @@
                                 @Html.DisplayFor(modelItem => item.tblDepartamentos.Departamento)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.tblEstadosCasos.Id_EstadoCaso)
+                                @Html.DisplayFor(modelItem => item.tblEstadosCasos.Nombre_Estado)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.tblJuzgados.Juzgado)
@@ -113,13 +113,14 @@
                                 @Html.DisplayFor(modelItem => item.Numero_Caso)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Fecha_Inicio)
+                                @*@Html.DisplayFor(modelItem => item.Fecha_Inicio)*@
+                                @item.Fecha_Inicio.ToString("dd/MM/yyyy")
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Fecha_Audiencia)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Fecha_Agregado)
+                                @item.Fecha_Agregado.ToString("dd/MM/yyyy")
                             </td>
                             <td>
                                 @Html.ActionLink(" ", "Edit", new { id = item.Id_Caso }, new { @class = "fa fa-edit btn bg-teal " }) |

@@ -39,10 +39,11 @@ namespace testuser.Controllers.SysControllers
         // GET: tblCasos/Create
         public ActionResult Create()
         {
+            ViewData["Fecha_Agregado"] = DateTime.Now.ToString("yyyy-MM-dd");
             ViewBag.Id_Categoria = new SelectList(db.tblCategorias, "Id_Categoria", "Nombre_Categoria");
             ViewBag.Id_Cliente = new SelectList(db.tblClientes, "Id_Cliente", "Nombres");
             ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
-            ViewBag.Id_EstadoCaso = new SelectList(db.tblEstadosCasos, "Id_EstadoCaso", "Id_EstadoCaso");
+            ViewBag.Id_EstadoCaso = new SelectList(db.tblEstadosCasos, "Id_EstadoCaso", "Nombre_Estado");
             ViewBag.Id_Juzgado = new SelectList(db.tblJuzgados, "Id_Juzgado", "Juzgado");
             ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
             return View();
@@ -57,6 +58,7 @@ namespace testuser.Controllers.SysControllers
         {
             if (ModelState.IsValid)
             {
+                ViewData["Fecha_Agregado"] = DateTime.Now.ToString();
                 db.tblCasos.Add(tblCasos);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -65,7 +67,7 @@ namespace testuser.Controllers.SysControllers
             ViewBag.Id_Categoria = new SelectList(db.tblCategorias, "Id_Categoria", "Nombre_Categoria", tblCasos.Id_Categoria);
             ViewBag.Id_Cliente = new SelectList(db.tblClientes, "Id_Cliente", "Nombres", tblCasos.Id_Cliente);
             ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento", tblCasos.Id_Departamento);
-            ViewBag.Id_EstadoCaso = new SelectList(db.tblEstadosCasos, "Id_EstadoCaso", "Id_EstadoCaso", tblCasos.Id_EstadoCaso);
+            ViewBag.Id_EstadoCaso = new SelectList(db.tblEstadosCasos, "Id_EstadoCaso", "Nombre_Estado", tblCasos.Id_EstadoCaso);
             ViewBag.Id_Juzgado = new SelectList(db.tblJuzgados, "Id_Juzgado", "Juzgado", tblCasos.Id_Juzgado);
             ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio", tblCasos.Id_Municipio);
             return View(tblCasos);
@@ -86,7 +88,7 @@ namespace testuser.Controllers.SysControllers
             ViewBag.Id_Categoria = new SelectList(db.tblCategorias, "Id_Categoria", "Nombre_Categoria", tblCasos.Id_Categoria);
             ViewBag.Id_Cliente = new SelectList(db.tblClientes, "Id_Cliente", "Nombres", tblCasos.Id_Cliente);
             ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento", tblCasos.Id_Departamento);
-            ViewBag.Id_EstadoCaso = new SelectList(db.tblEstadosCasos, "Id_EstadoCaso", "Id_EstadoCaso", tblCasos.Id_EstadoCaso);
+            ViewBag.Id_EstadoCaso = new SelectList(db.tblEstadosCasos, "Id_EstadoCaso", "Nombre_Estado", tblCasos.Id_EstadoCaso);
             ViewBag.Id_Juzgado = new SelectList(db.tblJuzgados, "Id_Juzgado", "Juzgado", tblCasos.Id_Juzgado);
             ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio", tblCasos.Id_Municipio);
             return View(tblCasos);
@@ -108,7 +110,7 @@ namespace testuser.Controllers.SysControllers
             ViewBag.Id_Categoria = new SelectList(db.tblCategorias, "Id_Categoria", "Nombre_Categoria", tblCasos.Id_Categoria);
             ViewBag.Id_Cliente = new SelectList(db.tblClientes, "Id_Cliente", "Nombres", tblCasos.Id_Cliente);
             ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento", tblCasos.Id_Departamento);
-            ViewBag.Id_EstadoCaso = new SelectList(db.tblEstadosCasos, "Id_EstadoCaso", "Id_EstadoCaso", tblCasos.Id_EstadoCaso);
+            ViewBag.Id_EstadoCaso = new SelectList(db.tblEstadosCasos, "Id_EstadoCaso", "Nombre_Estado", tblCasos.Id_EstadoCaso);
             ViewBag.Id_Juzgado = new SelectList(db.tblJuzgados, "Id_Juzgado", "Juzgado", tblCasos.Id_Juzgado);
             ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio", tblCasos.Id_Municipio);
             return View(tblCasos);

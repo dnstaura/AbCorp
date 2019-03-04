@@ -505,7 +505,7 @@ namespace testuser.Controllers
                 {
                     var userID = User.Identity.GetUserId();
                     TempData["UserId"] = userID;
-                    Session["ImagenPerfil"] = usuario.Imagen;
+                    //Session["ImagenPerfil"] = usuario.Imagen;
                     return RedirectToAction("Index", new { Message = ManageMessageId.SuccessImage });
                 }
             }

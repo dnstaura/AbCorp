@@ -284,6 +284,7 @@
     <Compile Include="Models\SysModel\tblOtorgante.cs" />
     <Compile Include="Models\SysModel\tblPersonal.cs" />
     <Compile Include="ViewModels\clsNotification.cs" />
+    <Compile Include="ViewModels\FuncionesEstaticas.cs" />
     <Compile Include="ViewModels\HistorialView.cs" />
     <Compile Include="ViewModels\RoleView.cs" />
     <Compile Include="ViewModels\UserView.cs" />
@@ -481,6 +482,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -630,6 +632,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Editables\" />
+    <Folder Include="Content\Historial\" />
     <Folder Include="Content\js\plugins\ToggleSwitch\" />
     <Folder Include="Content\Libros\" />
   </ItemGroup>

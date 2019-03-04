@@ -68,7 +68,7 @@
                                     @Html.DisplayFor(modelItem => item.Descripcion)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Archivo)
+                                    <a href="@Html.DisplayFor(modelItem => item.Archivo)" class="btn bg-green fa fa-eye" target="_blank"></a>
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Fecha_Agregado)
@@ -122,7 +122,7 @@
                                     @item2.Descripcion
                                 </td>
                                 <td>
-                                    @item2.Archivo
+                                    <a href="@item2.Archivo)" class="btn bg-green fa fa-eye" target="_blank"></a>
                                 </td>
                                 <td>
                                     @item2.Fecha_Agregado
