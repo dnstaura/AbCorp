@@ -56,6 +56,7 @@ namespace testuser.Controllers
         }
 
         //NOTIFICACIONES
+        [Authorize]
         public ActionResult VerNotificaciones()
        {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -80,6 +81,7 @@ namespace testuser.Controllers
             return View(notifiaciones);
         }
 
+        [Authorize]
         public ActionResult ViewedAllNotifications()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -101,6 +103,7 @@ namespace testuser.Controllers
             return RedirectToAction("VerNotificaciones");
         }
 
+        [Authorize]
         public ActionResult DeleteAllNotifications()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -119,6 +122,7 @@ namespace testuser.Controllers
             return RedirectToAction("VerNotificaciones");
         }
 
+        [Authorize]
         public ActionResult MarcarLeido(int id)
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -131,6 +135,7 @@ namespace testuser.Controllers
             return RedirectToAction("VerNotificaciones");
         }
 
+        [Authorize]
         public ActionResult NotificacionesLeidas()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -142,6 +147,7 @@ namespace testuser.Controllers
             return View("VerNotificaciones", notificaciones);
         }
 
+        [Authorize]
         public ActionResult NotificacionesSinLeer()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -153,6 +159,7 @@ namespace testuser.Controllers
             return View("VerNotificaciones", notificaciones);
         }
 
+        [Authorize]
         public ActionResult EliminarNotificacion(int id)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())

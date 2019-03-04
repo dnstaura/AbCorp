@@ -15,6 +15,7 @@ namespace testuser.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Users
+        [Authorize]
         public ActionResult Index(int pagina = 1)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
@@ -109,6 +110,7 @@ namespace testuser.Controllers
             return View(modelo);
         }
         [HttpPost]
+        [Authorize]
         public ActionResult Index(string busqueda)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
@@ -212,6 +214,7 @@ namespace testuser.Controllers
 
         }
 
+        [Authorize]
         public ActionResult Roles(string userID)
         {
             if (string.IsNullOrEmpty(userID))
@@ -256,6 +259,7 @@ namespace testuser.Controllers
             return View(userView);
         }
 
+        [Authorize]
         public ActionResult AddRole(string userID)
         {
             if (string.IsNullOrEmpty(userID))
@@ -291,6 +295,7 @@ namespace testuser.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult AddRole(string userID, FormCollection form)
         {
             var roleID = Request["RoleID"];
@@ -365,6 +370,7 @@ namespace testuser.Controllers
             return View("Roles", userView);
         }
 
+        [Authorize]
         public ActionResult Delete(string userID, string roleID)
         {
             if (string.IsNullOrEmpty(userID) || string.IsNullOrEmpty(roleID))

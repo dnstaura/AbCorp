@@ -11,11 +11,12 @@ namespace testuser.Controllers.SysControllers
     {
         dbModel db = new dbModel();
         // GET: MainEventCalendar
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult Indexx()
         {
 
@@ -32,6 +33,7 @@ namespace testuser.Controllers.SysControllers
             }), JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
+        [Authorize]
         public ActionResult Indexx(int txtID, string btnAgregar, string btnEditar, string btnEliminar, string txtFechaInicio, string txtFechaFin, string txtTitulo, string txtHora, string txtDescripcion, string txtColor, tblEventCalendar ev)
         {
             if (Request.HttpMethod == "POST")

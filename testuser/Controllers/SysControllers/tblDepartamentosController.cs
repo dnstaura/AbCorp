@@ -15,12 +15,14 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblDepartamentos
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.tblDepartamentos.ToList());
         }
 
         // GET: tblDepartamentos/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblDepartamentos/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -45,6 +48,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id_Departamento,Departamento")] tblDepartamentos tblDepartamentos)
         {
@@ -59,6 +63,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblDepartamentos/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,6 +82,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id_Departamento,Departamento")] tblDepartamentos tblDepartamentos)
         {
@@ -90,6 +96,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblDepartamentos/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,6 +113,7 @@ namespace testuser.Controllers.SysControllers
 
         // POST: tblDepartamentos/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

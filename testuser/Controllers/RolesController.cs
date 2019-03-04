@@ -19,6 +19,7 @@ namespace testuser.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [Authorize]
         public ActionResult ListaRoles()
         {
             var roles = db.Roles.ToList();
@@ -38,6 +39,7 @@ namespace testuser.Controllers
             return View(roleView);
         }
 
+        [Authorize]
         public ActionResult CrearRol()
         {
             /*Listado de roles a mostrar*/
@@ -53,6 +55,7 @@ namespace testuser.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult CrearRol(RoleView rol)
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
@@ -79,6 +82,7 @@ namespace testuser.Controllers
             
         }
 
+        [Authorize]
         public ActionResult EditarRol(string id)
         {
             var rol = (from r in db.Roles
@@ -111,6 +115,7 @@ namespace testuser.Controllers
         //    //}
         //}
 
+        [Authorize]
         public ActionResult EliminarRol(string id)
         {
             var rol = (from r in db.Roles
@@ -125,6 +130,7 @@ namespace testuser.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult EliminarRol(RoleView rolView, string id)
         {
             try

@@ -17,6 +17,7 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblLibros
+        [Authorize]
         public ActionResult Index()
         {
             var tblLibros = db.tblLibros.Include(t => t.tblAfavorde).Include(t => t.tblOtorgante).Include(t => t.tblPersonal);
@@ -31,6 +32,7 @@ namespace testuser.Controllers.SysControllers
             return View(tblLibros.ToList());
         }
         [HttpPost]
+        [Authorize]
         public ActionResult Index(string txtBuscar)
         {
             var buscar = (from a in db.tblLibros
@@ -42,6 +44,7 @@ namespace testuser.Controllers.SysControllers
 
 
         // GET: tblLibros/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -57,6 +60,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblLibros/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres");
@@ -99,6 +103,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idlibros,fecha,instrumento,folios,libro,img,idotorgante,idfavorde,id_Personal")] tblLibros tblLibros)
         {
@@ -130,6 +135,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblLibros/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -151,6 +157,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "idlibros,fecha,instrumento,folios,libro,img,idotorgante,idfavorde,id_Personal")] tblLibros tblLibros)
         {
@@ -180,6 +187,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblLibros/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -196,6 +204,7 @@ namespace testuser.Controllers.SysControllers
 
         // POST: tblLibros/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

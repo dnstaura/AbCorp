@@ -15,6 +15,7 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblArchivos
+        [Authorize]
         public ActionResult Index()
         {
             var tblArchivos = db.tblArchivos.Include(t => t.tblCasos);
@@ -22,6 +23,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblArchivos/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblArchivos/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.Id_Caso = new SelectList(db.tblCasos, "Id_Caso", "Numero_Caso");
@@ -47,6 +50,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id_Archivo,Id_Caso,Archivo,Descripción,Fecha_Agregado")] tblArchivos tblArchivos)
         {
@@ -62,6 +66,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblArchivos/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,6 +86,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id_Archivo,Id_Caso,Archivo,Descripción,Fecha_Agregado")] tblArchivos tblArchivos)
         {
@@ -95,6 +101,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblArchivos/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,6 +118,7 @@ namespace testuser.Controllers.SysControllers
 
         // POST: tblArchivos/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

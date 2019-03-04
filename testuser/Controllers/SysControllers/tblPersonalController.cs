@@ -16,9 +16,10 @@ namespace testuser.Controllers.SysControllers
     public class tblPersonalController : Controller
     {
         private dbModel db = new dbModel();
-        
+
 
         // GET: tblPersonal
+        [Authorize]
         public ActionResult Index()
         {
 
@@ -43,6 +44,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblPersonal/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -58,6 +60,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblPersonal/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.id_CategoriaPersonal = new SelectList(db.tblCategoriaPersonal, "id_CategoriaPersonal", "CategoriaPersonal");
@@ -69,6 +72,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id_Personal,Nombres,Apellidos,redsocial,Telefono,Correo,Direccion,Fecha_Nacimiento,id_CategoriaPersonal,Id_EstadoRegistro,Fecha_Agregado")] tblPersonal tblPersonal)
         {
@@ -97,6 +101,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblPersonal/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -117,6 +122,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id_Personal,Nombres,Apellidos,redsocial,Telefono,Correo,Direccion,Fecha_Nacimiento,id_CategoriaPersonal,Id_EstadoRegistro,Fecha_Agregado")] tblPersonal tblPersonal)
         {
@@ -132,6 +138,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblPersonal/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -148,6 +155,7 @@ namespace testuser.Controllers.SysControllers
 
         // POST: tblPersonal/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

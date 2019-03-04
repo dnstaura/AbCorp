@@ -15,6 +15,7 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblHistorials
+        [Authorize]
         public ActionResult Index(int? id)
         {
             /*Retorna lista de historiales*/
@@ -37,6 +38,7 @@ namespace testuser.Controllers.SysControllers
 
 
         // GET: tblHistorials/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -52,6 +54,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblHistorials/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewData["Fecha_Agregado"] = DateTime.Now.ToString("yyyy-MM-dd");
@@ -63,6 +66,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id_Historial,Id_Caso,Fecha_Inicio,Fecha_Final,Descripcion,Archivo,Fecha_Agregado")] tblHistorial tblHistorial)
         {
@@ -90,6 +94,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblHistorials/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -109,6 +114,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id_Historial,Id_Caso,Fecha_Inicio,Fecha_Final,Descripcion,Archivo,Fecha_Agregado")] tblHistorial tblHistorial)
         {
@@ -135,6 +141,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblHistorials/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -151,6 +158,7 @@ namespace testuser.Controllers.SysControllers
 
         // POST: tblHistorials/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

@@ -12,6 +12,7 @@ namespace testuser.Controllers.SysControllers
         dbModel db = new dbModel();
 
         // GET: tblAfavorde
+        [Authorize]
         public ActionResult Index()
         {
             var dato = db.tblAfavorde.Where(x => x.idfavorde == x.idfavorde).Count();
@@ -24,6 +25,7 @@ namespace testuser.Controllers.SysControllers
             return View();
         }
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create(tblAfavorde af)
         {
@@ -34,12 +36,14 @@ namespace testuser.Controllers.SysControllers
                 return RedirectToAction("Index");
             }return View();
         }
+        [Authorize]
         public ActionResult Edit(int id)
         {
             var datos = db.tblAfavorde.Find(id);
             return View(datos);
         }
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(tblAfavorde af)
         {
@@ -50,17 +54,20 @@ namespace testuser.Controllers.SysControllers
                 return RedirectToAction("Index");
             }return View();
         }
+        [Authorize]
         public ActionResult Details(int id)
         {
             var datos = db.tblAfavorde.Find(id);
             return View(datos);
         }
+        [Authorize]
         public ActionResult Delete(int id)
         {
             var datos = db.tblAfavorde.Find(id);
             return View(datos);
         }
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(tblAfavorde af, int id)
         {

@@ -51,42 +51,42 @@ namespace testuser
             SqlDependency.Stop(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
         }
 
-        
 
-        //protected void Application_Error(object sender, EventArgs e)
-        //{
-        //    var exception = Server.GetLastError();
-        //    var httpContext = ((HttpApplication)sender).Context;
-        //    httpContext.Response.Clear();
-        //    httpContext.ClearError();
 
-        //    if (new HttpRequestWrapper(httpContext.Request).IsAjaxRequest())
-        //    {
-        //        return;
-        //    }
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            var exception = Server.GetLastError();
+            var httpContext = ((HttpApplication)sender).Context;
+            httpContext.Response.Clear();
+            httpContext.ClearError();
 
-        //    ExecuteErrorController(httpContext, exception as HttpException);
-        //}
+            if (new HttpRequestWrapper(httpContext.Request).IsAjaxRequest())
+            {
+                return;
+            }
 
-        //private void ExecuteErrorController(HttpContext httpContext, HttpException exception)
-        //{
-        //    var routeData = new RouteData();
-        //    routeData.Values["controller"] = "Error";
+            ExecuteErrorController(httpContext, exception as HttpException);
+        }
 
-        //    if (exception != null && exception.GetHttpCode() == (int)HttpStatusCode.NotFound)
-        //    {
-        //        routeData.Values["action"] = "NotFound";
-        //    }
-        //    else
-        //    {
-        //        routeData.Values["action"] = "InternalServerError";
-        //    }
+        private void ExecuteErrorController(HttpContext httpContext, HttpException exception)
+        {
+            var routeData = new RouteData();
+            routeData.Values["controller"] = "Error";
 
-        //    using (Controller controller = new ErrorController())
-        //    {
-        //        ((IController)controller).Execute(new RequestContext(new HttpContextWrapper(httpContext), routeData));
-        //    }
-        //}
+            if (exception != null && exception.GetHttpCode() == (int)HttpStatusCode.NotFound)
+            {
+                routeData.Values["action"] = "NotFound";
+            }
+            else
+            {
+                routeData.Values["action"] = "InternalServerError";
+            }
+
+            using (Controller controller = new ErrorController())
+            {
+                ((IController)controller).Execute(new RequestContext(new HttpContextWrapper(httpContext), routeData));
+            }
+        }
 
         //private void AddPermisionsToSuperuser(ApplicationDbContext db)
         //{

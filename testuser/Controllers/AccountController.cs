@@ -194,7 +194,8 @@ namespace testuser.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        //[AllowAnonymous]
+        [Authorize]
         public ActionResult Register()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -219,7 +220,7 @@ namespace testuser.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {

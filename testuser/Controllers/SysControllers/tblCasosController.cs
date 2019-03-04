@@ -15,6 +15,7 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblCasos
+        [Authorize]
         public ActionResult Index()
         {
             var tblCasos = db.tblCasos.Include(t => t.tblCategorias).Include(t => t.tblClientes).Include(t => t.tblDepartamentos).Include(t => t.tblEstadosCasos).Include(t => t.tblJuzgados).Include(t => t.tblMunicipios);
@@ -26,6 +27,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblCasos/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -41,6 +43,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblCasos/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewData["Fecha_Agregado"] = DateTime.Now.ToString("yyyy-MM-dd");
@@ -57,6 +60,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id_Caso,Id_Cliente,Id_Categoria,Id_EstadoCaso,Id_Departamento,Id_Municipio,Id_Juzgado,Titulo,Numero_Caso,Fecha_Inicio,Fecha_Audiencia,Fecha_Agregado")] tblCasos tblCasos)
         {
@@ -78,6 +82,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblCasos/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -102,6 +107,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id_Caso,Id_Cliente,Id_Categoria,Id_EstadoCaso,Id_Departamento,Id_Municipio,Id_Juzgado,Titulo,Numero_Caso,Fecha_Inicio,Fecha_Audiencia,Fecha_Agregado")] tblCasos tblCasos)
         {
@@ -121,6 +127,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblCasos/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -137,6 +144,7 @@ namespace testuser.Controllers.SysControllers
 
         // POST: tblCasos/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

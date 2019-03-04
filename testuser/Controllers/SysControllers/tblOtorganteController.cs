@@ -15,6 +15,7 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblOtorgante
+        [Authorize]
         public ActionResult Index()
         {
             var dato = db.tblOtorgante.Where(x => x.idotorgante == x.idotorgante).Count();
@@ -23,6 +24,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblOtorgante/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +40,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblOtorgante/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +50,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idotorgante,nombres,apellidos,redsocial,telefono,correo,fechanacimiento,lugarnacimiento,municipio,departamento")] tblOtorgante tblOtorgante)
         {
@@ -61,6 +65,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblOtorgante/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,6 +84,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "idotorgante,nombres,apellidos,redsocial,telefono,correo,fechanacimiento,lugarnacimiento,municipio,departamento")] tblOtorgante tblOtorgante)
         {
@@ -92,6 +98,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblOtorgante/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,6 +115,7 @@ namespace testuser.Controllers.SysControllers
 
         // POST: tblOtorgante/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
