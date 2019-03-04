@@ -44,6 +44,7 @@ namespace testuser.Controllers.SysControllers
         // GET: tblClientes/Create
         public ActionResult Create()
         {
+            ViewData["FechaActual"] = DateTime.Now.ToString("yyyy-MM-dd");
             ViewBag.Id_EstadoRegistro = new SelectList(db.tblEstadosRegistros, "Id_EstadoRegistro", "Estado");
             return View();
         }

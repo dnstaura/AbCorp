@@ -30,7 +30,7 @@ namespace testuser.Models.SysModel
         [StringLength(15)]
         public string Genero { get; set; }
 
-        [Display(Name ="Fecha de nacimiento")]
+        [Display(Name ="Fecha de Nacimiento")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? Fecha_Nacimiento { get; set; }

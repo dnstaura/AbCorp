@@ -18,7 +18,7 @@ namespace testuser.Models.SysModel
         public int Id_Categoria { get; set; }
 
         [Required]
-        [Display(Name ="Categoria de casos")]
+        [Display(Name ="Categoria de Casos")]
         [StringLength(50)]
         public string Nombre_Categoria { get; set; }
 

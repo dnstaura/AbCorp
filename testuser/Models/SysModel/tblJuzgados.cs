@@ -23,14 +23,17 @@ namespace testuser.Models.SysModel
 
         [Required]
         [StringLength(9)]
+        [Display(Name = "Teléfono")]
         public string telefono { get; set; }
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Correo")]
         public string correo { get; set; }
 
         [Required]
         [StringLength(200)]
+        [Display(Name = "Dirección")]
         public string direccion { get; set; }
 
         public int Id_Departamento { get; set; }

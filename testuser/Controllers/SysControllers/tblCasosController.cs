@@ -18,6 +18,10 @@ namespace testuser.Controllers.SysControllers
         public ActionResult Index()
         {
             var tblCasos = db.tblCasos.Include(t => t.tblCategorias).Include(t => t.tblClientes).Include(t => t.tblDepartamentos).Include(t => t.tblEstadosCasos).Include(t => t.tblJuzgados).Include(t => t.tblMunicipios);
+
+            var cont = db.tblCasos.Where(x => x.Id_Caso == x.Id_Caso).Count();
+            ViewBag.Casos = cont;
+
             return View(tblCasos.ToList());
         }
 

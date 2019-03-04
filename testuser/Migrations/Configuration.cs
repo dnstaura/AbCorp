@@ -1,5 +1,6 @@
 namespace testuser.Migrations
 {
+    using testuser.Models.SysModel;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -14,6 +15,7 @@ namespace testuser.Migrations
 
         protected override void Seed(testuser.Models.ApplicationDbContext context)
         {
+            
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

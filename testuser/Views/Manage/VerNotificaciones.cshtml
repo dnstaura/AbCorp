@@ -105,7 +105,7 @@
                             <!-- timeline icon -->
                             <i class="fa fa-envelope bg-blue"></i>
                             <div class="timeline-item">
-                                <span class="time text-black" style="font-size:16px;"><i class="fa fa-clock-o"></i>@item.Date.TimeOfDay</span>
+                                <span class="time text-black" style="font-size:16px;"><i class="fa fa-clock-o"></i>@item.Date.TimeOfDay.ToString("hh\\:mm\\:ss")</span>
                                 <h3 class="timeline-header"><a href="#" class="text-bold text-uppercase">Modulo afectado: @item.Module</a></h3>
                                 <div class="timeline-body" style="font-size:16px;">
                                     El usuario <label class="text-uppercase text-blue">@item.Usuario.Nombres : </label> @item.Message

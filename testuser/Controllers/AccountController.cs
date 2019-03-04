@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -11,6 +12,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using testuser.Models;
+using testuser.Models.SysModel;
 
 namespace testuser.Controllers
 {
@@ -69,6 +71,12 @@ namespace testuser.Controllers
             //        roleManager.Create(new IdentityRole("Prueba"));
             //    }
             //}
+
+            using (dbModel db = new dbModel())
+            {
+
+            }
+
 
             return View();
         }

@@ -54,6 +54,7 @@ namespace testuser.Controllers.SysControllers
         // GET: tblHistorials/Create
         public ActionResult Create()
         {
+            ViewData["Fecha_Agregado"] = DateTime.Now.ToString("yyyy-MM-dd");
             ViewBag.Id_Caso = new SelectList(db.tblCasos, "Id_Caso", "Numero_Caso");
             return View();
         }

@@ -37,6 +37,7 @@ namespace testuser.Models.SysModel
 
         [Required]
         [StringLength(10)]
+        [Display(Name ="Número de Caso")]
         public string Numero_Caso { get; set; }
 
         [Display(Name = "Fecha de Inicio")]

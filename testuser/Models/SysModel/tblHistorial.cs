@@ -16,12 +16,15 @@ namespace testuser.Models.SysModel
         public int Id_Caso { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name ="Fecha Inicio")]
         public DateTime Fecha_Inicio { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name = "Fecha Final")]
         public DateTime Fecha_Final { get; set; }
 
         [StringLength(500)]
+        [Display(Name = "Descripción")]
         public string Descripcion { get; set; }
 
         [Required]
@@ -29,6 +32,7 @@ namespace testuser.Models.SysModel
         public string Archivo { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name = "Fecha Agregado")]
         public DateTime Fecha_Agregado { get; set; }
 
         public virtual tblCasos tblCasos { get; set; }

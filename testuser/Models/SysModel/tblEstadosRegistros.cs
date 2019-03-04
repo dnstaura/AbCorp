@@ -16,7 +16,6 @@ namespace testuser.Models.SysModel
         }
 
         [Key]
-        [Display(Name = "Estado de registro")]
         public int Id_EstadoRegistro { get; set; }
 
         [Required]

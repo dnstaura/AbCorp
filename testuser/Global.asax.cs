@@ -13,6 +13,8 @@ using System.Net;
 using testuser.Controllers;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.Entity.Migrations;
+using testuser.Models.SysModel;
 
 namespace testuser
 {
@@ -24,6 +26,7 @@ namespace testuser
                 new MigrateDatabaseToLatestVersion<
                     Models.ApplicationDbContext,
                     Migrations.Configuration>());
+
 
             //Crear super usuario al iniciar la app
 
@@ -47,6 +50,8 @@ namespace testuser
         {
             SqlDependency.Stop(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
         }
+
+        
 
         //protected void Application_Error(object sender, EventArgs e)
         //{
