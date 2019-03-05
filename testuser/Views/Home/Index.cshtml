@@ -3,239 +3,180 @@
     ViewBag.Title = "Home Page";
 }
 @*@Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @style = "font-size:30px;" })*@
-<div class="row">
-    <div class="col-xs-12 col-md-5">
-        <div class="box box-default">
-            <div class="box-header">
-                <h3 class="box-title">iCheck - Checkbox &amp; Radio Inputs</h3>
-            </div>
-            <div class="box-body">
-                <div class="form-group">
-                    <div>
-                        <input type="checkbox" class="form-control" checked="checked"> Checkbox
-                    </div>
-                    <div>
-                        <input type="checkbox" class="form-control"> Checkbox
-                    </div>
-                    <div>
-                        <input type="checkbox" class="form-control" disabled="disabled"> Disabled Checkbox
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <input type="radio" class="form-control" checked="checked"> Radio Button
-                    </div>
-                    <div>
-                        <input type="radio" class="form-control"> Radio Button
-                    </div>
-                    <div>
-                        <input type="radio" class="form-control" disabled="disabled"> Disabled Radio Button
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-md-7">
-        <div class="box box-default">
-            <div class="box-header with-border">
-                <h3 class="box-title">Bootstrap-Select</h3>
 
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-                </div>
-            </div>
-            <div class="box-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Minimal</label>
-                            <select class="selectpicker">
-                                <optgroup label="Picnic">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </optgroup>
-                                <optgroup label="Camping">
-                                    <option>Tent</option>
-                                    <option>Flashlight</option>
-                                    <option>Toilet Paper</option>
-                                </optgroup>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Disabled</label>
-                            <select class="selectpicker" disabled>
-                                <option>Mustard</option>
-                                <option>Ketchup</option>
-                                <option>Relish</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Multiple</label>
-                            <select class="selectpicker" multiple>
-                                <option>Mustard</option>
-                                <option>Ketchup</option>
-                                <option>Relish</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Subtext</label>
-                            <select class="selectpicker" data-show-subtext="true">
-                                <option data-subtext="French's">Mustard</option>
-                                <option data-subtext="Heinz">Ketchup</option>
-                                <option data-subtext="Sweet">Relish</option>
-                                <option data-subtext="Miracle Whip">Mayonnaise</option>
-                                <option data-divider="true"></option>
-                                <option data-subtext="Honey">Barbecue Sauce</option>
-                                <option data-subtext="Ranch">Salad Dressing</option>
-                                <option data-subtext="Sweet &amp; Spicy">Tabasco</option>
-                                <option data-subtext="Chunky">Salsa</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-md-6">
-        <div class="box box-default">
-            <div class="box-header">
-                Date Picker
-            </div>
-            <div class="box-body">
-                <div class="form-group">
-                    <label>Date:</label>
-                    <div class="input-group date">
-                        <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                        <input type="text" class="form-control pull-right datepicker">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-md-6">
-        <div class="box box-danger">
-            <div class="box-header">
-                <h3 class="box-title">Input masks</h3>
-            </div>
-            <div class="box-body">
-                <div class="form-group">
-                    <label>Date masks:</label>
+<style>
+    /*  bhoechie tab */
+    div.bhoechie-tab-container {
+        z-index: 10;
+        background-color: #ffffff;
+        padding: 0 !important;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        border: 1px solid #ddd;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        background-clip: padding-box;
+        opacity: 0.97;
+        filter: alpha(opacity=97);
+    }
 
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                        <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                        <input type="text" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask="">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>US phone mask:</label>
+    div.bhoechie-tab-menu {
+        padding-right: 0;
+        padding-left: 0;
+        padding-bottom: 0;
+    }
 
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <input type="text" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Intl US phone mask:</label>
+        div.bhoechie-tab-menu div.list-group {
+            margin-bottom: 0;
+        }
 
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <input type="text" class="form-control" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask="">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>IP mask:</label>
+            div.bhoechie-tab-menu div.list-group > a {
+                margin-bottom: 0;
+            }
 
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-laptop"></i>
-                        </div>
-                        <input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask="">
-                    </div>
+                div.bhoechie-tab-menu div.list-group > a .glyphicon,
+                div.bhoechie-tab-menu div.list-group > a .fa {
+                    color: #001A35;
+                }
+
+                div.bhoechie-tab-menu div.list-group > a:first-child {
+                    border-top-right-radius: 0;
+                    -moz-border-top-right-radius: 0;
+                }
+
+                div.bhoechie-tab-menu div.list-group > a:last-child {
+                    border-bottom-right-radius: 0;
+                    -moz-border-bottom-right-radius: 0;
+                }
+
+                div.bhoechie-tab-menu div.list-group > a.active,
+                div.bhoechie-tab-menu div.list-group > a.active .glyphicon,
+                div.bhoechie-tab-menu div.list-group > a.active .fa {
+                    background-color: #001A35;
+                    background-image: #001A35;
+                    color: #ffffff;
+                }
+
+                    div.bhoechie-tab-menu div.list-group > a.active:after {
+                        content: '';
+                        position: absolute;
+                        left: 100%;
+                        top: 50%;
+                        margin-top: -13px;
+                        border-left: 0;
+                        border-bottom: 13px solid transparent;
+                        border-top: 13px solid transparent;
+                        border-left: 10px solid #001A35;
+                    }
+
+    div.bhoechie-tab-content {
+        background-color: #ffffff;
+        /* border: 1px solid #eeeeee; */
+        margin: 0 auto;
+        align-content:center;
+        /*padding-left: 20px;
+        padding-top: 10px;*/
+    }
+
+    div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
+        display: none;
+    }
+</style>
+
+<!--Manual de usuario-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-xs-12 bhoechie-tab-container">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 bhoechie-tab-menu">
+                <div class="list-group text-bold">
+
+                    <a href="#" class="list-group-item active text-center">
+                        <h4 class="fa fa-book"></h4><br />Notario
+                    </a> 
+                  
+                    <a href="#" class="list-group-item text-center">
+                        <h4 class="fa fa-gavel"></h4><br />Abogacia
+                    </a>
+                    <a href="#" class="list-group-item text-center">
+                        <h4 class="fa fa-calendar"></h4><br />Eventos
+                    </a>
+                    <a href="#" class="list-group-item text-center">
+                        <h4 class="fa fa-group"></h4><br />Personal
+                    </a>
+                    <a href="#" class="list-group-item text-center">
+                        <h4 class="fa fa-gear"></h4><br />Config.
+                    </a>
+                    <a href="#" class="list-group-item text-center">
+                        <h4 class="fa fa-gear"></h4><br />Test.
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+                <!-- flight section -->
+                <div class="bhoechie-tab-content active">
+
+                    <center>
+                        <h1 class="fa fa-book" style="font-size:14em;color:#001A35"></h1>
+                        <h2 class="text-bold text-uppercase" style="margin-top: 0;color:#001A35">Modulo #1 - Notariado</h2>
+                        <p style="margin-top: 0;color:#001A35">
+                            El modulo #1 consta de cuatro categorías, las cuales son necesarias para poder realizar un excelente flujo de datos
+                            y mantener todo lo mejor ordenado posible, estas cuatro categorías son: <strong>"Libros, A/F, Otorgantes y Editables"</strong>
+                        </p>             
+                    </center>
+                </div>
+                <!-- train section -->
+                <div class="bhoechie-tab-content">
+                    <center>
+                        <h1 class="glyphicon glyphicon-road" style="font-size:12em;color:#55518a"></h1>
+                        <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                        <h3 style="margin-top: 0;color:#55518a">Train Reservation</h3>
+                    </center>
+                </div>
+
+                <!-- hotel search -->
+                <div class="bhoechie-tab-content">
+                    <center>
+                        <h1 class="glyphicon glyphicon-home" style="font-size:12em;color:#55518a"></h1>
+                        <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                        <h3 style="margin-top: 0;color:#55518a">Hotel Directory</h3>
+                    </center>
+                </div>
+                <div class="bhoechie-tab-content">
+                    <center>
+                        <h1 class="glyphicon glyphicon-cutlery" style="font-size:12em;color:#55518a"></h1>
+                        <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                        <h3 style="margin-top: 0;color:#55518a">Restaurant Diirectory</h3>
+                    </center>
+                </div>
+                <div class="bhoechie-tab-content">
+                    <center>
+                        <h1 class="glyphicon glyphicon-credit-card" style="font-size:12em;color:#55518a"></h1>
+                        <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                        <h3 style="margin-top: 0;color:#55518a">Credit Card</h3>
+                    </center>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!--Tabla-->
-<div class="row">
-    <div class="box box-default">
-        <div class="box-header">
-            <h3 class="box-title">Responsive Hover Table</h3>
 
-            <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+<!--FIN Manual de usuario-->
 
-                    <div class="input-group-btn">
-                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body table-responsive no-padding">
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <th>ID</th>
-                        <th>User</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Reason</th>
-                    </tr>
-                    <tr>
-                        <td>183</td>
-                        <td>John Doe</td>
-                        <td>11-7-2014</td>
-                        <td><span class="label label-success">Approved</span></td>
-                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                        <td>219</td>
-                        <td>Alexander Pierce</td>
-                        <td>11-7-2014</td>
-                        <td><span class="label label-warning">Pending</span></td>
-                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                        <td>657</td>
-                        <td>Bob Doe</td>
-                        <td>11-7-2014</td>
-                        <td><span class="label label-primary">Approved</span></td>
-                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                        <td>175</td>
-                        <td>Mike Doe</td>
-                        <td>11-7-2014</td>
-                        <td><span class="label label-danger">Denied</span></td>
-                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- /.box-body -->
-    </div>
-</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
+            e.preventDefault();
+            $(this).siblings('a.active').removeClass("active");
+            $(this).addClass("active");
+            var index = $(this).index();
+            $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+            $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+        });
+    });
+</script>
