@@ -48,7 +48,7 @@ namespace testuser.Models.SysModel
         [Display(Name = "Fecha de Audiencia")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime? Fecha_Audiencia { get; set; }
+        public DateTime Fecha_Audiencia { get; set; }
 
         [Display(Name = "Fecha de Agregado")]
         [DataType(DataType.Date)]

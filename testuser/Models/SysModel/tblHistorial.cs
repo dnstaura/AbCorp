@@ -21,6 +21,7 @@ namespace testuser.Models.SysModel
 
         [Column(TypeName = "date")]
         [Display(Name = "Fecha Final")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Fecha_Final { get; set; }
 
         [StringLength(500)]
@@ -33,6 +34,7 @@ namespace testuser.Models.SysModel
 
         [Column(TypeName = "date")]
         [Display(Name = "Fecha Agregado")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Fecha_Agregado { get; set; }
 
         public virtual tblCasos tblCasos { get; set; }

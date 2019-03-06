@@ -12,9 +12,9 @@ namespace testuser.Models.SysModel
         public int idEditable { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Fecha")]
-        public DateTime? fecha { get; set; }
+        public DateTime fecha { get; set; }
 
         [Display(Name = "Entidad/Persona")]
         [StringLength(100)]

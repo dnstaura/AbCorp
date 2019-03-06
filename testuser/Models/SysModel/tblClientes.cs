@@ -32,8 +32,8 @@ namespace testuser.Models.SysModel
 
         [Display(Name ="Fecha de Nacimiento")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime? Fecha_Nacimiento { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime Fecha_Nacimiento { get; set; }
 
         [Required]
         [StringLength(9)]
@@ -49,7 +49,7 @@ namespace testuser.Models.SysModel
         public int Id_EstadoRegistro { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name ="Fecha Agregado")]
         public DateTime Fecha_Agregado { get; set; }
 

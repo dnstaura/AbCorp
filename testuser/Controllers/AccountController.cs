@@ -16,7 +16,7 @@ using testuser.Models.SysModel;
 
 namespace testuser.Controllers
 {
-    [Authorize]
+    
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -195,7 +195,7 @@ namespace testuser.Controllers
         //
         // GET: /Account/Register
         //[AllowAnonymous]
-        [Authorize]
+        
         public ActionResult Register()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -220,7 +220,7 @@ namespace testuser.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [Authorize]
+        
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {

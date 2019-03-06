@@ -57,14 +57,6 @@ namespace testuser.Models.SysModel
                 .IsUnicode(false);
 
             modelBuilder.Entity<tblAfavorde>()
-                .Property(e => e.municipio)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<tblAfavorde>()
-                .Property(e => e.departamento)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<tblAfavorde>()
                 .HasMany(e => e.tblLibros)
                 .WithRequired(e => e.tblAfavorde)
                 .WillCascadeOnDelete(false);
@@ -273,14 +265,6 @@ namespace testuser.Models.SysModel
 
             modelBuilder.Entity<tblOtorgante>()
                 .Property(e => e.lugarnacimiento)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<tblOtorgante>()
-                .Property(e => e.municipio)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<tblOtorgante>()
-                .Property(e => e.departamento)
                 .IsUnicode(false);
 
             modelBuilder.Entity<tblOtorgante>()

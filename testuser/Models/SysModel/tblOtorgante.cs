@@ -41,21 +41,21 @@ namespace testuser.Models.SysModel
         public string correo { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Fecha de nacimiento")]
-        public DateTime? fechanacimiento { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Fecha de Nacimiento")]
+        public DateTime fechanacimiento { get; set; }
 
-        [Display(Name = "Lugar de nacimiento")]
+        [Display(Name = "Lugar de Nacimiento")]
         [StringLength(100)]
         public string lugarnacimiento { get; set; }
 
-        [Display(Name = "Municipio")]
-        [StringLength(60)]
-        public string municipio { get; set; }
+        public int Id_Municipio { get; set; }
 
-        [Display(Name = "Departamento")]
-        [StringLength(30)]
-        public string departamento { get; set; }
+        public int Id_Departamento { get; set; }
+
+        public virtual tblDepartamentos tblDepartamentos { get; set; }
+
+        public virtual tblMunicipios tblMunicipios { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblLibros> tblLibros { get; set; }

@@ -48,8 +48,8 @@ namespace testuser.Models.SysModel
         public string Direccion { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Fecha de nacimiento")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Fecha de Nacimiento")]
         [Column(TypeName = "date")]
         public DateTime Fecha_Nacimiento { get; set; }
 
@@ -58,8 +58,8 @@ namespace testuser.Models.SysModel
         public int? Id_EstadoRegistro { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Fecha de agregado")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Fecha de Agregado")]
         [Column(TypeName = "date")]
         public DateTime Fecha_Agregado { get; set; }
 

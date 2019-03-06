@@ -43,6 +43,8 @@ namespace testuser.Controllers.SysControllers
         [Authorize]
         public ActionResult Create()
         {
+            ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
+            ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
             return View();
         }
 
@@ -52,7 +54,7 @@ namespace testuser.Controllers.SysControllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idotorgante,nombres,apellidos,redsocial,telefono,correo,fechanacimiento,lugarnacimiento,municipio,departamento")] tblOtorgante tblOtorgante)
+        public ActionResult Create([Bind(Include = "idotorgante,nombres,apellidos,redsocial,telefono,correo,fechanacimiento,lugarnacimiento,Id_Municipio,Id_Departamento")] tblOtorgante tblOtorgante)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +62,8 @@ namespace testuser.Controllers.SysControllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
+            ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
             return View(tblOtorgante);
         }
 
@@ -77,6 +80,8 @@ namespace testuser.Controllers.SysControllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
+            ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
             return View(tblOtorgante);
         }
 
@@ -86,7 +91,7 @@ namespace testuser.Controllers.SysControllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idotorgante,nombres,apellidos,redsocial,telefono,correo,fechanacimiento,lugarnacimiento,municipio,departamento")] tblOtorgante tblOtorgante)
+        public ActionResult Edit([Bind(Include = "idotorgante,nombres,apellidos,redsocial,telefono,correo,fechanacimiento,lugarnacimiento,Id_Municipio,Id_Departamento")] tblOtorgante tblOtorgante)
         {
             if (ModelState.IsValid)
             {
@@ -94,6 +99,8 @@ namespace testuser.Controllers.SysControllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
+            ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
             return View(tblOtorgante);
         }
 

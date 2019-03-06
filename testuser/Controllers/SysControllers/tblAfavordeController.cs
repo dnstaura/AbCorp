@@ -22,6 +22,8 @@ namespace testuser.Controllers.SysControllers
         }
         public ActionResult Create()
         {
+            ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
+            ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
             return View();
         }
         [HttpPost]
@@ -34,12 +36,18 @@ namespace testuser.Controllers.SysControllers
                 db.tblAfavorde.Add(af);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }return View();
+            }
+            ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
+            ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
+            return View();
         }
         [Authorize]
         public ActionResult Edit(int id)
         {
             var datos = db.tblAfavorde.Find(id);
+
+            ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
+            ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
             return View(datos);
         }
         [HttpPost]
@@ -52,7 +60,10 @@ namespace testuser.Controllers.SysControllers
                 db.Entry(af).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }return View();
+            }
+            ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
+            ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
+            return View();
         }
         [Authorize]
         public ActionResult Details(int id)
