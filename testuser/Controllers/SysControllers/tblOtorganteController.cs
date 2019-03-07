@@ -108,6 +108,9 @@ namespace testuser.Controllers.SysControllers
         [Authorize]
         public ActionResult Delete(int? id)
         {
+            ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
+            ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

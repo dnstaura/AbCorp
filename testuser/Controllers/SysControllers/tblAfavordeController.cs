@@ -55,14 +55,17 @@ namespace testuser.Controllers.SysControllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(tblAfavorde af)
         {
+                ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
+                ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
+
             if (ModelState.IsValid)
             {
+
                 db.Entry(af).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
-            ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
+
             return View();
         }
         [Authorize]
@@ -75,6 +78,8 @@ namespace testuser.Controllers.SysControllers
         public ActionResult Delete(int id)
         {
             var datos = db.tblAfavorde.Find(id);
+            ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
+            ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
             return View(datos);
         }
         [HttpPost]
