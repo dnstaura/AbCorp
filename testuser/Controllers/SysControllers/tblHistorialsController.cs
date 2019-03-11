@@ -21,6 +21,13 @@ namespace testuser.Controllers.SysControllers
             /*Retorna lista de historiales*/
             var tblHistorial = db.tblHistorial.Include(t => t.tblCasos);
 
+
+            /*Contador*/
+            var dato = db.tblHistorial.Where(x => x.Id_Historial== x.Id_Historial).Count();
+            ViewBag.his = dato;
+
+
+
             /*retorna lista de casos en historial*/
             var casoshistorial = db.tblHistorial.Where(x => x.Id_Caso == id).ToList();
 

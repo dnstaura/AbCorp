@@ -16,6 +16,11 @@
     .dataTables_filter {
         margin-right: 5%;
     }
+
+    .dataTables_filter {
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
 </style>
 
 <div class="row">
@@ -57,19 +62,22 @@
 
                         <tr>
                             <th>
+                                No.
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.fecha)
+                            </th>
+                            <th>
                                 @*@Html.DisplayNameFor(model => model.tblAfavorde.nombres)*@
-                                A/F
+                                Otorgante
                             </th>
                             <th>
                                 @*@Html.DisplayNameFor(model => model.tblOtorgante.nombres)*@
-                                Otorgante
+                                A/F
                             </th>
                             <th>
                                 @*@Html.DisplayNameFor(model => model.tblPersonal.Nombres)*@
                                 Personal
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.fecha)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.instrumento)
@@ -91,16 +99,19 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.tblAfavorde.nombres)
+                                @Html.DisplayFor(modelItem => item.idlibros)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.fecha)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.tblOtorgante.nombres)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.tblPersonal.Nombres)
+                                @Html.DisplayFor(modelItem => item.tblAfavorde.nombres)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.fecha)
+                                @Html.DisplayFor(modelItem => item.tblPersonal.Nombres)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.instrumento)
@@ -160,6 +171,17 @@
         $('#dtTable').DataTable({
             responsive: true,
             language: espanol,
+            "dom": '<"dt-buttons"Bf><"clear">lirtp',
+            "paging": true,
+            "autoWidth": true,
+            "buttons": [
+                'colvis',
+                'copyHtml5',
+                'csvHtml5',
+                'excelHtml5',
+                'pdfHtml5',
+                'print'
+            ]
         });
 
 

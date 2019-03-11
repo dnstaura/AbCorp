@@ -19,6 +19,8 @@ namespace testuser.Controllers.SysControllers
         [Authorize]
         public ActionResult Index()
         {
+            var dato = db.tblEditables.Where(x => x.idEditable == x.idEditable).Count();
+            ViewBag.ed = dato;
             return View(db.tblEditables.ToList());
         }
 

@@ -112,6 +112,9 @@
                         <h4 class="fa fa-gear"></h4><br />Config.
                     </a>
                     <a href="#" class="list-group-item text-center">
+                        <h4 class="fa fa-gears"></h4><br />Roles
+                    </a>
+                    <a href="#" class="list-group-item text-center">
                         <h4 class=""></h4><br />
                     </a>
                     <a href="#" class="list-group-item text-center">
@@ -247,9 +250,79 @@
 
 
                         </section>
-                    </center>
+                    </center>                 
+                </div>
 
-                    
+                <div class="bhoechie-tab-content">
+                    <center>
+                        <h1 class="fa fa-gears" style="font-size:8em; color:#001A35"></h1>
+                        <h2 class="text-uppercase text-bold" style="margin-top:0; color:#001A35">Roles</h2>
+                        <p style="margin-top:0; color:#001A35;">
+                            En este apartado se pretende mostrar un listado de roles, los cuales ya estarán predefinidos
+                            ya que estos serán parte esencial para el funcionamiento del sistema.
+                            <br />
+                            estos roles se podrán asignar a los usuarios para especificar que tareas podrán realizar.
+                            <br />
+                            <strong>NOTA: LOS NOMBRES DE CADA UNO DE LOS NO PODRAN SER MODIFICADOS NI ELIMINADOS.</strong>
+                            <br />
+                        </p>
+                    </center>
+                    <!--Tabla de roles-->
+                    <table class="table table-responsive table-hover table-condensed table-striped text-center text-bold table-bordered">
+                        <thead>
+                            <tr class="text-navy">
+                                <th scope="col">Roles</th>
+                                <th scope="col">Acciones</th>
+                                <th scope="col">Vistas</th>
+                                <th scope="col">Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Administrador</th>
+                                <td>Agregar, Ver detalles, Actualizar, Eliminar.</td>
+                                <td>TODAS</td>
+                                <td>Sin restricciones</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Notario</th>
+                                <td>Agregar, Ver detalles.</td>
+                                <td>
+                                    Modulo #1: Libros, A/F, Otorgantes. <br />
+                                    Extras: Eventos, Zona Geográfica.
+                                </td>
+                                <td>Con restricciones en vistas.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Abogacía</th>
+                                <td>Agregar, Ver detalles.</td>
+                                <td>
+                                    Modulo #2: Clientes, Casos, Historial, Categorías, Juzgados, Estado de casos. <br />
+                                    Extras: Eventos, Zona Geográfica.
+
+                                </td>
+                                <td>Con restricciones en vistas.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Editor</th>
+                                <td>Ver detalles, Editar.</td>
+                                <td>TODAS(Menos Configuración)</td>
+                                <td>
+                                    Solamente podra observar la lista de cada apartado, y los siguientes botones. <br />
+                                    (Ver detalles y Eliminar)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Observador</th>
+                                <td>Ver detalles</td>
+                                <td>TODAS(Menos configuración)</td>
+                                <td>
+                                    Solamente tendra acceso al listado de todos los apartados, y los siguientes botones. <br />
+                                    (Ver detalles)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

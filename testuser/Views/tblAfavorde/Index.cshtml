@@ -16,6 +16,11 @@
     .dataTables_filter {
         margin-right: 5%;
     }
+
+    .dataTables_filter {
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
 </style>
 
 <div class="row">
@@ -24,14 +29,16 @@
             <span class="info-box-icon"><i class="fa fa-users"></i></span>
 
             <div class="info-box-content">
-                <span class="info-box-text">A favor de</span>
+                <span class="info-box-text text-bold">A favor de</span>
                 <span class="info-box-number">@ViewBag.af</span>
 
                 <div class="progress">
                     <div class="progress-bar" style="width: 100%"></div>
                 </div>
                 <span class="progress-description">
+                    <strong>
                     Total de A/F
+                    </strong>
                 </span>
             </div>
             <!-- /.info-box-content -->
@@ -163,6 +170,17 @@
         $('#dtTable').DataTable({
             responsive: true,
             language: espanol,
+            "dom": '<"dt-buttons"Bf><"clear">lirtp',
+            "paging": true,
+            "autoWidth": true,
+            "buttons": [
+                'colvis',
+                'copyHtml5',
+                'csvHtml5',
+                'excelHtml5',
+                'pdfHtml5',
+                'print'
+            ]
         });
 
 

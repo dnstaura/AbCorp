@@ -14,8 +14,14 @@
     }
 
     .dataTables_filter {
-        margin-right: 2%;
+        margin-right: 5%;
     }
+
+    .dataTables_filter {
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+
 </style>
 
 <div class="row">
@@ -44,6 +50,7 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Nombre_Categoria)
                             </th>
+                            <th>Acciones</th>
 
                         </tr>
 
@@ -104,6 +111,18 @@
         $('#dtTable').DataTable({
             responsive: true,
             language: espanol,
+            "dom": '<"dt-buttons"Bf><"clear">lirtp',
+            "paging": true,
+            "autoWidth": true,
+            "buttons": [
+                'colvis',
+                'copyHtml5',
+                'csvHtml5',
+                'excelHtml5',
+                'pdfHtml5',
+                'print'
+            ]
+
         });
 
 

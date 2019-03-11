@@ -24,19 +24,10 @@ namespace testuser.Controllers.SysControllers
         {
 
             var tblPersonal = db.tblPersonal.Include(t => t.tblCategoriaPersonal).Include(t => t.tblEstadosRegistros);
+            /*Contador*/
+            var test = db.tblPersonal.Where(x => x.Id_Personal == x.Id_Personal).Count();
+            ViewBag.pe = test;
 
-            //var test = db.tblPersonal.Where(x => x.Id_Personal == x.Id_Personal).Count();
-            //ViewBag.pe = test;
-            //var fechahoy = DateTime"2019-02-04";
-            //var noti = db.tblPersonal.Where(modelItem => modelItem.Fecha_Nacimiento = fechahoy);
-
-            //var notifacion = (from a in db.tblPersonal
-            //                  where (a.Fecha_Nacimiento.Date == DateTime.Today)
-            //                  select a.Nombres +" "+a.Apellidos  );
-            //ViewBag.Notii = notifacion;
-
-            //var today = DateTime.Today;
-            //var q = db.tblPersonal.Where(t => DbFunctions.TruncateTime(t.Fecha_Nacimiento) >= today);
 
             return View(tblPersonal.ToList());
 

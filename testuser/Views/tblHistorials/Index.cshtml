@@ -16,7 +16,36 @@
     .dataTables_filter {
         margin-right: 5%;
     }
+
+    .dataTables_filter {
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+
 </style>
+<div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-blue-gradient shadow">
+            <span class="info-box-icon"><i class="fa fa-users"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text text-bold">Histoal</span>
+                <span class="info-box-number">@ViewBag.his</span>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width: 100%"></div>
+                </div>
+                <span class="progress-description">
+                    <strong>
+                        Total de historiales
+                    </strong>
+                </span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+</div>
 
 <div class="row">
     <div class="col-sm-12">
@@ -65,7 +94,7 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Fecha_Agregado)
                                 </th>
-                                <th></th>
+                                <th>Acciones</th>
                             </tr>
 
                         </thead>
@@ -153,8 +182,8 @@
                                 </td>
                                 <td>
                                     @Html.ActionLink(" ", "Edit", new { id = item2.Id_Historial }, new { @class = "fa fa-edit btn bg-teal " }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item2.Id_Historial }, new { @class = "fa fa-folder-open btn bg-navy " }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item2.Id_Historial }, new { @class = "fa fa-trash btn bg-red " })
+                                    @Html.ActionLink(" ", "Details", new { id = item2.Id_Historial }, new { @class = "fa fa-folder-open btn bg-navy " }) |
+                                    @Html.ActionLink(" ", "Delete", new { id = item2.Id_Historial }, new { @class = "fa fa-trash btn bg-red " })
                                 </td>
                             </tr>
                         }
@@ -197,6 +226,17 @@
         $('#dtTable').DataTable({
             responsive: true,
             language: espanol,
+            "dom": '<"dt-buttons"Bf><"clear">lirtp',
+            "paging": true,
+            "autoWidth": true,
+            "buttons": [
+                'colvis',
+                'copyHtml5',
+                'csvHtml5',
+                'excelHtml5',
+                'pdfHtml5',
+                'print'
+            ]
         });
 
 
