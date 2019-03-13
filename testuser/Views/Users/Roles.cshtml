@@ -3,10 +3,16 @@
 @{
     ViewBag.Title = "Roles";
 }
-
+<style>
+    .shadow {
+        -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.40);
+        -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.40);
+        box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.40);
+    }
+</style>
 <div class="row">
     <div class="col-lg-offset-4 col-sm-4">
-        <div class="box box-default">
+        <div class="box box-default shadow">
             <div class="box-header">
                 <h4 class="box-title text-bold text-info">Asignar roles para: @Model.Name</h4>
             </div>

@@ -47,6 +47,11 @@ namespace testuser.Controllers.SysControllers
         [Authorize]
         public ActionResult Create()
         {
+            List<SelectListItem> genero = new List<SelectListItem>();
+            genero.Add(new SelectListItem() { Text = "Masculino", Value = "Masculino" });
+            genero.Add(new SelectListItem() { Text = "Femenino", Value = "Femenino" });
+            ViewBag.gen = genero;
+
             ViewData["FechaActual"] = DateTime.Now.ToString("yyyy-MM-dd");
             ViewBag.Id_EstadoRegistro = new SelectList(db.tblEstadosRegistros, "Id_EstadoRegistro", "Estado");
             return View();

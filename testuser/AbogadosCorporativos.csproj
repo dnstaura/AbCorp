@@ -223,7 +223,6 @@
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SysControllers\MainCalendarController.cs" />
     <Compile Include="Controllers\SysControllers\tblAfavordeController.cs" />
-    <Compile Include="Controllers\SysControllers\tblArchivosController.cs" />
     <Compile Include="Controllers\SysControllers\tblCasosController.cs" />
     <Compile Include="Controllers\SysControllers\tblCategoriaPersonalController.cs" />
     <Compile Include="Controllers\SysControllers\tblCategoriasController.cs" />
@@ -610,11 +609,6 @@
     <Content Include="Views\tblEstadosCasos\Details.cshtml" />
     <Content Include="Views\tblEstadosCasos\Edit.cshtml" />
     <Content Include="Views\tblEstadosCasos\Index.cshtml" />
-    <Content Include="Views\tblArchivos\Create.cshtml" />
-    <Content Include="Views\tblArchivos\Delete.cshtml" />
-    <Content Include="Views\tblArchivos\Details.cshtml" />
-    <Content Include="Views\tblArchivos\Edit.cshtml" />
-    <Content Include="Views\tblArchivos\Index.cshtml" />
     <Content Include="Views\tblCasos\Create.cshtml" />
     <Content Include="Views\tblCasos\Delete.cshtml" />
     <Content Include="Views\tblCasos\Details.cshtml" />

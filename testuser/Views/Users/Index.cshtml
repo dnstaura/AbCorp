@@ -14,9 +14,9 @@
 
 <style>
     .shadow {
-        -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.60);
+        -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.60);
+        box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.60);
     }
     .dataTables_length {
         margin-left: 2%;
@@ -29,6 +29,12 @@
     .dataTables_filter {
         margin-top: 1%;
         margin-bottom: 1%;
+    }
+    .dt-buttons{
+        margin-left:1%;
+    }
+    .dataTables_info{
+        margin-left:1%;
     }
     /**/
 
@@ -132,14 +138,14 @@
         </div>
         <br />
         <!---->
-        <div class="box box-info">
+        <div class="box box-info shadow">
             <div class="box-header">
                 <h3 class="box-title text-info" style="font-size:16px;"><strong>Lista de usuarios</strong></h3>
 
             </div>
             <!--/Fin Header-->
             <div class="box-body table-responsive no-padding">
-                <table class="table table-hover" id="dtTables">
+                <table class="table table-striped table-condensed" id="dtTables">
                     <thead>
                     <tr>
                         <th>
