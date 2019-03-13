@@ -36,17 +36,17 @@ namespace testuser.Models.SysModel
         public string descripcion { get; set; }
 
         [Display(Name = "Otorgante")]
-        public int idotorgante { get; set; }
+        public string Otorgante { get; set; }
 
         [Display(Name = "A favor de")]
-        public int idfavorde { get; set; }
+        public string AFavor { get; set; }
 
         [Display(Name = "Notario")]
         public int id_Personal { get; set; }
 
-        public virtual tblAfavorde tblAfavorde { get; set; }
+        //public virtual tblAfavorde tblAfavorde { get; set; }
 
-        public virtual tblOtorgante tblOtorgante { get; set; }
+        //public virtual tblOtorgante tblOtorgante { get; set; }
 
         public virtual tblPersonal tblPersonal { get; set; }
     }

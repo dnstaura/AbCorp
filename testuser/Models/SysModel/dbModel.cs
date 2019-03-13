@@ -56,10 +56,10 @@ namespace testuser.Models.SysModel
                 .Property(e => e.lugarnacimiento)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<tblAfavorde>()
-                .HasMany(e => e.tblLibros)
-                .WithRequired(e => e.tblAfavorde)
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<tblAfavorde>()
+            //    .HasMany(e => e.tblLibros)
+            //    .WithRequired(e => e.tblAfavorde)
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<tblArchivos>()
                 .Property(e => e.Archivo)
@@ -267,10 +267,10 @@ namespace testuser.Models.SysModel
                 .Property(e => e.lugarnacimiento)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<tblOtorgante>()
-                .HasMany(e => e.tblLibros)
-                .WithRequired(e => e.tblOtorgante)
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<tblOtorgante>()
+            //    .HasMany(e => e.tblLibros)
+            //    .WithRequired(e => e.tblOtorgante)
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<tblPersonal>()
                 .Property(e => e.Nombres)

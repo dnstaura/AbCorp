@@ -20,7 +20,7 @@ namespace testuser.Controllers.SysControllers
         [Authorize]
         public ActionResult Index()
         {
-            var tblLibros = db.tblLibros.Include(t => t.tblAfavorde).Include(t => t.tblOtorgante).Include(t => t.tblPersonal);
+            var tblLibros = db.tblLibros.Include(t => t.tblPersonal);
 
             //Contador Libros
             var libcount = (from a in db.tblLibros
@@ -36,8 +36,7 @@ namespace testuser.Controllers.SysControllers
         public ActionResult Index(string txtBuscar)
         {
             var buscar = (from a in db.tblLibros
-                          where a.libro.Contains(txtBuscar) || a.tblAfavorde.nombres.Contains(txtBuscar) ||
-                          a.tblOtorgante.nombres.Contains(txtBuscar) || a.tblPersonal.Nombres.Contains(txtBuscar)
+                          where a.libro.Contains(txtBuscar) || a.tblPersonal.Nombres.Contains(txtBuscar)
                           select a).ToList();
             return View(buscar);
         }
@@ -63,8 +62,8 @@ namespace testuser.Controllers.SysControllers
         [Authorize]
         public ActionResult Create()
         {
-            ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres");
-            ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres");
+            //ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres");
+            //ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres");
             //ViewBag.id_Personal = new SelectList(db.tblPersonal, "Id_Personal", "Nombres");
             //ViewBag.id_Personal = new SelectList(db.tblPersonal.Join(
             //                    db.tblCategoriaPersonal,
@@ -105,7 +104,7 @@ namespace testuser.Controllers.SysControllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idlibros,fecha,instrumento,folios,libro,img,idotorgante,idfavorde,id_Personal")] tblLibros tblLibros)
+        public ActionResult Create([Bind(Include = "idlibros,fecha,instrumento,folios,libro,img,otorgante,afavor,id_Personal")] tblLibros tblLibros)
         {
             if (ModelState.IsValid)
             {
@@ -125,8 +124,8 @@ namespace testuser.Controllers.SysControllers
                 }
             }
 
-            ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres", tblLibros.idfavorde);
-            ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres", tblLibros.idotorgante);
+            //ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres", tblLibros.idfavorde);
+            //ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres", tblLibros.idotorgante);
             ViewBag.id_Personal = new SelectList(db.tblPersonal, "Id_Personal", "Nombres", tblLibros.id_Personal);
          
 
@@ -147,8 +146,8 @@ namespace testuser.Controllers.SysControllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres", tblLibros.idfavorde);
-            ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres", tblLibros.idotorgante);
+            //ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres", tblLibros.idfavorde);
+            //ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres", tblLibros.idotorgante);
             ViewBag.id_Personal = new SelectList(db.tblPersonal, "Id_Personal", "Nombres", tblLibros.id_Personal);
             return View(tblLibros);
         }
@@ -159,7 +158,7 @@ namespace testuser.Controllers.SysControllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idlibros,fecha,instrumento,folios,libro,img,idotorgante,idfavorde,id_Personal")] tblLibros tblLibros)
+        public ActionResult Edit([Bind(Include = "idlibros,fecha,instrumento,folios,libro,img,otorgante,afavor,id_Personal")] tblLibros tblLibros)
         {
             if (ModelState.IsValid)
             {
@@ -180,8 +179,8 @@ namespace testuser.Controllers.SysControllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres", tblLibros.idfavorde);
-            ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres", tblLibros.idotorgante);
+            //ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres", tblLibros.idfavorde);
+            //ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres", tblLibros.idotorgante);
             ViewBag.id_Personal = new SelectList(db.tblPersonal, "Id_Personal", "Nombres", tblLibros.id_Personal);
             return View(tblLibros);
         }
