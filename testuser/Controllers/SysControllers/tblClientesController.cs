@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using testuser.Models;
 using testuser.Models.SysModel;
 
 namespace testuser.Controllers.SysControllers
@@ -69,6 +71,20 @@ namespace testuser.Controllers.SysControllers
             {
                 db.tblClientes.Add(tblClientes);
                 db.SaveChanges();
+
+                /*NOTIFICACION*/
+                ApplicationDbContext dbs = new ApplicationDbContext();
+                Notifications notificacion = new Notifications();
+                notificacion.Module = "Clientes";
+                notificacion.Message = string.Format("Registro un nuevo cliente");
+                notificacion.Date = DateTime.Now;
+                notificacion.Viewed = false;
+                notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                dbs.Notification.Add(notificacion);
+                dbs.SaveChanges();
+                /*FIN NOTIFICACION*/
+
                 return RedirectToAction("Index");
             }
 
@@ -105,6 +121,20 @@ namespace testuser.Controllers.SysControllers
             {
                 db.Entry(tblClientes).State = EntityState.Modified;
                 db.SaveChanges();
+
+                /*NOTIFICACION*/
+                ApplicationDbContext dbs = new ApplicationDbContext();
+                Notifications notificacion = new Notifications();
+                notificacion.Module = "Clientes";
+                notificacion.Message = string.Format("Edito un cliente");
+                notificacion.Date = DateTime.Now;
+                notificacion.Viewed = false;
+                notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                dbs.Notification.Add(notificacion);
+                dbs.SaveChanges();
+                /*FIN NOTIFICACION*/
+
                 return RedirectToAction("Index");
             }
             ViewBag.Id_EstadoRegistro = new SelectList(db.tblEstadosRegistros, "Id_EstadoRegistro", "Estado", tblClientes.Id_EstadoRegistro);
@@ -136,6 +166,20 @@ namespace testuser.Controllers.SysControllers
             tblClientes tblClientes = db.tblClientes.Find(id);
             db.tblClientes.Remove(tblClientes);
             db.SaveChanges();
+
+            /*NOTIFICACION*/
+            ApplicationDbContext dbs = new ApplicationDbContext();
+            Notifications notificacion = new Notifications();
+            notificacion.Module = "Clientes";
+            notificacion.Message = string.Format("Elimino un cliente");
+            notificacion.Date = DateTime.Now;
+            notificacion.Viewed = false;
+            notificacion.Usuario_Id = User.Identity.GetUserId();
+
+            dbs.Notification.Add(notificacion);
+            dbs.SaveChanges();
+            /*FIN NOTIFICACION*/
+
             return RedirectToAction("Index");
         }
 

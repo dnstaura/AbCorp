@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using testuser.Models;
 using testuser.Models.SysModel;
 
 namespace testuser.Controllers.SysControllers
@@ -91,6 +93,19 @@ namespace testuser.Controllers.SysControllers
                     }
                     db.tblHistorial.Add(tblHistorial);
                     db.SaveChanges();
+                    /*NOTIFICACION*/
+                    ApplicationDbContext dbs = new ApplicationDbContext();
+                    Notifications notificacion = new Notifications();
+                    notificacion.Module = "Historial";
+                    notificacion.Message = string.Format("Registro un nuevo historial");
+                    notificacion.Date = DateTime.Now;
+                    notificacion.Viewed = false;
+                    notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                    dbs.Notification.Add(notificacion);
+                    dbs.SaveChanges();
+                    /*FIN NOTIFICACION*/
+
                     return RedirectToAction("Index");
                 }
               
@@ -141,6 +156,18 @@ namespace testuser.Controllers.SysControllers
                 }
                 db.Entry(tblHistorial).State = EntityState.Modified;
                 db.SaveChanges();
+                /*NOTIFICACION*/
+                ApplicationDbContext dbs = new ApplicationDbContext();
+                Notifications notificacion = new Notifications();
+                notificacion.Module = "Historial";
+                notificacion.Message = string.Format("Edito un historial");
+                notificacion.Date = DateTime.Now;
+                notificacion.Viewed = false;
+                notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                dbs.Notification.Add(notificacion);
+                dbs.SaveChanges();
+                /*FIN NOTIFICACION*/
                 return RedirectToAction("Index");
             }
             ViewBag.Id_Caso = new SelectList(db.tblCasos, "Id_Caso", "Numero_Caso", tblHistorial.Id_Caso);
@@ -172,6 +199,18 @@ namespace testuser.Controllers.SysControllers
             tblHistorial tblHistorial = db.tblHistorial.Find(id);
             db.tblHistorial.Remove(tblHistorial);
             db.SaveChanges();
+            /*NOTIFICACION*/
+            ApplicationDbContext dbs = new ApplicationDbContext();
+            Notifications notificacion = new Notifications();
+            notificacion.Module = "Historial";
+            notificacion.Message = string.Format("Elimino un historial");
+            notificacion.Date = DateTime.Now;
+            notificacion.Viewed = false;
+            notificacion.Usuario_Id = User.Identity.GetUserId();
+
+            dbs.Notification.Add(notificacion);
+            dbs.SaveChanges();
+            /*FIN NOTIFICACION*/
             return RedirectToAction("Index");
         }
 

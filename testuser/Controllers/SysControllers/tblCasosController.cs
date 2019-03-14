@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using testuser.Models;
 using testuser.Models.SysModel;
 
 namespace testuser.Controllers.SysControllers
@@ -69,6 +71,20 @@ namespace testuser.Controllers.SysControllers
                 ViewData["Fecha_Agregado"] = DateTime.Now.ToString();
                 db.tblCasos.Add(tblCasos);
                 db.SaveChanges();
+
+                /*NOTIFICACION*/
+                ApplicationDbContext dbs = new ApplicationDbContext();
+                Notifications notificacion = new Notifications();
+                notificacion.Module = "Casos";
+                notificacion.Message = string.Format("Registro un nuevo caso");
+                notificacion.Date = DateTime.Now;
+                notificacion.Viewed = false;
+                notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                dbs.Notification.Add(notificacion);
+                dbs.SaveChanges();
+                /*FIN NOTIFICACION*/
+
                 return RedirectToAction("Index");
             }
 
@@ -115,6 +131,18 @@ namespace testuser.Controllers.SysControllers
             {
                 db.Entry(tblCasos).State = EntityState.Modified;
                 db.SaveChanges();
+                /*NOTIFICACION*/
+                ApplicationDbContext dbs = new ApplicationDbContext();
+                Notifications notificacion = new Notifications();
+                notificacion.Module = "Casos";
+                notificacion.Message = string.Format("Edito un caso");
+                notificacion.Date = DateTime.Now;
+                notificacion.Viewed = false;
+                notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                dbs.Notification.Add(notificacion);
+                dbs.SaveChanges();
+                /*FIN NOTIFICACION*/
                 return RedirectToAction("Index");
             }
             ViewBag.Id_Categoria = new SelectList(db.tblCategorias, "Id_Categoria", "Nombre_Categoria", tblCasos.Id_Categoria);
@@ -151,6 +179,18 @@ namespace testuser.Controllers.SysControllers
             tblCasos tblCasos = db.tblCasos.Find(id);
             db.tblCasos.Remove(tblCasos);
             db.SaveChanges();
+            /*NOTIFICACION*/
+            ApplicationDbContext dbs = new ApplicationDbContext();
+            Notifications notificacion = new Notifications();
+            notificacion.Module = "Casos";
+            notificacion.Message = string.Format("Elimino un caso");
+            notificacion.Date = DateTime.Now;
+            notificacion.Viewed = false;
+            notificacion.Usuario_Id = User.Identity.GetUserId();
+
+            dbs.Notification.Add(notificacion);
+            dbs.SaveChanges();
+            /*FIN NOTIFICACION*/
             return RedirectToAction("Index");
         }
 
