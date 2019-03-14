@@ -16,6 +16,10 @@ namespace testuser.Models.SysModel
         [Display(Name = "Fecha")]
         public DateTime fecha { get; set; }
 
+        [Display(Name ="Correlativo")]
+        [StringLength(20)]
+        public string correlativo { get; set; }
+
         [Display(Name = "Instrumento")]
         [StringLength(100)]
         public string instrumento { get; set; }

@@ -104,7 +104,7 @@ namespace testuser.Controllers.SysControllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idlibros,fecha,instrumento,folios,libro,img,otorgante,afavor,id_Personal")] tblLibros tblLibros)
+        public ActionResult Create([Bind(Include = "idlibros,fecha,correlativo,instrumento,folios,libro,img,otorgante,afavor,id_Personal")] tblLibros tblLibros)
         {
             if (ModelState.IsValid)
             {
@@ -158,7 +158,7 @@ namespace testuser.Controllers.SysControllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idlibros,fecha,instrumento,folios,libro,img,otorgante,afavor,id_Personal")] tblLibros tblLibros)
+        public ActionResult Edit([Bind(Include = "idlibros,fecha,correlativo,instrumento,folios,libro,img,otorgante,afavor,id_Personal")] tblLibros tblLibros)
         {
             if (ModelState.IsValid)
             {
