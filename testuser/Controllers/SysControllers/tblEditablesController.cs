@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.IO;
 using testuser.Models.SysModel;
+using testuser.Models;
+using Microsoft.AspNet.Identity;
 
 namespace testuser.Controllers.SysControllers
 {
@@ -69,6 +71,20 @@ namespace testuser.Controllers.SysControllers
                     }
                     db.tblEditables.Add(tblEditables);
                     db.SaveChanges();
+
+                    /*NOTIFICACION*/
+                    ApplicationDbContext dbs = new ApplicationDbContext();
+                    Notifications notificacion = new Notifications();
+                    notificacion.Module = "Editables";
+                    notificacion.Message = string.Format("Registro un nuevo archivo editable");
+                    notificacion.Date = DateTime.Now;
+                    notificacion.Viewed = false;
+                    notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                    dbs.Notification.Add(notificacion);
+                    dbs.SaveChanges();
+                    /*FIN NOTIFICACION*/
+
                     return RedirectToAction("Index");
                 }
             }
@@ -116,6 +132,20 @@ namespace testuser.Controllers.SysControllers
                 }
                 db.Entry(tblEditables).State = EntityState.Modified;
                 db.SaveChanges();
+
+                /*NOTIFICACION*/
+                ApplicationDbContext dbs = new ApplicationDbContext();
+                Notifications notificacion = new Notifications();
+                notificacion.Module = "Editables";
+                notificacion.Message = string.Format("Edito un archivo editable");
+                notificacion.Date = DateTime.Now;
+                notificacion.Viewed = false;
+                notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                dbs.Notification.Add(notificacion);
+                dbs.SaveChanges();
+                /*FIN NOTIFICACION*/
+
                 return RedirectToAction("Index");
             }
             return View(tblEditables);
@@ -146,6 +176,20 @@ namespace testuser.Controllers.SysControllers
             tblEditables tblEditables = db.tblEditables.Find(id);
             db.tblEditables.Remove(tblEditables);
             db.SaveChanges();
+
+            /*NOTIFICACION*/
+            ApplicationDbContext dbs = new ApplicationDbContext();
+            Notifications notificacion = new Notifications();
+            notificacion.Module = "Editables";
+            notificacion.Message = string.Format("Elimino un archivo editable");
+            notificacion.Date = DateTime.Now;
+            notificacion.Viewed = false;
+            notificacion.Usuario_Id = User.Identity.GetUserId();
+
+            dbs.Notification.Add(notificacion);
+            dbs.SaveChanges();
+            /*FIN NOTIFICACION*/
+
             return RedirectToAction("Index");
         }
 

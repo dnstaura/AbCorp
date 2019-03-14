@@ -72,16 +72,18 @@ namespace testuser.Controllers.SysControllers
                 db.tblPersonal.Add(tblPersonal);
                 db.SaveChanges();
 
+                /*NOTIFICACION*/
                 ApplicationDbContext dbs = new ApplicationDbContext();
                 Notifications notificacion = new Notifications();
                 notificacion.Module = "Personal";
-                notificacion.Message = string.Format("Nuevo personal registrado");
+                notificacion.Message = string.Format("Registro un nuevo personal");
                 notificacion.Date = DateTime.Now;
                 notificacion.Viewed = false;
                 notificacion.Usuario_Id = User.Identity.GetUserId();
 
                 dbs.Notification.Add(notificacion);
                 dbs.SaveChanges();
+                /*FIN NOTIFICACION*/
 
                 return RedirectToAction("Index");
             }
@@ -121,6 +123,21 @@ namespace testuser.Controllers.SysControllers
             {
                 db.Entry(tblPersonal).State = EntityState.Modified;
                 db.SaveChanges();
+
+
+                /*NOTIFICACION*/
+                ApplicationDbContext dbs = new ApplicationDbContext();
+                Notifications notificacion = new Notifications();
+                notificacion.Module = "Personal";
+                notificacion.Message = string.Format("Edito informacion de personal");
+                notificacion.Date = DateTime.Now;
+                notificacion.Viewed = false;
+                notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                dbs.Notification.Add(notificacion);
+                dbs.SaveChanges();
+                /*FIN NOTIFICACION*/
+
                 return RedirectToAction("Index");
             }
             ViewBag.id_CategoriaPersonal = new SelectList(db.tblCategoriaPersonal, "id_CategoriaPersonal", "CategoriaPersonal", tblPersonal.id_CategoriaPersonal);
@@ -153,6 +170,19 @@ namespace testuser.Controllers.SysControllers
             tblPersonal tblPersonal = db.tblPersonal.Find(id);
             db.tblPersonal.Remove(tblPersonal);
             db.SaveChanges();
+
+            /*NOTIFICACION*/
+            ApplicationDbContext dbs = new ApplicationDbContext();
+            Notifications notificacion = new Notifications();
+            notificacion.Module = "Personal";
+            notificacion.Message = string.Format("Elimino un registro de personal");
+            notificacion.Date = DateTime.Now;
+            notificacion.Viewed = false;
+            notificacion.Usuario_Id = User.Identity.GetUserId();
+
+            dbs.Notification.Add(notificacion);
+            dbs.SaveChanges();
+            /*FIN NOTIFICACION*/
             return RedirectToAction("Index");
         }
 

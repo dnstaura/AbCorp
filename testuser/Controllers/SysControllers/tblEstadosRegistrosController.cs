@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using testuser.Models;
 using testuser.Models.SysModel;
 
 namespace testuser.Controllers.SysControllers
@@ -56,6 +58,20 @@ namespace testuser.Controllers.SysControllers
             {
                 db.tblEstadosRegistros.Add(tblEstadosRegistros);
                 db.SaveChanges();
+
+                /*Notificacion*/
+                ApplicationDbContext bd = new ApplicationDbContext();
+                Notifications notificacion = new Notifications();
+                notificacion.Module = "Estado de registro Cliente/Personal";
+                notificacion.Message = string.Format("Registro un nuevo estado");
+                notificacion.Date = DateTime.Now;
+                notificacion.Viewed = false;
+                notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                bd.Notification.Add(notificacion);
+                bd.SaveChanges();
+                /*Fin Notificacion*/
+
                 return RedirectToAction("Index");
             }
 
@@ -90,6 +106,20 @@ namespace testuser.Controllers.SysControllers
             {
                 db.Entry(tblEstadosRegistros).State = EntityState.Modified;
                 db.SaveChanges();
+
+                /*Notificacion*/
+                ApplicationDbContext bd = new ApplicationDbContext();
+                Notifications notificacion = new Notifications();
+                notificacion.Module = "Estado de registro Cliente/Personal";
+                notificacion.Message = string.Format("Edito un estado Cliente/Personal");
+                notificacion.Date = DateTime.Now;
+                notificacion.Viewed = false;
+                notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                bd.Notification.Add(notificacion);
+                bd.SaveChanges();
+                /*Fin Notificacion*/
+
                 return RedirectToAction("Index");
             }
             return View(tblEstadosRegistros);
@@ -120,6 +150,20 @@ namespace testuser.Controllers.SysControllers
             tblEstadosRegistros tblEstadosRegistros = db.tblEstadosRegistros.Find(id);
             db.tblEstadosRegistros.Remove(tblEstadosRegistros);
             db.SaveChanges();
+
+            /*Notificacion*/
+            ApplicationDbContext bd = new ApplicationDbContext();
+            Notifications notificacion = new Notifications();
+            notificacion.Module = "Estado de registro Cliente/Personal";
+            notificacion.Message = string.Format("Elimino un estado Cliente/Personal");
+            notificacion.Date = DateTime.Now;
+            notificacion.Viewed = false;
+            notificacion.Usuario_Id = User.Identity.GetUserId();
+
+            bd.Notification.Add(notificacion);
+            bd.SaveChanges();
+            /*Fin Notificacion*/
+
             return RedirectToAction("Index");
         }
 

@@ -92,10 +92,10 @@ namespace testuser.Controllers
             {
                 return View(model);
             }
-            else
-            {
-                ModelState.AddModelError("", "Datos incorrectos.");
-            }
+            //else
+            //{
+            //    ModelState.AddModelError("", "Datos incorrectos.");
+            //}
 
             var usuario = UserManager.FindByEmail(model.Email);
             if (usuario == null)
@@ -226,7 +226,7 @@ namespace testuser.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber=model.PhoneNumber.ToString(), Nombres = model.Nombres, Fecha = DateTime.Now, Estado = true, Imagen = "~/Content/Perfiles/none.png" };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber=model.PhoneNumber.ToString(), Nombres = model.Nombres, Fecha = DateTime.Now, Estado = false, Imagen = "~/Content/Perfiles/none.png" };
                 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

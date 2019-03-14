@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using testuser.Models;
 using testuser.Models.SysModel;
 
 namespace testuser.Controllers.SysControllers
@@ -53,6 +55,20 @@ namespace testuser.Controllers.SysControllers
                     };
                     db.tblEventCalendar.Add(datosevento);
                     db.SaveChanges();
+
+                    /*NOTIFICACION*/
+                    ApplicationDbContext dbs = new ApplicationDbContext();
+                    Notifications notificacion = new Notifications();
+                    notificacion.Module = "Eventos";
+                    notificacion.Message = string.Format("Registro un nuevo evento");
+                    notificacion.Date = DateTime.Now;
+                    notificacion.Viewed = false;
+                    notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                    dbs.Notification.Add(notificacion);
+                    dbs.SaveChanges();
+                    /*FIN NOTIFICACION*/
+
                     return RedirectToAction("Index", "Home");
                 }
                 else if (btnEditar == "editar")
@@ -71,6 +87,20 @@ namespace testuser.Controllers.SysControllers
                     db.tblEventCalendar.Attach(datosevento);
                     db.Entry(datosevento).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
+
+                    /*NOTIFICACION*/
+                    ApplicationDbContext dbs = new ApplicationDbContext();
+                    Notifications notificacion = new Notifications();
+                    notificacion.Module = "Eventos";
+                    notificacion.Message = string.Format("Edito un evento");
+                    notificacion.Date = DateTime.Now;
+                    notificacion.Viewed = false;
+                    notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                    dbs.Notification.Add(notificacion);
+                    dbs.SaveChanges();
+                    /*FIN NOTIFICACION*/
+
                     return RedirectToAction("Index", "Home");
                 }
                 else if (btnEliminar == "eliminar")
@@ -88,6 +118,20 @@ namespace testuser.Controllers.SysControllers
                     db.tblEventCalendar.Attach(datosevento);
                     db.tblEventCalendar.Remove(datosevento);
                     db.SaveChanges();
+
+                    /*NOTIFICACION*/
+                    ApplicationDbContext dbs = new ApplicationDbContext();
+                    Notifications notificacion = new Notifications();
+                    notificacion.Module = "Eventos";
+                    notificacion.Message = string.Format("Elimino un evento");
+                    notificacion.Date = DateTime.Now;
+                    notificacion.Viewed = false;
+                    notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                    dbs.Notification.Add(notificacion);
+                    dbs.SaveChanges();
+                    /*FIN NOTIFICACION*/
+
                     return RedirectToAction("Index", "Home");
                 }
 

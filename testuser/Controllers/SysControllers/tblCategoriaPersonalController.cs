@@ -59,16 +59,18 @@ namespace testuser.Controllers.SysControllers
                 db.tblCategoriaPersonal.Add(tblCategoriaPersonal);
                 db.SaveChanges();
 
+                /*Notificacion*/
                 ApplicationDbContext dbs = new ApplicationDbContext();
                 Notifications notificacion = new Notifications();
                 notificacion.Module = "Categoria personal";
-                notificacion.Message = string.Format("Nueva categoria registrada");
+                notificacion.Message = string.Format("Registro una nueva categoria");
                 notificacion.Date = DateTime.Now;
                 notificacion.Viewed = false;
                 notificacion.Usuario_Id = User.Identity.GetUserId();
 
                 dbs.Notification.Add(notificacion);
                 dbs.SaveChanges();
+                /*Fin Notificacion*/
 
                 return RedirectToAction("Index");
             }
@@ -104,6 +106,20 @@ namespace testuser.Controllers.SysControllers
             {
                 db.Entry(tblCategoriaPersonal).State = EntityState.Modified;
                 db.SaveChanges();
+
+                /*Notificacion*/
+                ApplicationDbContext dbs = new ApplicationDbContext();
+                Notifications notificacion = new Notifications();
+                notificacion.Module = "Categoria personal";
+                notificacion.Message = string.Format("Edito una categoria registrada");
+                notificacion.Date = DateTime.Now;
+                notificacion.Viewed = false;
+                notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                dbs.Notification.Add(notificacion);
+                dbs.SaveChanges();
+                /*Fin Notificacion*/
+
                 return RedirectToAction("Index");
             }
             return View(tblCategoriaPersonal);
@@ -134,6 +150,20 @@ namespace testuser.Controllers.SysControllers
             tblCategoriaPersonal tblCategoriaPersonal = db.tblCategoriaPersonal.Find(id);
             db.tblCategoriaPersonal.Remove(tblCategoriaPersonal);
             db.SaveChanges();
+
+            /*Notificacion*/
+            ApplicationDbContext dbs = new ApplicationDbContext();
+            Notifications notificacion = new Notifications();
+            notificacion.Module = "Categoria personal";
+            notificacion.Message = string.Format("Elimino una categoria registrada");
+            notificacion.Date = DateTime.Now;
+            notificacion.Viewed = false;
+            notificacion.Usuario_Id = User.Identity.GetUserId();
+
+            dbs.Notification.Add(notificacion);
+            dbs.SaveChanges();
+            /*Fin Notificacion*/
+
             return RedirectToAction("Index");
         }
 

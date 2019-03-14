@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using System.IO;
 using testuser.Models.SysModel;
 using System.Data.Entity.SqlServer;
+using testuser.Models;
+using Microsoft.AspNet.Identity;
 
 namespace testuser.Controllers.SysControllers
 {
@@ -120,6 +122,20 @@ namespace testuser.Controllers.SysControllers
                     }
                     db.tblLibros.Add(tblLibros);
                     db.SaveChanges();
+
+                    /*NOTIFICACION*/
+                    ApplicationDbContext dbs = new ApplicationDbContext();
+                    Notifications notificacion = new Notifications();
+                    notificacion.Module = "Libros";
+                    notificacion.Message = string.Format("Registro un nuevo libro");
+                    notificacion.Date = DateTime.Now;
+                    notificacion.Viewed = false;
+                    notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                    dbs.Notification.Add(notificacion);
+                    dbs.SaveChanges();
+                    /*FIN NOTIFICACION*/
+
                     return RedirectToAction("Index");
                 }
             }
@@ -177,6 +193,20 @@ namespace testuser.Controllers.SysControllers
 
                 db.Entry(tblLibros).State = EntityState.Modified;
                 db.SaveChanges();
+
+                /*NOTIFICACION*/
+                ApplicationDbContext dbs = new ApplicationDbContext();
+                Notifications notificacion = new Notifications();
+                notificacion.Module = "Libros";
+                notificacion.Message = string.Format("Edito un libro");
+                notificacion.Date = DateTime.Now;
+                notificacion.Viewed = false;
+                notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                dbs.Notification.Add(notificacion);
+                dbs.SaveChanges();
+                /*FIN NOTIFICACION*/
+
                 return RedirectToAction("Index");
             }
             //ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres", tblLibros.idfavorde);
@@ -210,6 +240,20 @@ namespace testuser.Controllers.SysControllers
             tblLibros tblLibros = db.tblLibros.Find(id);
             db.tblLibros.Remove(tblLibros);
             db.SaveChanges();
+
+            /*NOTIFICACION*/
+            ApplicationDbContext dbs = new ApplicationDbContext();
+            Notifications notificacion = new Notifications();
+            notificacion.Module = "Libros";
+            notificacion.Message = string.Format("Elimino un libro");
+            notificacion.Date = DateTime.Now;
+            notificacion.Viewed = false;
+            notificacion.Usuario_Id = User.Identity.GetUserId();
+
+            dbs.Notification.Add(notificacion);
+            dbs.SaveChanges();
+            /*FIN NOTIFICACION*/
+
             return RedirectToAction("Index");
         }
 
