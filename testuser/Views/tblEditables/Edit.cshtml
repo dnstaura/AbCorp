@@ -20,7 +20,7 @@
             </div>
 
             <div class="box-body">
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("Edit", "tblEditables", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
 

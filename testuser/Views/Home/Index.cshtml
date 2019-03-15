@@ -5,6 +5,11 @@
 @*@Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @style = "font-size:30px;" })*@
 
 <style>
+    .shadow {
+        -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.40);
+        -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.40);
+        box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.40);
+    }
     /*  bhoechie tab */
     div.bhoechie-tab-container {
         z-index: 10;
@@ -87,9 +92,16 @@
 <!--Manual de usuario-->
 
 <div class="row">
-    <h4 class="login-logo text-bold text-navy">Manual de usuario - Abogados Corp.</h4>
-</div>
+    @*<h4 class="login-logo text-bold text-navy">Manual de usuario - Abogados Corp.</h4>*@
+    <div class="col-sm-3"></div>
 
+    <div class="col-sm-6">
+    <img src="~/Content/img/Logo.png" class="img-responsive" alt="Alternate Text" style="width:100%; height:200px;" />
+    </div>
+
+    <div class="col-sm-3"></div>
+</div>
+<br />
 <div class="col-sm-1"></div>
     <div class="row">
         <div class="col-md-10 col-xs-12 bhoechie-tab-container">
@@ -141,7 +153,6 @@
                         <section>
                             <p class="text-bold text-uppercase text-navy">Pasos a seguir:</p>
                             <ol class="text-bold text-navy">
-                                <li>Registrar datos de: "A/F, Y Otorgantes".</li>
                                 <li>Registrar datos de: "Personal" con su respectiva categoria y estado.</li>
                                 <li>Registrar un libro con los datos que se solicitan en el formulario.</li>
                             </ol>
@@ -164,10 +175,9 @@
                     <section>
                         <p class="text-bold text-uppercase text-navy">Pasos a seguir:</p>
                         <ol class="text-bold text-navy">
-                            <li>Registrar estado de cliente o personal en: "Personal - Categorias - Estados C/P", ejemplo: Activo, Inactivo.</li>
-                            <li>Registrar un cliente.</li>
                             <li>En "Datos adicionales", registrar una categoria y un juzgado, ejemplo de una categoria: Familiar, Penal.</li>
                             <li>Registrar un estado para casos, ejemplo: Abierto, Cerrado, Terminado, Pendiente.</li>
+                            <li>Registrar un cliente.</li>
                             <li>Registrar un caso.</li>
                             <li>Registrar historiales.</li>
                         </ol>
@@ -216,8 +226,9 @@
                     <section>
                         <p class="text-bold text-uppercase text-navy">Pasos a seguir:</p>
                         <ol class="text-bold text-navy">
-                            <li>En el apartado "Categorias" dentro de "Personal", registrar una "Categoria" y un "Estados C/P".</li>
-                            <li>Registrar un personal con los datos que se piden en el formulario.</li>
+                            <li>En "Personal", registrar una "Categoria", ejemplo: "Notario, Abogado, Secretaria".</li>
+                            <li>Registrar un "Estado C/P", ejemplo: "Activo, Despedido".</li>
+                            <li>Registrar un "Personal"</li>
                         </ol>
                     </section>
                 </div>

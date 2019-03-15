@@ -1,0 +1,84 @@
+* correcion heigh - vernotificaciones
+* Color contador notificaciones, colores en bonotes de asignar roles
+* Resize en modulo tblEstadosRegistros
+
+
+*Se agrego Datatbles.net
+ * tblestadosRegistros
+ * tblCategoriaPersonal
+ * Roles
+ * tblPersonal
+
+* Cambio de color para el boton edit "Faltan vistas, todas" bg-teal
+
+
+-- 3/4/2019 -- 
+* Se cambio el formato de la hora en vista "VerNotificaciones" - ManageController
+* Se corrigio el nombre del contador en la vista tblAfavorde
+* Se agrego el titulo "Acciones" a las tablas
+
+
+
+
+dbModel db = new dbModel();
+
+            db.tblEstadosRegistros.AddOrUpdate(x => x.Id_EstadoRegistro,
+               new tblEstadosRegistros() { Id_EstadoRegistro = 1, Estado = "Activo" },
+               new tblEstadosRegistros() { Id_EstadoRegistro = 2, Estado = "Inactivo" }
+               );
+
+            db.tblEstadosCasos.AddOrUpdate(x => x.Id_EstadoCaso,
+                new tblEstadosCasos() { Id_EstadoCaso = 1, Nombre_Estado = "Abierto" },
+                new tblEstadosCasos() { Id_EstadoCaso = 2, Nombre_Estado = "Cerrado" },
+                new tblEstadosCasos() { Id_EstadoCaso = 3, Nombre_Estado = "Pendiente" },
+                new tblEstadosCasos() { Id_EstadoCaso = 4, Nombre_Estado = "Terminado" });
+
+            db.tblCategoriaPersonal.AddOrUpdate(x => x.id_CategoriaPersonal,
+                new tblCategoriaPersonal() { id_CategoriaPersonal = 1, CategoriaPersonal = "Administrador" },
+                new tblCategoriaPersonal() { id_CategoriaPersonal = 2, CategoriaPersonal = "Notario" });
+
+            db.tblCategorias.AddOrUpdate(x => x.Id_Categoria,
+                new tblCategorias() { Id_Categoria = 1, Nombre_Categoria = "Civil" },
+                new tblCategorias() { Id_Categoria = 2, Nombre_Categoria = "Penal" }
+                );
+
+            db.tblDepartamentos.AddOrUpdate(x => x.Id_Departamento,
+                new tblDepartamentos() { Id_Departamento = 1, Departamento = "La Unión" },
+                new tblDepartamentos() { Id_Departamento = 2, Departamento = "Morazan" },
+                new tblDepartamentos() { Id_Departamento = 3, Departamento = "San Miguel" },
+                new tblDepartamentos() { Id_Departamento = 4, Departamento = "Usulutan" },
+                new tblDepartamentos() { Id_Departamento = 5, Departamento = "La Paz" },
+                new tblDepartamentos() { Id_Departamento = 6, Departamento = "San Vicente" },
+                new tblDepartamentos() { Id_Departamento = 7, Departamento = "La Libertad" },
+                new tblDepartamentos() { Id_Departamento = 8, Departamento = "La Paz" },
+                new tblDepartamentos() { Id_Departamento = 9, Departamento = "San Salvador" },
+                new tblDepartamentos() { Id_Departamento = 10, Departamento = "Cabañas" },
+                new tblDepartamentos() { Id_Departamento = 11, Departamento = "Ahuchapán" },
+                new tblDepartamentos() { Id_Departamento = 12, Departamento = "Santa Ana" },
+                new tblDepartamentos() { Id_Departamento = 13, Departamento = "Chalatenango" },
+                new tblDepartamentos() { Id_Departamento = 14, Departamento = "Sonsonate" }
+                );
+
+            db.tblMunicipios.AddOrUpdate(x => x.id_Municipio,
+                new tblMunicipios() { id_Municipio = 1, Municipio = "San Miguel", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 2, Municipio = "Carolina", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 3, Municipio = "Chapeltique", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 4, Municipio = "Chinameca", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 5, Municipio = "Chirilagua", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 6, Municipio = "Ciudad Barrios", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 7, Municipio = "Comacarán", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 8, Municipio = "El Tránsito", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 9, Municipio = "Lolotique", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 10, Municipio = "Moncagua", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 11, Municipio = "Nueva Guadalupe", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 12, Municipio = "Nuevo Edén de San Juan", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 13, Municipio = "Quelepa", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 14, Municipio = "San Antonio del Mosco", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 15, Municipio = "San Gerardo", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 16, Municipio = "San Jorge", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 17, Municipio = "San Luis de La Reina", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 18, Municipio = "San Rafael Oriente", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 19, Municipio = "Sesori", Id_Departamento = 3 },
+                new tblMunicipios() { id_Municipio = 20, Municipio = "Uluazapa", Id_Departamento = 3 }
+                );
+

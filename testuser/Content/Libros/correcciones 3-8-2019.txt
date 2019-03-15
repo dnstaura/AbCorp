@@ -1,3 +1,0 @@
-*boton registrar en login
-*Tabla personal responsiva
-*Tabla Editables, se agrego datatables y cambio el titulo

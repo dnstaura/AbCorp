@@ -21,17 +21,14 @@ namespace testuser.Models.SysModel
         [StringLength(50)]
         public string Juzgado { get; set; }
 
-        [Required]
         [StringLength(9)]
         [Display(Name = "Teléfono")]
         public string telefono { get; set; }
 
-        [Required]
         [StringLength(100)]
         [Display(Name = "Correo")]
         public string correo { get; set; }
 
-        [Required]
         [StringLength(200)]
         [Display(Name = "Dirección")]
         public string direccion { get; set; }
