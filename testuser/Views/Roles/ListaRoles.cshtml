@@ -44,9 +44,9 @@
                             <th>
                                 Nombre del rol
                             </th>
-                            <th>
+                            @*<th>
                             Acciones
-                            </th>
+                            </th>*@
                         </tr>
                     </thead>
 
@@ -58,10 +58,10 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Name)
                             </td>
-                            <td>
-                                @*@Html.ActionLink("Editar", "EditarRol", new { id=item.RoleID }, new { @class = "btn btn-warning"})*@
+                            @*<td>
+                                @Html.ActionLink("Editar", "EditarRol", new { id=item.RoleID }, new { @class = "btn btn-warning"})
                                 <a href="#" class="btn btn-danger glyphicon glyphicon-trash btnEliminaRol" title="Eliminar rol" data-value="@item.RoleID"></a>
-                            </td>
+                            </td>*@
                         </tr>
                     }
                     </tbody>

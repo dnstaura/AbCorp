@@ -82,19 +82,19 @@ namespace testuser.Controllers
             
         }
 
-        [Authorize]
-        public ActionResult EditarRol(string id)
-        {
-            var rol = (from r in db.Roles
-                       where r.Id == id
-                       select r).FirstOrDefault();
+        //[Authorize]
+        //public ActionResult EditarRol(string id)
+        //{
+        //    var rol = (from r in db.Roles
+        //               where r.Id == id
+        //               select r).FirstOrDefault();
 
-            var rolView = new RoleView();
-            rolView.RoleID = rol.Id;
-            rolView.Name = rol.Name;
+        //    var rolView = new RoleView();
+        //    rolView.RoleID = rol.Id;
+        //    rolView.Name = rol.Name;
 
-            return PartialView(rolView);
-        }
+        //    return PartialView(rolView);
+        //}
 
         //[HttpPost]
         //public ActionResult EditarRol(RoleView rolView)
@@ -115,48 +115,48 @@ namespace testuser.Controllers
         //    //}
         //}
 
-        [Authorize]
-        public ActionResult EliminarRol(string id)
-        {
-            var rol = (from r in db.Roles
-                       where r.Id == id
-                       select r).FirstOrDefault();
+        //[Authorize]
+        //public ActionResult EliminarRol(string id)
+        //{
+        //    var rol = (from r in db.Roles
+        //               where r.Id == id
+        //               select r).FirstOrDefault();
 
-            var rolView = new RoleView();
-            rolView.RoleID = rol.Id;
-            rolView.Name = rol.Name;
+        //    var rolView = new RoleView();
+        //    rolView.RoleID = rol.Id;
+        //    rolView.Name = rol.Name;
 
-            return PartialView(rolView);
-        }
+        //    return PartialView(rolView);
+        //}
 
-        [HttpPost]
-        [Authorize]
-        public ActionResult EliminarRol(RoleView rolView, string id)
-        {
-            try
-            {
-                var rol = (from r in db.Roles
-                           where r.Id == id
-                           select r).FirstOrDefault();
+        //[HttpPost]
+        //[Authorize]
+        //public ActionResult EliminarRol(RoleView rolView, string id)
+        //{
+        //    try
+        //    {
+        //        var rol = (from r in db.Roles
+        //                   where r.Id == id
+        //                   select r).FirstOrDefault();
 
-                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("_eliminarRol", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("RolId", rol.Id));
+        //        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+        //        {
+        //            con.Open();
+        //            SqlCommand cmd = new SqlCommand("_eliminarRol", con);
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.Add(new SqlParameter("RolId", rol.Id));
 
 
-                    cmd.ExecuteScalar();
+        //            cmd.ExecuteScalar();
 
-                    return RedirectToAction("ListaRoles");
-                }
-            }
-            catch (Exception)
-            {
+        //            return RedirectToAction("ListaRoles");
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
+        //        throw;
+        //    }
         }
     }
 }
