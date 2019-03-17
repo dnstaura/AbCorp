@@ -97,7 +97,8 @@ namespace testuser.Controllers.SysControllers
                             where c.CategoriaPersonal == "Notario"
                             select p).ToList();
 
-            ViewBag.id_Personal = new SelectList(notarios, "Id_Personal", "Nombres");
+
+        ViewBag.id_Personal = new SelectList(notarios, "Id_Personal", "Nombres");
             return View();
         }
 

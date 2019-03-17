@@ -79,7 +79,7 @@
                             </th>
                             <th>
                                 @*@Html.DisplayNameFor(model => model.tblOtorgante.nombres)*@
-                                A/F
+                                A favor de
                             </th>
                             <th>
                                 @*@Html.DisplayNameFor(model => model.tblPersonal.Nombres)*@
@@ -95,10 +95,12 @@
                                 @Html.DisplayNameFor(model => model.libro)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.correlativo)
+                                @*@Html.DisplayNameFor(model => model.correlativo)*@
+                                N° Instrumento
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.img)
+                                @*@Html.DisplayNameFor(model => model.img)*@
+                                PDF
                             </th>
                             <th>Acciones</th>
                         </tr>
@@ -135,7 +137,7 @@
                                 @Html.DisplayFor(modelItem => item.correlativo)
                             </td>
                             <td>
-                                <a href="@Html.DisplayFor(modelItem => item.img)" class="btn bg-green fa fa-eye" target="_blank"></a>
+                                <a href="@Html.DisplayFor(modelItem => item.img)" class="btn bg-red-active fa fa-file-pdf-o" target="_blank"></a>
                             </td>
                             <td>
                                 @Html.ActionLink(" ", "Edit", new { id = item.idlibros }, new { @class = "fa fa-edit btn bg-teal" }) |
