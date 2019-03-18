@@ -140,7 +140,7 @@
                                 @Html.DisplayFor(modelItem => item.tblCategoriaPersonal.CategoriaPersonal)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.tblEstadosRegistros.Estado)
+                                <label class="label label-success text-uppercase text-bold" style="font-size:12px;">@Html.DisplayFor(modelItem => item.tblEstadosRegistros.Estado)</label>
                             </td>
                             <td>
                                 @Html.ActionLink(" ", "Edit", new { id = item.Id_Personal }, new { @class = "fa fa-edit btn bg-teal" }) |

@@ -108,19 +108,27 @@ namespace testuser.Controllers.SysControllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idlibros,fecha,correlativo,instrumento,folios,libro,img,otorgante,afavor,id_Personal")] tblLibros tblLibros)
+        public ActionResult Create([Bind(Include = "idlibros,fecha,correlativo,instrumento,folios,libro,img,word,otorgante,afavor,id_Personal")] tblLibros tblLibros)
         {
             if (ModelState.IsValid)
             {
                 if (Request.Files.Count > 0)
                 {
                     HttpPostedFileBase file = Request.Files[0];
+                    HttpPostedFileBase file2 = Request.Files[1];
+
                     if (file.ContentLength > 0)
                     {
                         var img = (file.FileName).ToLower();
                         tblLibros.img = "/Content/Libros/" + img;
                         file.SaveAs(Server.MapPath("~/Content/Libros/") + img);
 
+                    }
+                    if (file2.ContentLength > 0)
+                    {
+                        var doc = (file2.FileName).ToLower();
+                        tblLibros.word = "/Content/Libros/" + doc;
+                        file2.SaveAs(Server.MapPath("~/Content/Libros/") + doc);
                     }
                     db.tblLibros.Add(tblLibros);
                     db.SaveChanges();
@@ -176,13 +184,15 @@ namespace testuser.Controllers.SysControllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idlibros,fecha,correlativo,instrumento,folios,libro,img,otorgante,afavor,id_Personal")] tblLibros tblLibros)
+        public ActionResult Edit([Bind(Include = "idlibros,fecha,correlativo,instrumento,folios,libro,img,word,otorgante,afavor,id_Personal")] tblLibros tblLibros)
         {
             if (ModelState.IsValid)
             {
                 if (Request.Files.Count > 0)
                 {
                     HttpPostedFileBase file = Request.Files[0];
+                    HttpPostedFileBase file2 = Request.Files[1];
+
                     if (file.ContentLength > 0)
                     {
                         var img = (file.FileName).ToLower();
@@ -190,10 +200,17 @@ namespace testuser.Controllers.SysControllers
                         file.SaveAs(Server.MapPath("~/Content/Libros/") + img);
 
                     }
-                
+                    if (file2.ContentLength > 0)
+                    {
+                        var doc = (file2.FileName).ToLower();
+                        tblLibros.word = "/Content/Libros/" + doc;
+                        file2.SaveAs(Server.MapPath("~/Content/Libros/") + doc);
+                    }
+                    db.tblLibros.Add(tblLibros);
+                    db.SaveChanges();
                 }
 
-                db.Entry(tblLibros).State = EntityState.Modified;
+                    db.Entry(tblLibros).State = EntityState.Modified;
                 db.SaveChanges();
 
                 /*NOTIFICACION*/

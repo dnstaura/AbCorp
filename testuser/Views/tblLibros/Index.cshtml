@@ -102,6 +102,10 @@
                                 @*@Html.DisplayNameFor(model => model.img)*@
                                 PDF
                             </th>
+                            <th>
+                               @*@Html.DisplayNameFor(model => model.word)*@
+                                WORD
+                            </th>
                             <th>Acciones</th>
                         </tr>
 
@@ -138,6 +142,9 @@
                             </td>
                             <td>
                                 <a href="@Html.DisplayFor(modelItem => item.img)" class="btn bg-red-active fa fa-file-pdf-o" target="_blank"></a>
+                            </td>
+                            <td>
+                                <a href="@Html.DisplayFor(modelItem => item.word)" class="btn bg-primary fa fa-file-word-o" target="_blank"></a>
                             </td>
                             <td>
                                 @Html.ActionLink(" ", "Edit", new { id = item.idlibros }, new { @class = "fa fa-edit btn bg-teal" }) |

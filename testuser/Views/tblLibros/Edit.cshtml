@@ -76,6 +76,14 @@
                             @Html.EditorFor(model => model.img, new { htmlAttributes = new { type = "file" } })
                             @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
                         </div>
+                    </div> 
+                    
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.word, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.word, new { htmlAttributes = new { type = "file" } })
+                            @Html.ValidationMessageFor(model => model.word, "", new { @class = "text-danger" })
+                        </div>
                     </div>
 
                     <div class="form-group">
