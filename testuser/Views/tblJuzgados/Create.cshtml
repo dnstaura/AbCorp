@@ -26,7 +26,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Juzgado, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-6">
-                                @Html.EditorFor(model => model.Juzgado, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Juzgado, new { htmlAttributes = new { @class = "form-control", @requerid = "requerid" } })
                                 @Html.ValidationMessageFor(model => model.Juzgado, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -55,10 +55,11 @@
                             </div>
                         </div>
                         @using Mvc.CascadeDropDown
+
                         <div class="form-group">
                             @Html.LabelFor(model => model.Id_Departamento, "Departamento", htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-6">
-                                @Html.DropDownList("Id_Departamento", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.DropDownListFor(model => model.Id_Departamento, ViewBag.DepartamentosList as SelectList, "--Seleccionar un Departamento--", htmlAttributes: new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.Id_Departamento, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -66,7 +67,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Id_Municipio, "Municipio", htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-6">
-                                @Html.DropDownList("Id_Municipio", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.DropDownListFor(model => model.Id_Municipio, new SelectList(" "), "--Seleccionar un Municipio--", htmlAttributes: new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.Id_Municipio, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -93,9 +94,23 @@
 
     <script>
         $(document).ready(function () {
-            alert='prueba'
+            alert = 'prueba'
             $('#telefono').inputmask("9999-9999");
         });
 
+    </script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#Id_Departamento").change(function () {
+                $.get("/tblJuzgados/GetMunicipiosLIst", { Id_Departamento: $("#Id_Departamento").val() }, function (data) {
+                    $("#Id_Municipio").empty();
+                    $.each(data, function (create, row) {
+                        $("#Id_Municipio").append("<option value='" + row.id_Municipio + "'>" + row.Municipio + "</option>")
+                    });
+                });
+            })
+        });
     </script>
 }

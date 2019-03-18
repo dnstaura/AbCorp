@@ -206,12 +206,9 @@ namespace testuser.Controllers.SysControllers
                         tblLibros.word = "/Content/Libros/" + doc;
                         file2.SaveAs(Server.MapPath("~/Content/Libros/") + doc);
                     }
-                    db.tblLibros.Add(tblLibros);
+                    db.Entry(tblLibros).State= EntityState.Modified;
                     db.SaveChanges();
                 }
-
-                    db.Entry(tblLibros).State = EntityState.Modified;
-                db.SaveChanges();
 
                 /*NOTIFICACION*/
                 ApplicationDbContext dbs = new ApplicationDbContext();

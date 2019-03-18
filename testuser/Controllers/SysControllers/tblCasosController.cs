@@ -202,5 +202,12 @@ namespace testuser.Controllers.SysControllers
             }
             base.Dispose(disposing);
         }
+
+        public JsonResult GetMunicipiosLIst(int Id_Departamento)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            List<tblMunicipios> ListaMunicipios = db.tblMunicipios.Where(x => x.Id_Departamento == Id_Departamento).ToList();
+            return Json(ListaMunicipios, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -42,7 +42,9 @@ namespace testuser.Controllers.SysControllers
         [Authorize]
         public ActionResult Create()
         {
-            ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
+            List<tblDepartamentos> DepartamentosList = db.tblDepartamentos.ToList();
+            ViewBag.DepartamentosList = new SelectList(DepartamentosList, "Id_Departamento", "Departamento");
+            //ViewBag.tblDepartamentos = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
             ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
             return View();
         }
@@ -62,7 +64,9 @@ namespace testuser.Controllers.SysControllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento", tblJuzgados.Id_Departamento);
+            List<tblDepartamentos> DepartamentosList = db.tblDepartamentos.ToList();
+            ViewBag.DepartamentosList = new SelectList(DepartamentosList, "Id_Departamento", "Departamento", tblJuzgados.Id_Departamento);
+            //ViewBag.tblDepartamentos = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento", tblJuzgados.Id_Departamento);
             ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio", tblJuzgados.Id_Municipio);
             return View(tblJuzgados);
         }
@@ -140,6 +144,13 @@ namespace testuser.Controllers.SysControllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public JsonResult GetMunicipiosLIst(int Id_Departamento)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            List<tblMunicipios> ListaMunicipios = db.tblMunicipios.Where(x => x.Id_Departamento == Id_Departamento).ToList();
+            return Json(ListaMunicipios, JsonRequestBehavior.AllowGet);
         }
     }
 }

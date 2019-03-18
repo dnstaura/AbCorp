@@ -54,6 +54,7 @@ namespace testuser.Controllers.SysControllers
         [Authorize]
         public ActionResult Create()
         {
+            ViewData["Fecha_Agregado"] = DateTime.Now.ToString("yyyy-MM-dd");
             ViewBag.id_CategoriaPersonal = new SelectList(db.tblCategoriaPersonal, "id_CategoriaPersonal", "CategoriaPersonal");
             ViewBag.Id_EstadoRegistro = new SelectList(db.tblEstadosRegistros, "Id_EstadoRegistro", "Estado");
             return View();
@@ -69,6 +70,7 @@ namespace testuser.Controllers.SysControllers
         {
             if (ModelState.IsValid)
             {
+                ViewData["Fecha_Agregado"] = DateTime.Now.ToString("yyyy-MM-dd");
                 db.tblPersonal.Add(tblPersonal);
                 db.SaveChanges();
 
@@ -88,6 +90,7 @@ namespace testuser.Controllers.SysControllers
                 return RedirectToAction("Index");
             }
 
+            
             ViewBag.id_CategoriaPersonal = new SelectList(db.tblCategoriaPersonal, "id_CategoriaPersonal", "CategoriaPersonal", tblPersonal.id_CategoriaPersonal);
             ViewBag.Id_EstadoRegistro = new SelectList(db.tblEstadosRegistros, "Id_EstadoRegistro", "Estado", tblPersonal.Id_EstadoRegistro);
             return View(tblPersonal);
