@@ -35,6 +35,9 @@ namespace testuser.Models.SysModel
         [Display(Name = "Archivo PDF")]
         public string img { get; set; }
 
+        [Display(Name = "Archivo Word")]
+        public string word { get; set; }
+
         [Display(Name ="Descripción")]
         [StringLength(1000)]
         public string descripcion { get; set; }

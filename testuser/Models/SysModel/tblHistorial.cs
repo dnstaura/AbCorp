@@ -24,7 +24,7 @@ namespace testuser.Models.SysModel
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Fecha_Final { get; set; }
 
-        [StringLength(500)]
+        [StringLength(1000)]
         [Display(Name = "Descripción")]
         public string Descripcion { get; set; }
 
