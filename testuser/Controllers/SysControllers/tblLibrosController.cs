@@ -20,7 +20,7 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblLibros
-        [Authorize]
+        [Authorize(Roles ="Administrador,Notario,Observador")]
         public ActionResult Index()
         {
             var tblLibros = db.tblLibros.Include(t => t.tblPersonal);
@@ -34,19 +34,9 @@ namespace testuser.Controllers.SysControllers
 
             return View(tblLibros.ToList());
         }
-        [HttpPost]
-        [Authorize]
-        public ActionResult Index(string txtBuscar)
-        {
-            var buscar = (from a in db.tblLibros
-                          where a.libro.Contains(txtBuscar) || a.tblPersonal.Nombres.Contains(txtBuscar)
-                          select a).ToList();
-            return View(buscar);
-        }
-
 
         // GET: tblLibros/Details/5
-        [Authorize]
+        [Authorize(Roles = "Administrador,Notario,Observador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -62,7 +52,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblLibros/Create
-        [Authorize]
+        [Authorize(Roles = "Administrador,Notario")]
         public ActionResult Create()
         {
             //ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres");
@@ -106,7 +96,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrador,Notario")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idlibros,fecha,correlativo,instrumento,folios,libro,img,word,otorgante,afavor,id_Personal")] tblLibros tblLibros)
         {
@@ -160,7 +150,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblLibros/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Administrador,Notario")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -182,7 +172,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrador,Notario")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "idlibros,fecha,correlativo,instrumento,folios,libro,img,word,otorgante,afavor,id_Personal")] tblLibros tblLibros)
         {
@@ -232,7 +222,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblLibros/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -249,7 +239,7 @@ namespace testuser.Controllers.SysControllers
 
         // POST: tblLibros/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
