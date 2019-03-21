@@ -8,8 +8,10 @@
                 <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span>Dashboard</span></a>
             </li>
 
-
-            <li class="treeview">
+            @{ 
+                if (User.IsInRole("Administrador") || User.IsInRole("Notario") || User.IsInRole("Observador"))
+                {
+                 <li class="treeview">
                 <a href="#">
                     <i class="fa fa-book"></i> <span>Notariado</span>
                     <span class="pull-right-container">
@@ -19,19 +21,21 @@
                 <ul class="treeview-menu">
                     <li><a href="~/tblLibros/Index">Libros</a></li>
                     @*<li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-gear"></i> <span>Clientes</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="~/tblOtorgante/Index">Otorgantes</a></li>
-                            <li><a href="~/tblAfavorde/Index">A favor de</a></li>
-                        </ul>
-                    </li>*@
+                    <a href="#">
+                        <i class="fa fa-gear"></i> <span>Clientes</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="~/tblOtorgante/Index">Otorgantes</a></li>
+                        <li><a href="~/tblAfavorde/Index">A favor de</a></li>
+                    </ul>
+                </li>*@
                 </ul>
             </li>
+                }
+            }
 
             <li class="treeview">
                 <a href="#">
@@ -119,18 +123,24 @@
                 </a>
             </li>
 
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-gear"></i> <span>Configuración</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="~/Users/Index">Usuarios</a></li>
-                    <li><a href="~/Roles/ListaRoles">Roles</a></li>
-                </ul>
-            </li>
+            @{
+                if (User.IsInRole("Administrador"))
+                {
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-gear"></i> <span>Configuración</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="~/Users/Index">Usuarios</a></li>
+                            <li><a href="~/Roles/ListaRoles">Roles</a></li>
+                        </ul>
+                    </li>
+                }
+            }
+
 
         </ul>
         @* END Menu *@
