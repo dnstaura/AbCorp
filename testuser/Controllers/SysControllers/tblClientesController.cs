@@ -17,7 +17,7 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblClientes
-        [Authorize]
+        [Authorize(Roles = "Administrador, Abogado, Observador")]
         public ActionResult Index()
         {
             var tblClientes = db.tblClientes.Include(t => t.tblEstadosRegistros);
@@ -30,7 +30,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblClientes/Details/5
-        [Authorize]
+        [Authorize(Roles = "Administrador, Abogado, Observador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -46,7 +46,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblClientes/Create
-        [Authorize]
+        [Authorize(Roles = "Administrador, Abogado")]
         public ActionResult Create()
         {
             List<SelectListItem> genero = new List<SelectListItem>();
@@ -63,7 +63,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrador, Abogado")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id_Cliente,Nombres,Apellidos,Genero,Fecha_Nacimiento,Telefono,Direccion,Correo,Id_EstadoRegistro,Fecha_Agregado")] tblClientes tblClientes)
         {
@@ -93,7 +93,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblClientes/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Administrador, Abogado")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -113,7 +113,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrador, Abogado")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id_Cliente,Nombres,Apellidos,Genero,Fecha_Nacimiento,Telefono,Direccion,Correo,Id_EstadoRegistro,Fecha_Agregado")] tblClientes tblClientes)
         {
@@ -142,7 +142,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblClientes/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -159,7 +159,7 @@ namespace testuser.Controllers.SysControllers
 
         // POST: tblClientes/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

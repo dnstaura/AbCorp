@@ -54,7 +54,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <div class="box box-primary shadow">
+        <div class="box box-info shadow">
             @if (ViewBag.casehistory == null)
             {
                 <div class="box-header">
@@ -73,7 +73,12 @@
 
             <div class="box-body table-responsive">
                 <p>
-                    @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
+                    @{
+                        if (User.IsInRole("Administrador") || User.IsInRole("Abogado"))
+                        {
+                            @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
+                        }
+                    }
                     <a href="~/tblCasos/Index" class="btn bg-navy">Casos</a>
                 </p>
                 @if (ViewBag.casehistory == null)
@@ -127,9 +132,26 @@
                                     @Html.DisplayFor(modelItem => item.Fecha_Agregado)
                                 </td>
                                 <td>
-                                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Historial }, new { @class = "fa fa-edit btn bg-teal " }) |
-                                    @Html.ActionLink(" ", "Details", new { id = item.Id_Historial }, new { @class = "fa fa-folder-open btn bg-navy " }) |
-                                    @Html.ActionLink(" ", "Delete", new { id = item.Id_Historial }, new { @class = "fa fa-trash btn bg-red " })
+                                    @{
+                                        if (User.IsInRole("Administrador"))
+                                        {
+                                            @Html.ActionLink(" ", "Edit", new { id = item.Id_Historial }, new { @class = "fa fa-edit btn bg-teal " })
+                                            @Html.ActionLink(" ", "Details", new { id = item.Id_Historial }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                            @Html.ActionLink(" ", "Delete", new { id = item.Id_Historial }, new { @class = "fa fa-trash btn bg-red " })
+                                        }
+                                        if (User.IsInRole("Abogado"))
+                                        {
+                                            @Html.ActionLink(" ", "Edit", new { id = item.Id_Historial }, new { @class = "fa fa-edit btn bg-teal " })
+                                            @Html.ActionLink(" ", "Details", new { id = item.Id_Historial }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                        }
+                                        if (User.IsInRole("Observador"))
+                                        {
+                                            @Html.ActionLink(" ", "Details", new { id = item.Id_Historial }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                        }
+
+                                    }
+
+
                                 </td>
                             </tr>
 
@@ -161,7 +183,7 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Fecha_Agregado)
                                 </th>
-                                <th></th>
+                                <th>Acciones</th>
                             </tr>
 
                         </thead>
@@ -187,9 +209,24 @@
                                     @item2.Fecha_Agregado
                                 </td>
                                 <td>
-                                    @Html.ActionLink(" ", "Edit", new { id = item2.Id_Historial }, new { @class = "fa fa-edit btn bg-teal " }) |
-                                    @Html.ActionLink(" ", "Details", new { id = item2.Id_Historial }, new { @class = "fa fa-folder-open btn bg-navy " }) |
-                                    @Html.ActionLink(" ", "Delete", new { id = item2.Id_Historial }, new { @class = "fa fa-trash btn bg-red " })
+                                    @{
+                                        if (User.IsInRole("Administrador"))
+                                        {
+                                            @Html.ActionLink(" ", "Edit", new { id = item2.Id_Historial }, new { @class = "fa fa-edit btn bg-teal " })
+                                            @Html.ActionLink(" ", "Details", new { id = item2.Id_Historial }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                            @Html.ActionLink(" ", "Delete", new { id = item2.Id_Historial }, new { @class = "fa fa-trash btn bg-red " })
+                                        }
+                                        if (User.IsInRole("Abogado"))
+                                        {
+                                            @Html.ActionLink(" ", "Edit", new { id = item2.Id_Historial }, new { @class = "fa fa-edit btn bg-teal " })
+                                            @Html.ActionLink(" ", "Details", new { id = item2.Id_Historial }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                        }
+                                        if (User.IsInRole("Observador"))
+                                        {
+                                            @Html.ActionLink(" ", "Details", new { id = item2.Id_Historial }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                        }
+
+                                    }
                                 </td>
                             </tr>
                         }

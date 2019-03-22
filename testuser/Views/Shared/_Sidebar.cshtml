@@ -37,7 +37,10 @@
                 }
             }
 
-            <li class="treeview">
+            @{
+                if (User.IsInRole("Administrador") || User.IsInRole("Abogado") || User.IsInRole("Observador"))
+                {
+                <li class="treeview">
                 <a href="#">
                     <i class="fa fa-gavel"></i> <span>Abogacia</span>
                     <span class="pull-right-container">
@@ -64,6 +67,9 @@
 
                 </ul>
             </li>
+                }
+             }
+
 
             <li class="treeview">
                 <a href="#">
