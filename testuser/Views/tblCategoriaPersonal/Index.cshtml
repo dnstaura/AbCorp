@@ -44,9 +44,15 @@
                     </div>
                 </div>
                 <div class="box-body table-responsive">
-                    <p>
-                        @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
-                    </p>
+                    @{ 
+                        if (User.IsInRole("Administrador") || User.IsInRole("Notario") || User.IsInRole("Abogado"))
+                        {
+                            <p>
+                                @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
+                            </p>
+                        }
+                    }
+                    
                     <br />
                     <table class="table table-striped table-condensed" id="dtTable">
                         <thead>
@@ -68,11 +74,26 @@
                                     @Html.DisplayFor(modelItem => item.CategoriaPersonal)
                                 </td>
                                 <td>
-                                    @Html.ActionLink(" ", "Edit", new { id = item.id_CategoriaPersonal }, new { @class = "fa fa-edit btn bg-teal" }) |
+                                    @{
+                                        if (User.IsInRole("Administrador"))
+                                        {
+                                            @Html.ActionLink(" ", "Edit", new { id = item.id_CategoriaPersonal }, new { @class = "fa fa-edit btn bg-teal" })
+                                            @Html.ActionLink(" ", "Details", new { id = item.id_CategoriaPersonal }, new { @class = "fa fa-folder-open btn bg-navy" })
+                                            @Html.ActionLink(" ", "Delete", new { id = item.id_CategoriaPersonal }, new { @class = "fa fa-trash btn bg-red" })
 
-                                    @Html.ActionLink(" ", "Details", new { id = item.id_CategoriaPersonal }, new { @class = "fa fa-folder-open btn bg-navy" }) |
+                                        }
+                                        if (User.IsInRole("Notario") || User.IsInRole("Abogado"))
+                                        {
+                                            @Html.ActionLink(" ", "Edit", new { id = item.id_CategoriaPersonal }, new { @class = "fa fa-edit btn bg-teal" })
+                                            @Html.ActionLink(" ", "Details", new { id = item.id_CategoriaPersonal }, new { @class = "fa fa-folder-open btn bg-navy" })
+                                        }
+                                        if (User.IsInRole("Observador"))
+                                        {
+                                            @Html.ActionLink(" ", "Details", new { id = item.id_CategoriaPersonal }, new { @class = "fa fa-folder-open btn bg-navy" })
 
-                                    @Html.ActionLink(" ", "Delete", new { id = item.id_CategoriaPersonal }, new { @class = "fa fa-trash btn bg-red" })
+                                        }
+                                    }
+
 
                                 </td>
                             </tr>

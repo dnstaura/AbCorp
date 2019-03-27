@@ -18,7 +18,7 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblEditables
-        [Authorize]
+        [Authorize(Roles = "Administrador,Abogado,Notario")]
         public ActionResult Index()
         {
             var dato = db.tblEditables.Where(x => x.idEditable == x.idEditable).Count();
@@ -27,7 +27,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblEditables/Details/5
-        [Authorize]
+        [Authorize(Roles = "Administrador,Abogado,Notario")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -43,7 +43,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblEditables/Create
-        [Authorize]
+        [Authorize(Roles = "Administrador,Abogado,Notario")]
         public ActionResult Create()
         {
             return View();
@@ -53,7 +53,7 @@ namespace testuser.Controllers.SysControllers
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrador,Abogado,Notario")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idEditable,fecha,entidad,instrumento,documento,tipo_documento,img,descripcion")] tblEditables tblEditables)
         {
@@ -93,7 +93,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblEditables/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Administrador,Abogado,Notario")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -112,7 +112,7 @@ namespace testuser.Controllers.SysControllers
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrador,Abogado,Notario")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "idEditable,fecha,entidad,instrumento,documento,tipo_documento,img,descripcion")] tblEditables tblEditables)
         {
@@ -152,7 +152,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblEditables/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -169,7 +169,7 @@ namespace testuser.Controllers.SysControllers
 
         // POST: tblEditables/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

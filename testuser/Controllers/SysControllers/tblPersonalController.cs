@@ -19,7 +19,7 @@ namespace testuser.Controllers.SysControllers
 
 
         // GET: tblPersonal
-        [Authorize]
+        [Authorize(Roles = "Administrador, Abogado, Observador, Notario")]
         public ActionResult Index()
         {
 
@@ -35,7 +35,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblPersonal/Details/5
-        [Authorize]
+        [Authorize(Roles = "Administrador, Abogado, Observador, Notario")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -51,7 +51,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblPersonal/Create
-        [Authorize]
+        [Authorize(Roles = "Administrador, Abogado, Notario")]
         public ActionResult Create()
         {
             ViewData["Fecha_Agregado"] = DateTime.Now.ToString("yyyy-MM-dd");
@@ -64,7 +64,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrador, Abogado, Notario")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id_Personal,Nombres,Apellidos,redsocial,Telefono,Correo,Direccion,Fecha_Nacimiento,id_CategoriaPersonal,Id_EstadoRegistro,Fecha_Agregado")] tblPersonal tblPersonal)
         {
@@ -97,7 +97,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblPersonal/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Administrador, Abogado, Notario")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -118,7 +118,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrador, Abogado, Notario")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id_Personal,Nombres,Apellidos,redsocial,Telefono,Correo,Direccion,Fecha_Nacimiento,id_CategoriaPersonal,Id_EstadoRegistro,Fecha_Agregado")] tblPersonal tblPersonal)
         {
@@ -149,7 +149,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblPersonal/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -166,7 +166,7 @@ namespace testuser.Controllers.SysControllers
 
         // POST: tblPersonal/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
