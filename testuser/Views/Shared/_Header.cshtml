@@ -7,6 +7,19 @@
        }
        var imagen = Convert.ToString(Session["ImagenPerfil"]);
     }*@
+<style>
+    .skin-blue .main-header .navbar {
+        background-color: #001a35;
+    }
+    .skin-blue .main-header .logo {
+        background-color: #001a35;
+    }
+        .skin-blue .main-header .logo:hover {
+            background-color: #DE4D3A;
+        }
+
+</style>
+
 @{
     var usuario = testuser.ViewModels.FuncionesEstaticas.ObtenerHeader(User.Identity.GetUserId());
 }
@@ -42,7 +55,7 @@
                             <span class="hidden-xs">@usuario.Nombre</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="user-header bg-blue-gradient">
+                            <li class="user-header" style="background-color:#001a35;">
                                 @if (usuario.Imagen != "")
                                 {
                                     <img src="@Url.Content(usuario.Imagen)" class="img-circle" alt="User Image">

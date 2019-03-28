@@ -1,10 +1,28 @@
 ﻿@using WebHelpers.Mvc5
+
+<style>
+    .skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+        background-color: #001a35;
+    
+    }
+    .skin-blue .sidebar-menu > li.active > a {
+        border-left-color: #DE4D3A;
+    }
+    .skin-blue .sidebar-menu > li:hover > a, .skin-blue .sidebar-menu > li.active > a, .skin-blue .sidebar-menu > li.menu-open > a {
+        color: #fff;
+        background: #DE4D3A;
+    }
+    .skin-blue .sidebar-menu > li > .treeview-menu {
+        margin: 0 1px;
+        background: #001a35;
+    }
+</style>
 <aside class="main-sidebar">
     <section class="sidebar">
 
         @* BEGIN Menu *@
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="@Url.IsLinkActive("Index", "Home")">
+            <li class="@Url.Action("Index", "Home")">
                 <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span>Dashboard</span></a>
             </li>
 
@@ -20,7 +38,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="~/tblLibros/Index">Libros</a></li>
-                    @*<li class="treeview">
+                    <li class="treeview">
                     <a href="#">
                         <i class="fa fa-gear"></i> <span>Clientes</span>
                         <span class="pull-right-container">
@@ -31,7 +49,7 @@
                         <li><a href="~/tblOtorgante/Index">Otorgantes</a></li>
                         <li><a href="~/tblAfavorde/Index">A favor de</a></li>
                     </ul>
-                </li>*@
+                </li>
                 </ul>
             </li>
                 }

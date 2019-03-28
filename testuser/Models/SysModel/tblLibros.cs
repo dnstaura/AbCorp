@@ -42,18 +42,24 @@ namespace testuser.Models.SysModel
         [StringLength(1000)]
         public string descripcion { get; set; }
 
-        [Display(Name = "Otorgante")]
-        public string Otorgante { get; set; }
+        //[Display(Name = "Otorgante")]
+        //public string Otorgante { get; set; }
 
-        [Display(Name = "A favor de")]
-        public string AFavor { get; set; }
+        //[Display(Name = "A favor de")]
+        //public string AFavor { get; set; }
 
         [Display(Name = "Notario")]
         public int id_Personal { get; set; }
 
-        //public virtual tblAfavorde tblAfavorde { get; set; }
+        [Display(Name = "A/F")]
+        public int idfavorde { get; set; }
 
-        //public virtual tblOtorgante tblOtorgante { get; set; }
+        [Display(Name = "Otorgante")]
+        public int idotorgante { get; set; }
+
+        public virtual tblAfavorde tblAfavorde { get; set; }
+
+        public virtual tblOtorgante tblOtorgante { get; set; }
 
         public virtual tblPersonal tblPersonal { get; set; }
     }

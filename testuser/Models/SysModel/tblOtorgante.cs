@@ -10,11 +10,11 @@ namespace testuser.Models.SysModel
     [Table("tblOtorgante")]
     public partial class tblOtorgante
     {
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        //public tblOtorgante()
-        //{
-        //    tblLibros = new HashSet<tblLibros>();
-        //}
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblOtorgante()
+        {
+            tblLibros = new HashSet<tblLibros>();
+        }
 
         [Key]
         [Display(Name = "Otorgante")]
@@ -57,7 +57,7 @@ namespace testuser.Models.SysModel
 
         public virtual tblMunicipios tblMunicipios { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<tblLibros> tblLibros { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblLibros> tblLibros { get; set; }
     }
 }

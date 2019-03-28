@@ -55,8 +55,8 @@ namespace testuser.Controllers.SysControllers
         [Authorize(Roles = "Administrador,Notario")]
         public ActionResult Create()
         {
-            //ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres");
-            //ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres");
+            ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres");
+            ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres");
             //ViewBag.id_Personal = new SelectList(db.tblPersonal, "Id_Personal", "Nombres");
             //ViewBag.id_Personal = new SelectList(db.tblPersonal.Join(
             //                    db.tblCategoriaPersonal,
@@ -98,7 +98,7 @@ namespace testuser.Controllers.SysControllers
         [HttpPost]
         [Authorize(Roles = "Administrador,Notario")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idlibros,fecha,correlativo,instrumento,folios,libro,img,word,otorgante,afavor,id_Personal")] tblLibros tblLibros)
+        public ActionResult Create([Bind(Include = "idlibros,fecha,correlativo,instrumento,folios,libro,img,word,idotorgante,idfavorde,id_Personal")] tblLibros tblLibros)
         {
             if (ModelState.IsValid)
             {
@@ -140,8 +140,8 @@ namespace testuser.Controllers.SysControllers
                 }
             }
 
-            //ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres", tblLibros.idfavorde);
-            //ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres", tblLibros.idotorgante);
+            ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres", tblLibros.idfavorde);
+            ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres", tblLibros.idotorgante);
             ViewBag.id_Personal = new SelectList(db.tblPersonal, "Id_Personal", "Nombres", tblLibros.id_Personal);
          
 
@@ -162,8 +162,8 @@ namespace testuser.Controllers.SysControllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres", tblLibros.idfavorde);
-            //ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres", tblLibros.idotorgante);
+            ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres", tblLibros.idfavorde);
+            ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres", tblLibros.idotorgante);
             ViewBag.id_Personal = new SelectList(db.tblPersonal, "Id_Personal", "Nombres", tblLibros.id_Personal);
             return View(tblLibros);
         }
@@ -174,7 +174,7 @@ namespace testuser.Controllers.SysControllers
         [HttpPost]
         [Authorize(Roles = "Administrador,Notario")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idlibros,fecha,correlativo,instrumento,folios,libro,img,word,otorgante,afavor,id_Personal")] tblLibros tblLibros)
+        public ActionResult Edit([Bind(Include = "idlibros,fecha,correlativo,instrumento,folios,libro,img,word,idotorgante,idfavorde,id_Personal")] tblLibros tblLibros)
         {
             if (ModelState.IsValid)
             {
@@ -215,8 +215,8 @@ namespace testuser.Controllers.SysControllers
 
                 return RedirectToAction("Index");
             }
-            //ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres", tblLibros.idfavorde);
-            //ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres", tblLibros.idotorgante);
+            ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres", tblLibros.idfavorde);
+            ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres", tblLibros.idotorgante);
             ViewBag.id_Personal = new SelectList(db.tblPersonal, "Id_Personal", "Nombres", tblLibros.id_Personal);
             return View(tblLibros);
         }
