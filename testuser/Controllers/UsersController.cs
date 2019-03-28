@@ -73,22 +73,22 @@ namespace testuser.Controllers
                 /*Fin Usuarios con rol Notario*/
             }
 
-            if (roleManager.RoleExists("Abogacia"))
+            if (roleManager.RoleExists("Abogado"))
             {
 
                 /*Usuarios con rol Abogacia*/
-                var usab = rollist.Where(x => x.Name == "Abogacia").First();
+                var usab = rollist.Where(x => x.Name == "Abogado").First();
                 var usabJoin = db.UserRoles.Where(x => x.RoleId == usab.Id).Count();
                 ViewBag.Ab = usabJoin;
                 /*Fin Usuarios con rol Abogacia*/
             }
-            if (roleManager.RoleExists("Secretaria"))
+            if (roleManager.RoleExists("Observador"))
             {
 
                 /*Usuarios con rol Secretaria*/
-                var usse = rollist.Where(x => x.Name == "Secretaria").First();
+                var usse = rollist.Where(x => x.Name == "Observador").First();
                 var usseJoin = db.UserRoles.Where(x => x.RoleId == usse.Id).Count();
-                ViewBag.Se = usseJoin;
+                ViewBag.Ob = usseJoin;
                 /*Fin Usuarios con rol secretaria*/
             }
 

@@ -283,10 +283,10 @@
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ["Administrador", "Notario", "Abogacia", "Secretaria"],
+                    labels: ["Administrador", "Notario", "Abogados", "Observadores"],
                     datasets: [{
                         label: '# de roles asignados',
-                        data: [@ViewBag.Ad, @ViewBag.No, @ViewBag.Ab, @ViewBag.Se],
+                        data: [@ViewBag.Ad, @ViewBag.No, @ViewBag.Ab, @ViewBag.Ob],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',

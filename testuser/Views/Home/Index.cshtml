@@ -38,6 +38,7 @@
 
             div.bhoechie-tab-menu div.list-group > a {
                 margin-bottom: 0;
+                background-color: #FF9562;
             }
 
                 div.bhoechie-tab-menu div.list-group > a .glyphicon,
@@ -76,16 +77,22 @@
                     }
 
     div.bhoechie-tab-content {
-        background-color: #ffffff;
+        background-color: #FF9562;
         /* border: 1px solid #eeeeee; */
         margin: 0 auto;
-        align-content:center;
+        align-content: center;
         /*padding-left: 20px;
         padding-top: 10px;*/
     }
 
     div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
         display: none;
+        
+    }
+
+    div.bhoechie-tab-container {
+        z-index: 10;
+        background-color: #FF9562;
     }
 </style>
 
@@ -103,7 +110,7 @@
 </div>
 <br />
 <div class="col-sm-1"></div>
-    <div class="row">
+    <div class="row"">
         <div class="col-md-10 col-xs-12 bhoechie-tab-container">
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 bhoechie-tab-menu">
                 <div class="list-group text-bold">
