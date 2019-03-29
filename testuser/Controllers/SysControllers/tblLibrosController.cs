@@ -55,40 +55,64 @@ namespace testuser.Controllers.SysControllers
         [Authorize(Roles = "Administrador,Notario")]
         public ActionResult Create()
         {
-            ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres");
-            ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres");
-            //ViewBag.id_Personal = new SelectList(db.tblPersonal, "Id_Personal", "Nombres");
-            //ViewBag.id_Personal = new SelectList(db.tblPersonal.Join(
-            //                    db.tblCategoriaPersonal,
-            //                    a => a.Id_Personal,
-            //                    b => b.id_CategoriaPersonal,
-            //                    (v, s) =>
-            //                     new
-            //                     {
-            //                         v = v,
-            //                         s = s
-            //                     }
-            //               )
-            //               .Select(
-            //                temp0 =>
-            //                new
-            //                {
-            //                    v = temp0.v,
-            //                    s = temp0.s
-            //                }
-            //                ).Select(m => new SelectListItem
-            //                {
-            //                    Value = SqlFunctions.StringConvert((double)m.s.id_CategoriaPersonal).Trim(),
-            //                    Text = m.v.Nombres + " - " + m.s.CategoriaPersonal
-            //                }), "Value", "Text", 0);
+            //ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres");
+            //ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres");
+            ViewBag.idfavorde = new SelectList(db.tblAfavorde.Join(
+                                db.tblLibros,
+                                a => a.idfavorde,
+                                b => b.idlibros,
+                                (v, s) =>
+                                 new
+                                 {
+                                     v = v,
+                                     s = s
+                                 }
+                           )
+                           .Select(
+                            temp0 =>
+                            new
+                            {
+                                v = temp0.v,
+                                s = temp0.s
+                            }
+                            ).Select(m => new SelectListItem
+                            {
+                                Value = SqlFunctions.StringConvert((double)m.s.idlibros).Trim(),
+                                Text = m.v.nombres + " " + m.v.apellidos
+                            }), "Value", "Text", 0);
 
-            var notarios = (from p in db.tblPersonal
+            ViewBag.idotorgante = new SelectList(db.tblOtorgante.Join(
+                                db.tblLibros,
+                                a => a.idotorgante,
+                                b => b.idlibros,
+                                (v, s) =>
+                                 new
+                                 {
+                                     v = v,
+                                     s = s
+                                 }
+                           )
+                           .Select(
+                            temp0 =>
+                            new
+                            {
+                                v = temp0.v,
+                                s = temp0.s
+                            }
+                            ).Select(m => new SelectListItem
+                            {
+                                Value = SqlFunctions.StringConvert((double)m.s.idlibros).Trim(),
+                                Text = m.v.nombres + " " + m.v.apellidos
+                            }), "Value", "Text", 0);
+
+
+            ViewBag.personalNotario = (from p in db.tblPersonal
                             join c in db.tblCategoriaPersonal on p.id_CategoriaPersonal equals c.id_CategoriaPersonal
                             where c.CategoriaPersonal == "Notario"
+                            //where c.CategoriaPersonal == "Notario"
                             select p).ToList();
 
-
-        ViewBag.id_Personal = new SelectList(notarios, "Id_Personal", "Nombres");
+            //ViewBag.id_Personal = new SelectList(notarios, "Id_Personal", "Nombres", "Apellidos");
             return View();
         }
 
@@ -178,6 +202,7 @@ namespace testuser.Controllers.SysControllers
         {
             if (ModelState.IsValid)
             {
+               
                 if (Request.Files.Count > 0)
                 {
                     HttpPostedFileBase file = Request.Files[0];
@@ -196,6 +221,15 @@ namespace testuser.Controllers.SysControllers
                         tblLibros.word = "/Content/Libros/" + doc;
                         file2.SaveAs(Server.MapPath("~/Content/Libros/") + doc);
                     }
+                    //if (file.ContentLength == 0|| file2.ContentLength == 0)
+                    //{
+                    //    var query = (from x in db.tblLibros
+                    //                 where x.idlibros == tblLibros.idlibros
+                    //                 select x).First();
+                    //    tblLibros.img = query.img;
+                    //    tblLibros.word = query.word;
+                    //}
+
                     db.Entry(tblLibros).State= EntityState.Modified;
                     db.SaveChanges();
                 }

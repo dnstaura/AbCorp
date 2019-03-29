@@ -32,7 +32,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "control-label col-md-3" })
                         <div class="col-md-8">
-                            @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                             @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -89,7 +89,13 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.id_Personal, "Notario", htmlAttributes: new { @class = "control-label col-md-3" })
                         <div class="col-md-8">
-                            @Html.DropDownList("id_Personal", null, htmlAttributes: new { @class = "form-control" })
+                            <select name="id_Personal" class="form-control">
+                                @foreach (var item in ViewBag.personalNotario)
+                                {
+                                        <option value="@item.Id_Personal">@item.Nombres @item.Apellidos</option>
+                                }
+                            </select>
+                            @*@Html.DropDownList("id_Personal", null, htmlAttributes: new { @class = "form-control" })*@
                             @Html.ValidationMessageFor(model => model.id_Personal, "", new { @class = "text-danger" })
                         </div>
                     </div>

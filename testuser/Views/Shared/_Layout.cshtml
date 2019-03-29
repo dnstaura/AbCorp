@@ -25,6 +25,14 @@
 
 <body class="hold-transition skin-blue sidebar-mini">
 
+    <style>
+        .sombra {
+            -webkit-box-shadow: inset 0px 0px 40px 10px rgba(0,0,0,0.7);
+            -moz-box-shadow: inset 0px 0px 40px 10px rgba(0,0,0,0.7);
+            box-shadow: inset 0px 0px 40px 10px rgba(0,0,0,0.7);
+        }
+    </style>
+
     @Html.Hidden("Get", Url.Action("NotificacionesPendientes", "Manage"))
     @Html.Hidden("Canti", Url.Action("ContarNotificaciones", "Manage"))
 
@@ -32,7 +40,7 @@
         @Html.Partial("_Header")
         @Html.Partial("_Sidebar")
 
-        <div class="content-wrapper" style="background-color:#FFA87E ;">
+        <div class="content-wrapper sombra" style="background-color:#F2CBC1;">
             @*<section class="content-header">
                     <h1>
                         @ViewBag.Title

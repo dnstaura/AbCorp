@@ -379,7 +379,7 @@
     <Content Include="Content\img\icheck\red.png" />
     <Content Include="Content\img\icheck\yellow%402x.png" />
     <Content Include="Content\img\icheck\yellow.png" />
-    <Content Include="Content\img\Logo.png" />
+    <Content Include="Content\img\Logotipo.png" />
     <Content Include="Content\img\miniIcon.png" />
     <Content Include="Content\img\user-male-icon.png" />
     <Content Include="Content\js\adminlte.js" />
