@@ -286,6 +286,7 @@
     <Compile Include="Models\SysModel\tblOtorgante.cs" />
     <Compile Include="Models\SysModel\tblPersonal.cs" />
     <Compile Include="ViewModels\clsNotification.cs" />
+    <Compile Include="ViewModels\CumpleaniosView.cs" />
     <Compile Include="ViewModels\FuncionesEstaticas.cs" />
     <Compile Include="ViewModels\HistorialView.cs" />
     <Compile Include="ViewModels\RoleView.cs" />
@@ -626,6 +627,7 @@
     <Content Include="Views\tblEditables\Details.cshtml" />
     <Content Include="Views\tblEditables\Edit.cshtml" />
     <Content Include="Views\tblEditables\Index.cshtml" />
+    <Content Include="Views\Shared\_Cumpleanios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

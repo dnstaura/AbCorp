@@ -186,9 +186,60 @@ namespace testuser.Controllers.SysControllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres", tblLibros.idfavorde);
-            ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres", tblLibros.idotorgante);
-            ViewBag.id_Personal = new SelectList(db.tblPersonal, "Id_Personal", "Nombres", tblLibros.id_Personal);
+            ViewBag.idfavorde = new SelectList(db.tblAfavorde.Join(
+                                           db.tblLibros,
+                                           a => a.idfavorde,
+                                           b => b.idlibros,
+                                           (v, s) =>
+                                            new
+                                            {
+                                                v = v,
+                                                s = s
+                                            }
+                                      )
+                                      .Select(
+                                       temp0 =>
+                                       new
+                                       {
+                                           v = temp0.v,
+                                           s = temp0.s
+                                       }
+                                       ).Select(m => new SelectListItem
+                                       {
+                                           Value = SqlFunctions.StringConvert((double)m.s.idlibros).Trim(),
+                                           Text = m.v.nombres + " " + m.v.apellidos
+                                       }), "Value", "Text", 0);
+
+            ViewBag.idotorgante = new SelectList(db.tblOtorgante.Join(
+                                db.tblLibros,
+                                a => a.idotorgante,
+                                b => b.idlibros,
+                                (v, s) =>
+                                 new
+                                 {
+                                     v = v,
+                                     s = s
+                                 }
+                           )
+                           .Select(
+                            temp0 =>
+                            new
+                            {
+                                v = temp0.v,
+                                s = temp0.s
+                            }
+                            ).Select(m => new SelectListItem
+                            {
+                                Value = SqlFunctions.StringConvert((double)m.s.idlibros).Trim(),
+                                Text = m.v.nombres + " " + m.v.apellidos
+                            }), "Value", "Text", 0);
+
+
+            ViewBag.personalNotario = (from p in db.tblPersonal
+                                       join c in db.tblCategoriaPersonal on p.id_CategoriaPersonal equals c.id_CategoriaPersonal
+                                       where c.CategoriaPersonal == "Notario"
+                                       //where c.CategoriaPersonal == "Notario"
+                                       select p).ToList();
             return View(tblLibros);
         }
 
@@ -221,14 +272,29 @@ namespace testuser.Controllers.SysControllers
                         tblLibros.word = "/Content/Libros/" + doc;
                         file2.SaveAs(Server.MapPath("~/Content/Libros/") + doc);
                     }
-                    //if (file.ContentLength == 0|| file2.ContentLength == 0)
-                    //{
-                    //    var query = (from x in db.tblLibros
-                    //                 where x.idlibros == tblLibros.idlibros
-                    //                 select x).First();
-                    //    tblLibros.img = query.img;
-                    //    tblLibros.word = query.word;
-                    //}
+
+                    var querypdf = (from x in db.tblLibros
+                                 where x.idlibros == tblLibros.idlibros
+                                 select x.img).First();
+
+                    var queryword = (from x in db.tblLibros
+                                    where x.idlibros == tblLibros.idlibros
+                                    select x.word).First();
+
+                    if (file.ContentLength == 0)
+                    {
+                        
+                        tblLibros.img = querypdf;
+                        //tblLibros.word = query.word;
+                    }
+                    if (file2.ContentLength == 0)
+                    {
+                        //var query = (from x in db.tblLibros
+                        //             where x.idlibros == tblLibros.idlibros
+                        //             select x.word).First();
+                        //tblLibros.img = query.img;
+                        tblLibros.word = queryword;
+                    }
 
                     db.Entry(tblLibros).State= EntityState.Modified;
                     db.SaveChanges();

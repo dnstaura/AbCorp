@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using testuser.Models;
+using testuser.Models.SysModel;
 
 namespace testuser.ViewModels
 {
@@ -57,5 +58,6 @@ namespace testuser.ViewModels
             return notifications;
             }
         }
+
     }
 }

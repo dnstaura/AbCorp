@@ -1,0 +1,72 @@
+﻿
+@using Microsoft.AspNet.Identity
+@{
+
+    var cumpleanosxdxd = testuser.ViewModels.CumpleaniosView.cumpleanosxdxd();
+}
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>
+
+<li class="dropdown notifications-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+
+            <i class="fa fa-calendar">
+            </i>
+
+            <span class="label label-info" style="font-family:'Century Gothic', Times, serif; font-size:15px;">
+            @cumpleanosxdxd.Count()
+            </span>
+
+        </a>
+        <ul class="dropdown-menu">
+
+            <li class="header text-bold">Tienes @cumpleanosxdxd.Count() cumpleaños proximo</li>
+            <li>
+                <ul class="menu" id="">
+
+                        @foreach (var item in cumpleanosxdxd)
+                        {
+                            <li>
+                                <a style="font-size:13px;">
+                                    <i class="fa fa-birthday-cake text-aqua"></i>
+                                    @if (item.dias <= 0)
+                                    {
+                                    <label> Hoy es el cumpleaños de @item.nombreClienteAF </label>
+                                    }
+                                    else
+                                    {
+
+                                    <label>@item.nombreClienteAF cumple años en @item.dias días</label>
+                                    }
+                                </a>
+                            </li>
+                        }
+
+                </ul>
+            </li>
+            <li class="footer">
+                @Html.ActionLink("Ver todas", "VerNotificaciones", "Manage")
+            </li>
+        </ul>
+    </li>
+
+
+@*<li class="dropdown notifications-menu">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+        <i class="fa fa-bell-o">
+        </i>
+        <span class="label label-info" id="cantidad" style="font-family:'Century Gothic', Times, serif; font-size:15px;">
+            -
+        </span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="header">Notificaciones pendientes</li>
+        <li>
+            <ul class="menu" id="listaNotificaciones"></ul>
+        </li>
+
+        <li class="footer">
+            @Html.ActionLink("Ver todas", "VerNotificaciones", "Manage")
+        </li>
+    </ul>
+
+</li>*@
