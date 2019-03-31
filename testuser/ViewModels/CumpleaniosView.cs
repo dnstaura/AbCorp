@@ -12,7 +12,7 @@ namespace testuser.ViewModels
         public int dias { get; set; }
 
 
-        public static List<CumpleaniosView> cumpleanosxdxd()
+        public static List<CumpleaniosView> cumpleanosAF()
         {
             List<CumpleaniosView> cumpleanieros = new List<CumpleaniosView>();
             using (dbModel db = new dbModel())

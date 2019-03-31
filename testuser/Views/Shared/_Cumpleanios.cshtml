@@ -1,8 +1,7 @@
-﻿
-@using Microsoft.AspNet.Identity
+﻿@using Microsoft.AspNet.Identity
 @{
 
-    var cumpleanosxdxd = testuser.ViewModels.CumpleaniosView.cumpleanosxdxd();
+    var cumpleanosxdxd = testuser.ViewModels.CumpleaniosView.cumpleanosAF();
 }
 <script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>
 
@@ -19,32 +18,41 @@
         </a>
         <ul class="dropdown-menu">
 
-            <li class="header text-bold">Tienes @cumpleanosxdxd.Count() cumpleaños proximo</li>
+            @if (cumpleanosxdxd.Count > 0)
+            {
+                <li class="header text-bold">Tienes @cumpleanosxdxd.Count() cumpleaños proximos</li>
+            }
+            else
+            {
+                <li class="header text-bold">Tienes 0 cumpleaños pendientes</li>
+
+            }
+
             <li>
                 <ul class="menu" id="">
 
-                        @foreach (var item in cumpleanosxdxd)
-                        {
-                            <li>
-                                <a style="font-size:13px;">
-                                    <i class="fa fa-birthday-cake text-aqua"></i>
-                                    @if (item.dias == 0)
-                                    {
+                    @foreach (var item in cumpleanosxdxd)
+                    {
+                        <li>
+                            <a style="font-size:13px;">
+                                <i class="fa fa-birthday-cake text-aqua"></i>
+                                @if (item.dias == 0)
+                                {
                                     <label> Hoy es el cumpleaños de @item.nombreClienteAF </label>
-                                    }
-                                    else
-                                    {
+                                }
+                                else
+                                {
                                     <label>@item.nombreClienteAF cumple años en @item.dias días</label>
-                                    }
-                                </a>
-                            </li>
-                        }
+                                }
+                            </a>
+                        </li>
+                    }
 
                 </ul>
             </li>
-            <li class="footer">
-                @Html.ActionLink("Ver todas", "VerNotificaciones", "Manage")
-            </li>
+            @*<li class="footer">
+            @Html.ActionLink("Ver todas", "VerNotificaciones", "Manage")
+        </li>*@
         </ul>
     </li>
 
