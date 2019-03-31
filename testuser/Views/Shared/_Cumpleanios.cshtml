@@ -28,13 +28,12 @@
                             <li>
                                 <a style="font-size:13px;">
                                     <i class="fa fa-birthday-cake text-aqua"></i>
-                                    @if (item.dias <= 0)
+                                    @if (item.dias == 0)
                                     {
                                     <label> Hoy es el cumpleaños de @item.nombreClienteAF </label>
                                     }
                                     else
                                     {
-
                                     <label>@item.nombreClienteAF cumple años en @item.dias días</label>
                                     }
                                 </a>

@@ -28,7 +28,7 @@ namespace testuser.ViewModels
 
                     DateTime proximoCumple;
 
-                    if (DateTime.Now.Month >= mesCumple && DateTime.Now.Day >= diaCumple)
+                    if (DateTime.Now.Month > mesCumple && DateTime.Now.Day > diaCumple)
                     {
                         proximoCumple = new DateTime(DateTime.Now.AddYears(1).Year, mesCumple, diaCumple);
                     }
@@ -45,7 +45,8 @@ namespace testuser.ViewModels
                         {
                             nombreClienteAF = item.nombres + " " + item.apellidos,
                             //dias = faltan.Days
-                            dias = faltan.Days == 0 ? faltan.Days + 1 : faltan.Days
+                            //dias = faltan.Days == 0 ? faltan.Days + 1 : faltan.Days
+                            dias = DateTime.Now.Day == diaCumple ? 0 : faltan.Days + 1
                         };
                         cumpleanieros.Add(clienteAF);
                     }
