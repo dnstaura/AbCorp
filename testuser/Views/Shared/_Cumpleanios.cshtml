@@ -4,6 +4,7 @@
     var cumpleanosxdxd = testuser.ViewModels.CumpleaniosView.cumpleanosAF();
     var cumpleanosOT = testuser.ViewModels.CumpleaniosView.cumpleanosOT();
     var cumpleanosEM = testuser.ViewModels.CumpleaniosView.cumpleanosEMP();
+    var cumpleanosCLI = testuser.ViewModels.CumpleaniosView.cumpleanosCLI();
 
 
 }
@@ -17,7 +18,7 @@
 
             <span class="label label-info" style="font-family:'Century Gothic', Times, serif; font-size:15px;">
             @{ 
-                var suma = cumpleanosxdxd.Count() + cumpleanosOT.Count() + cumpleanosEM.Count();
+                var suma = cumpleanosxdxd.Count() + cumpleanosOT.Count() + cumpleanosEM.Count() + cumpleanosCLI.Count();
             }
                 @suma
             </span>
@@ -71,6 +72,22 @@
                         </li>
                     }
                     @foreach (var item in cumpleanosEM)
+                    {
+                        <li>
+                            <a style="font-size:12px;">
+                                <i class="fa fa-birthday-cake text-aqua"></i>
+                                @if (item.dias == 0)
+                                {
+                                    <label>Hoy es el cumpleaños de @item.nombreCliente</label>
+                                }
+                                else
+                                {
+                                    <label>@item.nombreCliente cumple años en @item.dias días</label>
+                                }
+                            </a>
+                        </li>
+                    }
+                    @foreach (var item in cumpleanosCLI)
                     {
                         <li>
                             <a style="font-size:12px;">

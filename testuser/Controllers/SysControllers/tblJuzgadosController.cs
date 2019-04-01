@@ -15,7 +15,7 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblJuzgados
-        [Authorize(Roles = "Administrador,Abogado,Observador")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado,Observador")]
         public ActionResult Index()
         {
             var tblJuzgados = db.tblJuzgados.Include(t => t.tblDepartamentos).Include(t => t.tblMunicipios);
@@ -23,7 +23,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblJuzgados/Details/5
-        [Authorize(Roles = "Administrador,Abogado,Observador")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado,Observador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,7 +39,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblJuzgados/Create
-        [Authorize(Roles = "Administrador,Abogado")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado")]
         public ActionResult Create()
         {
             List<tblDepartamentos> DepartamentosList = db.tblDepartamentos.ToList();
@@ -53,7 +53,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Administrador,Abogado")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id_Juzgado,Juzgado,telefono,correo,direccion,Id_Departamento,Id_Municipio")] tblJuzgados tblJuzgados)
         {

@@ -62,7 +62,7 @@
 </div>
 
 @{
-    if (User.IsInRole("Administrador") || User.IsInRole("Notario"))
+    if (User.IsInRole("Administrador") || User.IsInRole("Notario") || User.IsInRole("Observador"))
     {
         <div class="row">
             <div class="col-sm-12">

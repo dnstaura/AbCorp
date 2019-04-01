@@ -49,6 +49,8 @@ namespace testuser.Models.SysModel
         [StringLength(100)]
         public string lugarnacimiento { get; set; }
 
+        public string NombreCompleto { get { return string.Format("{0} {1}", nombres, apellidos);  } }
+
         public int Id_Municipio { get; set; }
 
         public int Id_Departamento { get; set; }

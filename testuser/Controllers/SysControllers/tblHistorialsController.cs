@@ -17,18 +17,15 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblHistorials
-        [Authorize(Roles ="Administrador,Abogado,Observador")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado,Observador")]
         public ActionResult Index(int? id)
         {
             /*Retorna lista de historiales*/
             var tblHistorial = db.tblHistorial.Include(t => t.tblCasos);
 
-
             /*Contador*/
             var dato = db.tblHistorial.Where(x => x.Id_Historial== x.Id_Historial).Count();
             ViewBag.his = dato;
-
-
 
             /*retorna lista de casos en historial*/
             var casoshistorial = db.tblHistorial.Where(x => x.Id_Caso == id).ToList();
@@ -47,7 +44,7 @@ namespace testuser.Controllers.SysControllers
 
 
         // GET: tblHistorials/Details/5
-        [Authorize(Roles = "Administrador,Abogado,Observador")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado,Observador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -63,7 +60,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblHistorials/Create
-        [Authorize(Roles = "Administrador,Abogado")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado")]
         public ActionResult Create()
         {
             ViewData["Fecha_Agregado"] = DateTime.Now.ToString("yyyy-MM-dd");
@@ -75,7 +72,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Administrador,Abogado")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id_Historial,Id_Caso,Fecha_Inicio,Fecha_Final,Descripcion,Archivo,Fecha_Agregado")] tblHistorial tblHistorial)
         {
@@ -152,10 +149,23 @@ namespace testuser.Controllers.SysControllers
                         file.SaveAs(Server.MapPath("~/Content/Historial/") + img);
 
                     }
+                    var queryarchivo = (from x in db.tblHistorial
+                                    where x.Id_Historial == tblHistorial.Id_Historial
+                                    select x.Archivo).First();
+
+                    if (file.ContentLength == 0)
+                    {
+                        //var query = (from x in db.tblLibros
+                        //             where x.idlibros == tblLibros.idlibros
+                        //             select x.word).First();
+                        //tblLibros.img = query.img;
+                        tblHistorial.Archivo= queryarchivo;
+                    }
 
                 }
                 db.Entry(tblHistorial).State = EntityState.Modified;
                 db.SaveChanges();
+
                 /*NOTIFICACION*/
                 ApplicationDbContext dbs = new ApplicationDbContext();
                 Notifications notificacion = new Notifications();

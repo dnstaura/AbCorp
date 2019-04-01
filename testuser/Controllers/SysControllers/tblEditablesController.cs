@@ -128,6 +128,18 @@ namespace testuser.Controllers.SysControllers
                         file.SaveAs(Server.MapPath("~/Content/Editables/") + img);
 
                     }
+                    var queryarchivo = (from x in db.tblEditables
+                                        where x.idEditable == tblEditables.idEditable
+                                        select x.img).First();
+
+                    if (file.ContentLength == 0)
+                    {
+                        //var query = (from x in db.tblLibros
+                        //             where x.idlibros == tblLibros.idlibros
+                        //             select x.word).First();
+                        //tblLibros.img = query.img;
+                        tblEditables.img = queryarchivo;
+                    }
 
                 }
                 db.Entry(tblEditables).State = EntityState.Modified;

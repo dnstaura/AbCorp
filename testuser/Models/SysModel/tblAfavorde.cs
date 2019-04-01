@@ -57,6 +57,9 @@ namespace testuser.Models.SysModel
 
         public virtual tblMunicipios tblMunicipios { get; set; }
 
+        public string NombreCompleto { get { return string.Format("{0} {1}", nombres, apellidos); } }
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblLibros> tblLibros { get; set; }
     }

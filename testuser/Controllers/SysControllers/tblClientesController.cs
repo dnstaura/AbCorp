@@ -17,7 +17,7 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblClientes
-        [Authorize(Roles = "Administrador, Abogado, Observador")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado,Observador")]
         public ActionResult Index()
         {
             var tblClientes = db.tblClientes.Include(t => t.tblEstadosRegistros);
@@ -30,7 +30,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblClientes/Details/5
-        [Authorize(Roles = "Administrador, Abogado, Observador")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado,Observador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -46,7 +46,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblClientes/Create
-        [Authorize(Roles = "Administrador, Abogado")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado")]
         public ActionResult Create()
         {
             List<SelectListItem> genero = new List<SelectListItem>();
@@ -63,7 +63,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Administrador, Abogado")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id_Cliente,Nombres,Apellidos,Genero,Fecha_Nacimiento,Telefono,Direccion,Correo,Id_EstadoRegistro,Fecha_Agregado")] tblClientes tblClientes)
         {

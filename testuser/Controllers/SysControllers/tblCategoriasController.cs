@@ -15,14 +15,14 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblCategorias
-        [Authorize(Roles = "Administrador,Abogado,Observador")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado,Observador")]
         public ActionResult Index()
         {
             return View(db.tblCategorias.ToList());
         }
 
         // GET: tblCategorias/Details/5
-        [Authorize(Roles = "Administrador,Abogado,Observador")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado,Observador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,7 +38,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblCategorias/Create
-        [Authorize(Roles = "Administrador,Abogado")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado")]
         public ActionResult Create()
         {
             return View();
@@ -48,7 +48,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Administrador,Abogado")]
+        [Authorize(Roles = "Administrador, Abogado,digitadorabogado")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id_Categoria,Nombre_Categoria")] tblCategorias tblCategorias)
         {

@@ -28,7 +28,6 @@ namespace testuser.Models.SysModel
         [Display(Name = "Descripción")]
         public string Descripcion { get; set; }
 
-        [Required]
         [StringLength(100)]
         public string Archivo { get; set; }
 

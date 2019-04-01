@@ -262,6 +262,10 @@
     <Compile Include="Migrations\201902071906063_notificaciones.Designer.cs">
       <DependentUpon>201902071906063_notificaciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904011706188_campo_required_Archivo_tblhistorial.cs" />
+    <Compile Include="Migrations\201904011706188_campo_required_Archivo_tblhistorial.Designer.cs">
+      <DependentUpon>201904011706188_campo_required_Archivo_tblhistorial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -664,6 +668,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902071906063_notificaciones.resx">
       <DependentUpon>201902071906063_notificaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904011706188_campo_required_Archivo_tblhistorial.resx">
+      <DependentUpon>201904011706188_campo_required_Archivo_tblhistorial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

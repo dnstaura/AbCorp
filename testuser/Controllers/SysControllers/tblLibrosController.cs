@@ -55,55 +55,55 @@ namespace testuser.Controllers.SysControllers
         [Authorize(Roles = "Administrador,Notario,digitadornotario")]
         public ActionResult Create()
         {
-            //ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres");
-            //ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "nombres");
-            ViewBag.idfavorde = new SelectList(db.tblAfavorde.Join(
-                                db.tblLibros,
-                                a => a.idfavorde,
-                                b => b.idlibros,
-                                (v, s) =>
-                                 new
-                                 {
-                                     v = v,
-                                     s = s
-                                 }
-                           )
-                           .Select(
-                            temp0 =>
-                            new
-                            {
-                                v = temp0.v,
-                                s = temp0.s
-                            }
-                            ).Select(m => new SelectListItem
-                            {
-                                Value = SqlFunctions.StringConvert((double)m.s.idlibros).Trim(),
-                                Text = m.v.nombres + " " + m.v.apellidos
-                            }), "Value", "Text", 0);
+            ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "NombreCompleto");
+            ViewBag.idotorgante = new SelectList(db.tblOtorgante, "idotorgante", "NombreCompleto");
+            //ViewBag.idfavorde = new SelectList(db.tblAfavorde.Join(
+            //                    db.tblLibros,
+            //                    a => a.idfavorde,
+            //                    b => b.idlibros,
+            //                    (v, s) =>
+            //                     new
+            //                     {
+            //                         v = v,
+            //                         s = s
+            //                     }
+            //               )
+            //               .Select(
+            //                temp0 =>
+            //                new
+            //                {
+            //                    v = temp0.v,
+            //                    s = temp0.s
+            //                }
+            //                ).Select(m => new SelectListItem
+            //                {
+            //                    Value = SqlFunctions.StringConvert((double)m.s.idlibros).Trim(),
+            //                    Text = m.v.nombres + " " + m.v.apellidos
+            //                }), "Value", "Text", 0);
 
-            ViewBag.idotorgante = new SelectList(db.tblOtorgante.Join(
-                                db.tblLibros,
-                                a => a.idotorgante,
-                                b => b.idlibros,
-                                (v, s) =>
-                                 new
-                                 {
-                                     v = v,
-                                     s = s
-                                 }
-                           )
-                           .Select(
-                            temp0 =>
-                            new
-                            {
-                                v = temp0.v,
-                                s = temp0.s
-                            }
-                            ).Select(m => new SelectListItem
-                            {
-                                Value = SqlFunctions.StringConvert((double)m.s.idlibros).Trim(),
-                                Text = m.v.nombres + " " + m.v.apellidos
-                            }), "Value", "Text", 0);
+            //ViewBag.idotorgante = new SelectList(db.tblOtorgante.Join(
+            //                    db.tblLibros,
+            //                    a => a.idotorgante,
+            //                    b => b.idlibros,
+            //                    (v, s) =>
+            //                     new
+            //                     {
+            //                         v = v,
+            //                         s = s
+            //                     }
+            //               )
+            //               .Select(
+            //                temp0 =>
+            //                new
+            //                {
+            //                    v = temp0.v,
+            //                    s = temp0.s
+            //                }
+            //                ).Select(m => new SelectListItem
+            //                {
+            //                    Value = SqlFunctions.StringConvert((double)m.s.idlibros).Trim(),
+            //                    Text = m.v.nombres + " " + m.v.apellidos
+            //                }), "Value", "Text", 0);
 
 
             ViewBag.personalNotario = (from p in db.tblPersonal
