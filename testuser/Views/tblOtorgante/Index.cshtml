@@ -82,18 +82,18 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.correo)
                             </th>
-                            @*<th>
+                            <th>
                                     @Html.DisplayNameFor(model => model.fechanacimiento)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.lugarnacimiento)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.municipio)
+                                    @Html.DisplayNameFor(model => model.tblMunicipios.Municipio)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.departamento)
-                                </th>*@
+                                    @Html.DisplayNameFor(model => model.tblDepartamentos.Departamento)
+                                </th>
                             <th>Acciones</th>
                         </tr>
 
@@ -115,23 +115,29 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.correo)
                             </td>
-                            @*<td>
+                            <td>
                                     @Html.DisplayFor(modelItem => item.fechanacimiento)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.lugarnacimiento)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.municipio)
+                                    @Html.DisplayFor(modelItem => item.tblMunicipios.Municipio)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.departamento)
-                                </td>*@
-                            <td>
-                                @Html.ActionLink(" ", "Edit", new { id = item.idotorgante }, new { @class = "fa fa-edit btn bg-teal" }) |
-                                @Html.ActionLink(" ", "Details", new { id = item.idotorgante }, new { @class = "fa fa-folder-open btn bg-navy " }) |
-                                @Html.ActionLink(" ", "Delete", new { id = item.idotorgante }, new { @class = "fa fa-trash btn bg-red " })
-                            </td>
+                                    @Html.DisplayFor(modelItem => item.tblDepartamentos.Departamento)
+                                </td>
+                                <td>
+                                    @{
+                                        if (User.IsInRole("Administrador"))
+                                        {
+                                            @Html.ActionLink(" ", "Edit", new { id = item.idotorgante }, new { @class = "fa fa-edit btn bg-teal" })
+                                            @Html.ActionLink(" ", "Details", new { id = item.idotorgante }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                            @Html.ActionLink(" ", "Delete", new{ id = item.idotorgante }, new { @class = "fa fa-trash btn bg-red " })
+                                        }
+                                }
+
+                                </td>
                         </tr>
                     }
 

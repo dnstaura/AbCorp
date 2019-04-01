@@ -92,16 +92,16 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.fechanacimiento)
                             </th>
-    @*
-        <th>
-            @Html.DisplayNameFor(model => model.lugarnacimiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.municipio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.departamento)
-        </th>*@
+    
+                            <th>
+                                @Html.DisplayNameFor(model => model.lugarnacimiento)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tblMunicipios.Municipio)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tblDepartamentos.Departamento)
+                            </th>
                             <th>Acciones</th>
                         </tr>
 
@@ -127,16 +127,16 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.fechanacimiento)
-                        </td>@*
-        <td>
-            @Html.DisplayFor(modelItem => item.lugarnacimiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.municipio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.departamento)
-        </td>*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.lugarnacimiento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tblMunicipios.Municipio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tblDepartamentos.Departamento)
+                        </td>
                         <td>
                             @if (User.IsInRole("Administrador"))
                             {

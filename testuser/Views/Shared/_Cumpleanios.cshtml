@@ -2,6 +2,10 @@
 @{
 
     var cumpleanosxdxd = testuser.ViewModels.CumpleaniosView.cumpleanosAF();
+    var cumpleanosOT = testuser.ViewModels.CumpleaniosView.cumpleanosOT();
+    var cumpleanosEM = testuser.ViewModels.CumpleaniosView.cumpleanosEMP();
+
+
 }
 <script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>
 
@@ -12,15 +16,18 @@
             </i>
 
             <span class="label label-info" style="font-family:'Century Gothic', Times, serif; font-size:15px;">
-            @cumpleanosxdxd.Count()
+            @{ 
+                var suma = cumpleanosxdxd.Count() + cumpleanosOT.Count() + cumpleanosEM.Count();
+            }
+                @suma
             </span>
 
         </a>
         <ul class="dropdown-menu">
 
-            @if (cumpleanosxdxd.Count > 0)
+            @if (suma > 0 )
             {
-                <li class="header text-bold">Tienes @cumpleanosxdxd.Count() cumpleaños proximos</li>
+                <li class="header text-bold">Tienes @suma Cumpleaños proximos</li>
             }
             else
             {
@@ -34,15 +41,47 @@
                     @foreach (var item in cumpleanosxdxd)
                     {
                         <li>
-                            <a style="font-size:13px;">
+                            <a style="font-size:12px;">
                                 <i class="fa fa-birthday-cake text-aqua"></i>
                                 @if (item.dias == 0)
                                 {
-                                    <label> Hoy es el cumpleaños de @item.nombreClienteAF </label>
+                                    <label>Hoy es el cumpleaños de @item.nombreCliente</label>
                                 }
                                 else
                                 {
-                                    <label>@item.nombreClienteAF cumple años en @item.dias días</label>
+                                    <label>@item.nombreCliente cumple años en @item.dias días</label>
+                                }
+                            </a>
+                        </li>
+                    }
+                    @foreach (var item in cumpleanosOT)
+                    {
+                        <li>
+                            <a style="font-size:12px;">
+                                <i class="fa fa-birthday-cake text-aqua"></i>
+                                @if (item.dias == 0)
+                                {
+                                    <label>Hoy es el cumpleaños de @item.nombreCliente</label>
+                                }
+                                else
+                                {
+                                    <label>@item.nombreCliente cumple años en @item.dias días</label>
+                                }
+                            </a>
+                        </li>
+                    }
+                    @foreach (var item in cumpleanosEM)
+                    {
+                        <li>
+                            <a style="font-size:12px;">
+                                <i class="fa fa-birthday-cake text-aqua"></i>
+                                @if (item.dias == 0)
+                                {
+                                    <label>Hoy es el cumpleaños de @item.nombreCliente</label>
+                                }
+                                else
+                                {
+                                    <label>@item.nombreCliente cumple años en @item.dias días</label>
                                 }
                             </a>
                         </li>

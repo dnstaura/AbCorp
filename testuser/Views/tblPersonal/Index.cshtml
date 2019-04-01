@@ -83,7 +83,7 @@
                                 Nombre completo
                             </th>
                             @*<th>
-                                </th>*@
+        </th>*@
                             <th>
                                 @Html.DisplayNameFor(model => model.redsocial)
                             </th>
@@ -94,11 +94,11 @@
                                 @Html.DisplayNameFor(model => model.Correo)
                             </th>
                             @*<th>
-                                    @Html.DisplayNameFor(model => model.Direccion)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Fecha_Nacimiento)
-                                </th>*@
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha_Nacimiento)
+                            </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.Fecha_Agregado)
                             </th>
@@ -115,59 +115,59 @@
 
                     @foreach (var item in Model)
                     {
-                        <tr>
+                    <tr>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nombres)
-                                @Html.DisplayFor(modelItem => item.Apellidos)
-                            </td>
-                            @*<td>
-                                </td>*@
-                            <td>
-                                @Html.DisplayFor(modelItem => item.redsocial)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Telefono)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Correo)
-                            </td>
-                            @*<td>
-                                    @Html.DisplayFor(modelItem => item.Direccion)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Fecha_Nacimiento)
-                                </td>*@
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Fecha_Agregado)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.tblCategoriaPersonal.CategoriaPersonal)
-                            </td>
-                            <td>
-                                <label class="label label-success text-uppercase text-bold" style="font-size:12px;">@Html.DisplayFor(modelItem => item.tblEstadosRegistros.Estado)</label>
-                            </td>
-                            <td>
-                                @{
-                                    if (User.IsInRole("Administrador"))
-                                    {
-                                        @Html.ActionLink(" ", "Edit", new { id = item.Id_Personal }, new { @class = "fa fa-edit btn bg-teal" })
-                                        @Html.ActionLink(" ", "Details", new { id = item.Id_Personal }, new { @class = "fa fa-folder-open btn bg-navy " })
-                                        @Html.ActionLink(" ", "Delete", new { id = item.Id_Personal }, new { @class = "fa fa-trash btn bg-red " })
-                                    }
-                                    if (User.IsInRole("Notario") || User.IsInRole("Abogado"))
-                                    {
-                                        @Html.ActionLink(" ", "Edit", new { id = item.Id_Personal }, new { @class = "fa fa-edit btn bg-teal" })
-                                        @Html.ActionLink(" ", "Details", new { id = item.Id_Personal }, new { @class = "fa fa-folder-open btn bg-navy " })
-                                    }
-                                    if (User.IsInRole("Observador"))
-                                    {
-                                        @Html.ActionLink(" ", "Edit", new { id = item.Id_Personal }, new { @class = "fa fa-edit btn bg-teal" })
-                                        @Html.ActionLink(" ", "Details", new { id = item.Id_Personal }, new { @class = "fa fa-folder-open btn bg-navy " })
-                                    }
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombres)
+                            @Html.DisplayFor(modelItem => item.Apellidos)
+                        </td>
+                        @*<td>
+        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.redsocial)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefono)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Correo)
+                        </td>
+                        @*<td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fecha_Nacimiento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fecha_Agregado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tblCategoriaPersonal.CategoriaPersonal)
+                        </td>
+                        <td>
+                            <label class="label label-success text-uppercase text-bold" style="font-size:12px;">@Html.DisplayFor(modelItem => item.tblEstadosRegistros.Estado)</label>
+                        </td>
+                        <td>
+                            @{
+                                if (User.IsInRole("Administrador"))
+                                {
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Personal }, new { @class = "fa fa-edit btn bg-teal" })
+                                    @Html.ActionLink(" ", "Details", new { id = item.Id_Personal }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                    @Html.ActionLink(" ", "Delete", new { id = item.Id_Personal }, new { @class = "fa fa-trash btn bg-red " })
                                 }
-                            </td>
-                        </tr>
+                                if (User.IsInRole("Notario") || User.IsInRole("Abogado"))
+                                {
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Personal }, new { @class = "fa fa-edit btn bg-teal" })
+                                    @Html.ActionLink(" ", "Details", new { id = item.Id_Personal }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                }
+                                if (User.IsInRole("Observador"))
+                                {
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Personal }, new { @class = "fa fa-edit btn bg-teal" })
+                                    @Html.ActionLink(" ", "Details", new { id = item.Id_Personal }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                }
+                            }
+                        </td>
+                    </tr>
                     }
 
                 </table>
