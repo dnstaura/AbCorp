@@ -63,9 +63,15 @@
             <ul class="menu" id="listaNotificaciones"></ul>
         </li>
 
-        <li class="footer">
-            <label>@Html.ActionLink("Ver todas", "VerNotificaciones", "Manage")</label>
-        </li>
+        @{
+            if (User.IsInRole("Administrador"))
+            {
+                <li class="footer">
+                    <label>@Html.ActionLink("Ver todas", "VerNotificaciones", "Manage")</label>
+                </li>
+            }
+        }
+
     </ul>
 
 </li>

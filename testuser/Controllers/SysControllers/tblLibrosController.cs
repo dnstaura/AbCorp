@@ -20,7 +20,7 @@ namespace testuser.Controllers.SysControllers
         private dbModel db = new dbModel();
 
         // GET: tblLibros
-        [Authorize(Roles ="Administrador,Notario,Observador")]
+        [Authorize(Roles ="Administrador,Notario,digitadornotario,Observador")]
         public ActionResult Index()
         {
             var tblLibros = db.tblLibros.Include(t => t.tblPersonal);
@@ -36,7 +36,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblLibros/Details/5
-        [Authorize(Roles = "Administrador,Notario,Observador")]
+        [Authorize(Roles = "Administrador,Notario,digitadornotario,Observador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -52,7 +52,7 @@ namespace testuser.Controllers.SysControllers
         }
 
         // GET: tblLibros/Create
-        [Authorize(Roles = "Administrador,Notario")]
+        [Authorize(Roles = "Administrador,Notario,digitadornotario")]
         public ActionResult Create()
         {
             //ViewBag.idfavorde = new SelectList(db.tblAfavorde, "idfavorde", "nombres");
@@ -120,7 +120,7 @@ namespace testuser.Controllers.SysControllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Administrador,Notario")]
+        [Authorize(Roles = "Administrador,Notario,digitadornotario")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idlibros,fecha,correlativo,instrumento,folios,libro,img,word,idotorgante,idfavorde,id_Personal")] tblLibros tblLibros)
         {

@@ -28,126 +28,131 @@
                 <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span>Dashboard</span></a>
             </li>
 
-            @{ 
-                if (User.IsInRole("Administrador") || User.IsInRole("Notario") || User.IsInRole("Observador"))
+            @{
+                if (User.IsInRole("Administrador") || User.IsInRole("Notario") || User.IsInRole("digitadornotario") || User.IsInRole("Observador"))
                 {
-                 <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-book"></i> <span>Notariado</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="~/tblLibros/Index">Libros</a></li>
                     <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-gear"></i> <span>Clientes</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="~/tblOtorgante/Index">Otorgantes</a></li>
-                        <li><a href="~/tblAfavorde/Index">A favor de</a></li>
-                    </ul>
-                </li>
-                </ul>
-            </li>
+                        <a href="#">
+                            <i class="fa fa-book"></i> <span>Notariado</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="~/tblLibros/Index">Libros</a></li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-gear"></i> <span>Clientes</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="~/tblOtorgante/Index">Otorgantes</a></li>
+                                    <li><a href="~/tblAfavorde/Index">A favor de</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                 }
             }
 
             @{
-                if (User.IsInRole("Administrador") || User.IsInRole("Abogado") || User.IsInRole("Observador"))
+                if (User.IsInRole("Administrador") || User.IsInRole("Abogado") || User.IsInRole("digitadorabogado") || User.IsInRole("Observador"))
                 {
-                <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-gavel"></i> <span>Abogacia</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="~/tblClientes/Index">Clientes</a></li>
-                    <li><a href="~/tblCasos/Index">Casos</a></li>
-                    <li><a href="~/tblHistorials/Index">Historial</a></li>
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-gear"></i> <span>Datos adicionales</span>
+                            <i class="fa fa-gavel"></i> <span>Abogacia</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="~/tblCategorias/Index">Categorias</a></li>
-                            <li><a href="~/tblJuzgados/Index">Juzgados</a></li>
-                            <li><a href="~/tblEstadosCasos/Index">Estado de Casos</a></li>
+                            <li><a href="~/tblClientes/Index">Clientes</a></li>
+                            <li><a href="~/tblCasos/Index">Casos</a></li>
+                            <li><a href="~/tblHistorials/Index">Historial</a></li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-gear"></i> <span>Datos adicionales</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="~/tblCategorias/Index">Categorias</a></li>
+                                    <li><a href="~/tblJuzgados/Index">Juzgados</a></li>
+                                    <li><a href="~/tblEstadosCasos/Index">Estado de Casos</a></li>
+                                </ul>
+                            </li>
+
                         </ul>
                     </li>
-
-                </ul>
-            </li>
                 }
-             }
+            }
 
-
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-map"></i> <span>Zona Geografica</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="~/tblDepartamentos/Index">Departamentos</a></li>
-                    <li><a href="~/tblMunicipios/Index">Municipios</a></li>
-
-                </ul>
-            </li>
-
-            <li>
-                <a href="~/MainCalendar/Index">
-                    <i class="fa fa-calendar"></i> <span>Eventos</span>
-                    <span class="pull-right-container">
-                        @*<small class="label pull-right bg-green">new</small>*@
-                    </span>
-                </a>
-            </li>
-
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-group"></i> <span>Personal</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="~/tblPersonal/Index">Personal</a></li>
+            @{
+                if (User.IsInRole("Administrador") || User.IsInRole("Notario") || User.IsInRole("Abogado") || User.IsInRole("Observador"))
+                {
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-gear"></i> <span>Categorias</span>
+                            <i class="fa fa-map"></i> <span>Zona Geografica</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="~/tblCategoriaPersonal/Index">Categorias</a></li>
-                            <li><a href="~/tblEstadosRegistros/Index">Estados C/P</a></li>
+                            <li><a href="~/tblDepartamentos/Index">Departamentos</a></li>
+                            <li><a href="~/tblMunicipios/Index">Municipios</a></li>
 
                         </ul>
                     </li>
-                </ul>
 
-            </li>
+                    <li>
+                        <a href="~/MainCalendar/Index">
+                            <i class="fa fa-calendar"></i> <span>Eventos</span>
+                            <span class="pull-right-container">
+                                @*<small class="label pull-right bg-green">new</small>*@
+                            </span>
+                        </a>
+                    </li>
 
-            <li>
-                <a href="~/tblEditables/Index">
-                    <i class="fa fa-book"></i> <span>Editables</span>
-                    <span class="pull-right-container">
-                        @*<small class="label pull-right bg-green">new</small>*@
-                    </span>
-                </a>
-            </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-group"></i> <span>Personal</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="~/tblPersonal/Index">Personal</a></li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-gear"></i> <span>Categorias</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="~/tblCategoriaPersonal/Index">Categorias</a></li>
+                                    <li><a href="~/tblEstadosRegistros/Index">Estados C/P</a></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </li>
+
+                    <li>
+                        <a href="~/tblEditables/Index">
+                            <i class="fa fa-book"></i> <span>Editables</span>
+                            <span class="pull-right-container">
+                                @*<small class="label pull-right bg-green">new</small>*@
+                            </span>
+                        </a>
+                    </li>
+                }
+            }
+
 
             @{
                 if (User.IsInRole("Administrador"))

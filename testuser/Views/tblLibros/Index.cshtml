@@ -28,9 +28,11 @@
         margin-top: 1%;
         margin-bottom: 1%;
     }
+
     .skin-blue .sidebar-menu > li.active > a {
         border-left-color: #DE4D3A;
     }
+
     .box.box-info {
         /*border-top-color: #021a89;
         background-color: #FFA87E;*/
@@ -59,144 +61,279 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-sm-12">
-        <div class="box box-info shadow">
-            <div class="box-header">
-                <h4 class="box-title text-info"><strong>Listado de "Libros" </strong></h4>
-            </div>
-            <div class="box-body table-responsive">
-               
-                @{ 
-                    if (User.IsInRole("Administrador") || User.IsInRole("Notario"))
-                    {
-                    <p>
-                        @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
-                        @*<a href="../tblAfavorde/Index" class="btn bg-navy">A/F</a>*@
-                        @*<a href="../TblOtorgante/Index" class="btn bg-navy">Otorgantes</a>*@
-                    </p>
-                    }
-                    else
-                    {
+@{
+    if (User.IsInRole("Administrador") || User.IsInRole("Notario"))
+    {
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="box box-info shadow">
+                    <div class="box-header">
+                        <h4 class="box-title text-info"><strong>Listado de "Libros" </strong></h4>
+                    </div>
+                    <div class="box-body table-responsive">
 
-                    }
-                }
-                <table class="table table-striped table-condensed" id="dtTable">
-                    <thead>
+                        @{
+                            if (User.IsInRole("Administrador") || User.IsInRole("Notario"))
+                            {
+                                <p>
+                                    @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
+                                    @*<a href="../tblAfavorde/Index" class="btn bg-navy">A/F</a>*@
+                                    @*<a href="../TblOtorgante/Index" class="btn bg-navy">Otorgantes</a>*@
+                                </p>
+                            }
+                            else
+                            {
 
-                        <tr>
-                            <th>
-                                No.
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.fecha)
-                            </th>
-                            <th>
-                                @*@Html.DisplayNameFor(model => model.tblAfavorde.nombres)*@
-                                Otorgante
-                            </th>
-                            <th>
-                                @*@Html.DisplayNameFor(model => model.tblOtorgante.nombres)*@
-                                A favor de
-                            </th>
-                            <th>
-                                @*@Html.DisplayNameFor(model => model.tblPersonal.Nombres)*@
-                                Notario
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.instrumento)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.folios)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.libro)
-                            </th>
-                            <th>
-                                @*@Html.DisplayNameFor(model => model.correlativo)*@
-                                N° Instrumento
-                            </th>
-                            <th>
-                                @*@Html.DisplayNameFor(model => model.img)*@
-                                PDF
-                            </th>
-                            <th>
-                               @*@Html.DisplayNameFor(model => model.word)*@
-                                WORD
-                            </th>
-                            <th>Acciones</th>
-                        </tr>
+                            }
+                        }
+                        <table class="table table-striped table-condensed" id="dtTable">
+                            <thead>
 
-                    </thead>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.idlibros)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.fecha)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.tblOtorgante.nombres)
-                                @Html.DisplayFor(modelItem => item.tblOtorgante.apellidos)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.tblAfavorde.nombres)
-                                @Html.DisplayFor(modelItem => item.tblAfavorde.apellidos)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.tblPersonal.Nombres)
-                                @Html.DisplayFor(modelItem => item.tblPersonal.Apellidos)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.instrumento)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.folios)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.libro)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.correlativo)
-                            </td>
-                            <td>
-                                <a href="@Html.DisplayFor(modelItem => item.img)" class="btn bg-red-active fa fa-file-pdf-o" target="_blank"></a>
-                            </td>
-                            <td>
-                                <a href="@Html.DisplayFor(modelItem => item.word)" class="btn bg-primary fa fa-file-word-o" target="_blank"></a>
-                            </td>
-                            <td>
-                                @{
-                                    if (User.IsInRole("Administrador"))
-                                    {
-                                        @Html.ActionLink(" ", "Edit", new { id = item.idlibros }, new { @class = "fa fa-edit btn bg-teal", style = "margin-right:4px;" })
-                                        @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy ", style = "margin-right:4px;" })
-                                        @Html.ActionLink(" ", "Delete", new { id = item.idlibros }, new { @class = "fa fa-trash btn bg-red ", style = "margin-right:4px;" })
-                                    }
-                                    if (User.IsInRole("Notario"))
-                                    {
-                                        @Html.ActionLink(" ", "Edit", new { id = item.idlibros }, new { @class = "fa fa-edit btn bg-teal", style = "margin-right:4px;" })
-                                        @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy " })
-                                    }
-                                    if (User.IsInRole("Observador"))
-                                    {
-                                        @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy " })
-                                    }
-                                }
+                                <tr>
+                                    <th>
+                                        No.
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.fecha)
+                                    </th>
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.tblAfavorde.nombres)*@
+                                        Otorgante
+                                    </th>
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.tblOtorgante.nombres)*@
+                                        A favor de
+                                    </th>
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.tblPersonal.Nombres)*@
+                                        Notario
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.instrumento)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.folios)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.libro)
+                                    </th>
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.correlativo)*@
+                                        N° Instrumento
+                                    </th>
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.img)*@
+                                        PDF
+                                    </th>
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.word)*@
+                                        WORD
+                                    </th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.idlibros)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.fecha)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tblOtorgante.nombres)
+                                        @Html.DisplayFor(modelItem => item.tblOtorgante.apellidos)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tblAfavorde.nombres)
+                                        @Html.DisplayFor(modelItem => item.tblAfavorde.apellidos)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tblPersonal.Nombres)
+                                        @Html.DisplayFor(modelItem => item.tblPersonal.Apellidos)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.instrumento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.folios)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.libro)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.correlativo)
+                                    </td>
+                                    <td>
+                                        <a href="@Html.DisplayFor(modelItem => item.img)" class="btn bg-red-active fa fa-file-pdf-o" target="_blank"></a>
+                                    </td>
+                                    <td>
+                                        <a href="@Html.DisplayFor(modelItem => item.word)" class="btn bg-primary fa fa-file-word-o" target="_blank"></a>
+                                    </td>
+                                    <td>
+                                        @{
+                                            if (User.IsInRole("Administrador"))
+                                            {
+                                                @Html.ActionLink(" ", "Edit", new { id = item.idlibros }, new { @class = "fa fa-edit btn bg-teal", style = "margin-right:4px;" })
+                                                @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy ", style = "margin-right:4px;" })
+                                                @Html.ActionLink(" ", "Delete", new { id = item.idlibros }, new { @class = "fa fa-trash btn bg-red ", style = "margin-right:4px;" })
+                                            }
+                                            if (User.IsInRole("Notario"))
+                                            {
+                                                @Html.ActionLink(" ", "Edit", new { id = item.idlibros }, new { @class = "fa fa-edit btn bg-teal", style = "margin-right:4px;" })
+                                                @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                            }
+                                            if (User.IsInRole("Observador"))
+                                            {
+                                                @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                            }
+                                        }
 
 
-                            </td>
-                        </tr>
-                    }
+                                    </td>
+                                </tr>
+                            }
 
-                </table>
+                        </table>
 
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    }
+    if (User.IsInRole("digitadornotario"))
+    {
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="box box-info shadow">
+                    <div class="box-header">
+                        <h4 class="box-title text-info"><strong>Listado de "Libros" </strong></h4>
+                    </div>
+                    <div class="box-body table-responsive">
+
+                        @{
+                            if (User.IsInRole("Administrador") || User.IsInRole("Notario"))
+                            {
+                                <p>
+                                    @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
+                                    @*<a href="../tblAfavorde/Index" class="btn bg-navy">A/F</a>*@
+                                    @*<a href="../TblOtorgante/Index" class="btn bg-navy">Otorgantes</a>*@
+                                </p>
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                        <table class="table table-striped table-condensed" id="dtTablee">
+                            <thead>
+
+                                <tr>
+                                    <th>
+                                        No.
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.fecha)
+                                    </th>
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.tblAfavorde.nombres)*@
+                                        Otorgante
+                                    </th>
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.tblOtorgante.nombres)*@
+                                        A favor de
+                                    </th>
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.tblPersonal.Nombres)*@
+                                        Notario
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.instrumento)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.folios)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.libro)
+                                    </th>
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.correlativo)*@
+                                        N° Instrumento
+                                    </th>
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.img)*@
+                                        PDF
+                                    </th>
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.word)*@
+                                        WORD
+                                    </th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.idlibros)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.fecha)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tblOtorgante.nombres)
+                                        @Html.DisplayFor(modelItem => item.tblOtorgante.apellidos)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tblAfavorde.nombres)
+                                        @Html.DisplayFor(modelItem => item.tblAfavorde.apellidos)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tblPersonal.Nombres)
+                                        @Html.DisplayFor(modelItem => item.tblPersonal.Apellidos)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.instrumento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.folios)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.libro)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.correlativo)
+                                    </td>
+                                    <td>
+                                        <a href="@Html.DisplayFor(modelItem => item.img)" class="btn bg-red-active fa fa-file-pdf-o" target="_blank"></a>
+                                    </td>
+                                    <td>
+                                        <a href="@Html.DisplayFor(modelItem => item.word)" class="btn bg-primary fa fa-file-word-o" target="_blank"></a>
+                                    </td>
+                                    <td>
+                                        @{
+                                                @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy ", style = "margin-right:4px;" })
+                                        }
+
+
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+
+
 <script type="text/javascript">
     $(document).ready(function () {
         var espanol =
@@ -229,7 +366,7 @@
         $('#dtTable').DataTable({
             responsive: true,
             language: espanol,
-            
+
             "dom": '<"dt-buttons"Bf><"clear">lirtp',
             "paging": true,
             "autoWidth": true,
@@ -241,6 +378,10 @@
                 'pdfHtml5',
                 'print'
             ]
+        });
+        $('#dtTablee').DataTable({
+            responsive: true,
+            language: espanol
         });
 
 

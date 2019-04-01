@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using testuser.Models;
 using testuser.Models.SysModel;
 
 namespace testuser.Controllers.SysControllers
@@ -12,7 +14,7 @@ namespace testuser.Controllers.SysControllers
         dbModel db = new dbModel();
 
         // GET: tblAfavorde
-        [Authorize]
+        [Authorize(Roles = "Administrador,Notario,digitadornotario,Observador")]
         public ActionResult Index()
         {
             var dato = db.tblAfavorde.Where(x => x.idfavorde == x.idfavorde).Count();
@@ -27,7 +29,7 @@ namespace testuser.Controllers.SysControllers
             return View();
         }
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrador,Notario,digitadornotario,Observador")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(tblAfavorde af)
         {
@@ -35,13 +37,27 @@ namespace testuser.Controllers.SysControllers
             {
                 db.tblAfavorde.Add(af);
                 db.SaveChanges();
+
+                /*NOTIFICACION*/
+                ApplicationDbContext dbs = new ApplicationDbContext();
+                Notifications notificacion = new Notifications();
+                notificacion.Module = "A favor de";
+                notificacion.Message = string.Format("Registro un nuevo A/F");
+                notificacion.Date = DateTime.Now;
+                notificacion.Viewed = false;
+                notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                dbs.Notification.Add(notificacion);
+                dbs.SaveChanges();
+                /*FIN NOTIFICACION*/
+
                 return RedirectToAction("Index");
             }
             ViewBag.Id_Departamento = new SelectList(db.tblDepartamentos, "Id_Departamento", "Departamento");
             ViewBag.Id_Municipio = new SelectList(db.tblMunicipios, "id_Municipio", "Municipio");
             return View();
         }
-        [Authorize]
+        [Authorize(Roles = "Administrador,Notario")]
         public ActionResult Edit(int id)
         {
             var datos = db.tblAfavorde.Find(id);
@@ -51,7 +67,7 @@ namespace testuser.Controllers.SysControllers
             return View(datos);
         }
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrador,Notario")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(tblAfavorde af)
         {
@@ -63,18 +79,31 @@ namespace testuser.Controllers.SysControllers
 
                 db.Entry(af).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
+
+                /*NOTIFICACION*/
+                ApplicationDbContext dbs = new ApplicationDbContext();
+                Notifications notificacion = new Notifications();
+                notificacion.Module = "A favor de";
+                notificacion.Message = string.Format("Edito un A/F");
+                notificacion.Date = DateTime.Now;
+                notificacion.Viewed = false;
+                notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                dbs.Notification.Add(notificacion);
+                dbs.SaveChanges();
+                /*FIN NOTIFICACION*/
                 return RedirectToAction("Index");
             }
 
             return View();
         }
-        [Authorize]
+        [Authorize(Roles = "Administrador,Notario,digitadornotario,Observador")]
         public ActionResult Details(int id)
         {
             var datos = db.tblAfavorde.Find(id);
             return View(datos);
         }
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int id)
         {
             var datos = db.tblAfavorde.Find(id);
@@ -83,7 +112,7 @@ namespace testuser.Controllers.SysControllers
             return View(datos);
         }
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(tblAfavorde af, int id)
         {
@@ -92,8 +121,23 @@ namespace testuser.Controllers.SysControllers
                 var datos = db.tblAfavorde.Find(id);
                 db.tblAfavorde.Remove(datos);
                 db.SaveChanges();
+
+                /*NOTIFICACION*/
+                ApplicationDbContext dbs = new ApplicationDbContext();
+                Notifications notificacion = new Notifications();
+                notificacion.Module = "A favor de";
+                notificacion.Message = string.Format("Elimino un A/F");
+                notificacion.Date = DateTime.Now;
+                notificacion.Viewed = false;
+                notificacion.Usuario_Id = User.Identity.GetUserId();
+
+                dbs.Notification.Add(notificacion);
+                dbs.SaveChanges();
+                /*FIN NOTIFICACION*/
+
                 return RedirectToAction("Index");
-            } return View();
+            }
+            return View();
         }
     }
 }

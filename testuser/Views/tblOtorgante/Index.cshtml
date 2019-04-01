@@ -51,17 +51,25 @@
     </div>
 </div>
 
-<div class="row">
+@{ 
+    if (User.IsInRole("Administrador") || User.IsInRole("Notario"))
+    {
+    <div class="row">
     <div class="col-xs-12 col-md-12">
         <div class="box box-primary shadow">
             <div class="box-header">
                 <h4 class="box-title text-info"><strong>Listado de "Otorgantes" </strong></h4>
             </div>
             <div class="box-body table-responsive">
+                @{
+                    if (User.IsInRole("Administrador") || User.IsInRole("Notario"))
+                    {
+                        <p>
+                            @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
+                        </p>
+                    }
+                }
 
-                <p>
-                    @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
-                </p>
                 <table class="table table-striped table-condensed" id="dtTable">
                     <thead>
 
@@ -83,17 +91,17 @@
                                 @Html.DisplayNameFor(model => model.correo)
                             </th>
                             <th>
-                                    @Html.DisplayNameFor(model => model.fechanacimiento)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.lugarnacimiento)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.tblMunicipios.Municipio)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.tblDepartamentos.Departamento)
-                                </th>
+                                @Html.DisplayNameFor(model => model.fechanacimiento)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.lugarnacimiento)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tblMunicipios.Municipio)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tblDepartamentos.Departamento)
+                            </th>
                             <th>Acciones</th>
                         </tr>
 
@@ -116,6 +124,115 @@
                                 @Html.DisplayFor(modelItem => item.correo)
                             </td>
                             <td>
+                                @Html.DisplayFor(modelItem => item.fechanacimiento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.lugarnacimiento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tblMunicipios.Municipio)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tblDepartamentos.Departamento)
+                            </td>
+                            <td>
+                                @{
+                                    if (User.IsInRole("Adminsitrador"))
+                                    {
+                                        @Html.ActionLink(" ", "Edit", new { id = item.idotorgante }, new { @class = "fa fa-edit btn bg-teal" })
+                                        @Html.ActionLink(" ", "Details", new { id = item.idotorgante }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                        @Html.ActionLink(" ", "Delete", new { id = item.idotorgante }, new { @class = "fa fa-trash btn bg-red " })
+                                    }
+                                    if (User.IsInRole("Notario"))
+                                    {
+                                        @Html.ActionLink(" ", "Edit", new { id = item.idotorgante }, new { @class = "fa fa-edit btn bg-teal" })
+                                        @Html.ActionLink(" ", "Details", new { id = item.idotorgante }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                    }
+                                    if (User.IsInRole("Observador"))
+                                    {
+                                        @Html.ActionLink(" ", "Details", new { id = item.idotorgante }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                    }
+                                }
+
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+    }
+
+    if (User.IsInRole("digitadornotario"))
+    {
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="box box-primary shadow">
+                <div class="box-header">
+                    <h4 class="box-title text-info"><strong>Listado de "Otorgantes" </strong></h4>
+                </div>
+                <div class="box-body table-responsive">
+
+                    <p>
+                        @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
+                    </p>
+                    <table class="table table-striped table-condensed" id="dtTablee">
+                        <thead>
+
+                            <tr>
+                                <th>
+                                    @*@Html.DisplayNameFor(model => model.nombres)*@
+                                    Nombre completo
+                                </th>
+                                <th>
+                                    @*@Html.DisplayNameFor(model => model.apellidos)*@
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.redsocial)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.telefono)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.correo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.fechanacimiento)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.lugarnacimiento)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.tblMunicipios.Municipio)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.tblDepartamentos.Departamento)
+                                </th>
+                                <th>Acciones</th>
+                            </tr>
+
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.nombres)
+                                    @Html.DisplayFor(modelItem => item.apellidos)
+                                </td>
+                                <td></td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.redsocial)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.telefono)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.correo)
+                                </td>
+                                <td>
                                     @Html.DisplayFor(modelItem => item.fechanacimiento)
                                 </td>
                                 <td>
@@ -128,25 +245,21 @@
                                     @Html.DisplayFor(modelItem => item.tblDepartamentos.Departamento)
                                 </td>
                                 <td>
-                                    @{
-                                        if (User.IsInRole("Administrador"))
-                                        {
-                                            @Html.ActionLink(" ", "Edit", new { id = item.idotorgante }, new { @class = "fa fa-edit btn bg-teal" })
                                             @Html.ActionLink(" ", "Details", new { id = item.idotorgante }, new { @class = "fa fa-folder-open btn bg-navy " })
-                                            @Html.ActionLink(" ", "Delete", new{ id = item.idotorgante }, new { @class = "fa fa-trash btn bg-red " })
-                                        }
-                                }
-
                                 </td>
-                        </tr>
-                    }
+                            </tr>
+                        }
 
-                </table>
+                    </table>
 
+                </div>
             </div>
         </div>
     </div>
-</div>
+    }
+}
+
+
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -191,6 +304,10 @@
                 'pdfHtml5',
                 'print'
             ]
+        });
+        $('#dtTablee').DataTable({
+            responsive: true,
+            language: espanol
         });
 
 
