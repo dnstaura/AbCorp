@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+
+    var NotiAudiencia = testuser.ViewModels.AudienciasView.Audiencias();
+}
+
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>
+<li class="dropdown notifications-menu">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+
+        <i class="fa fa-balance-scale" style="font-size:18px;">
+        </i>
+
+        <span class="label label-info" style="font-family:'Century Gothic', Times, serif; font-size:13px;">
+            @NotiAudiencia.Count()
+        </span>
+
+    </a>
+    <ul class="dropdown-menu">
+
+        @if (NotiAudiencia.Count() > 0)
+        {
+            <li class="header text-bold">Tienes @NotiAudiencia.Count() Audiencias</li>
+        }
+        else
+        {
+            <li class="header text-bold">Tienes 0 Audiencias pendientes</li>
+
+        }
+
+        <li>
+            <ul class="menu" id="">
+
+                @foreach (var item in NotiAudiencia)
+                {
+                    <li>
+                        <a style="font-size:12px;">
+                            <i class="fa fa-bank text-aqua"></i>
+                            @if (item.dias == 0)
+                            {
+                                <label>
+                                    Audiencia de hoy @item.nombreCLiente <br />
+                                    Juzgaddo: @item.juzgado
+                                </label>
+                            }
+                            else
+                            {
+                                <label>
+                                Restan @item.dias dias para para proxima audiencia <br />
+                                Cliente: @item.nombreCLiente
+                                </label>
+                            }
+                        </a>
+                    </li>
+                }
+            </ul>
+        </li>
+        @*<li class="footer">
+                @Html.ActionLink("Ver todas", "VerNotificaciones", "Manage")
+            </li>*@
+    </ul>
+</li>

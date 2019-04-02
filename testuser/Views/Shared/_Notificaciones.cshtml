@@ -6,68 +6,26 @@
 }
 <script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>
 
-@*<li class="dropdown notifications-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-        
-        <i class="fa fa-bell-o">
-        </i>
-
-        <span class="label label-info" style="font-family:'Century Gothic', Times, serif; font-size:15px;">
-        @cantidad
-        </span>
-
-    </a>
-    <ul class="dropdown-menu">
-        
-        <li class="header">Tienes @cantidad notificaciones</li>
-        <li>
-            <ul class="menu" id="listaNotificaciones">
-                @if (cantidad == 0)
-                {
-                    <li>
-                        No hay notificaciones pendientes
-                    </li>
-                }
-                else
-                {
-                    foreach (var item in listado)
-                    {
-                        <li>
-                            <a>
-                                <i class="fa fa-users text-aqua"></i>
-                                <label>@item.Message</label>
-                            </a>
-                        </li>
-                    }
-                }
-            </ul>
-        </li>
-        <li class="footer">
-            @Html.ActionLink("Ver todas", "VerNotificaciones", "Manage")
-        </li>
-    </ul>
-</li>*@
-
 
 <li class="dropdown notifications-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-        <i class="fa fa-bell-o">
+        <i class="fa fa-bell-o" style="font-size:18px;">
         </i>
-        <span class="label label-info" id="cantidad"  style="font-family:'Century Gothic', Times, serif; font-size:15px;">
+        <span class="label label-info" id="cantidad"  style="font-family:'Century Gothic', Times, serif; font-size:13px;">
             -
         </span>
     </a>
     <ul class="dropdown-menu">
         <li class="header text-bold">Notificaciones pendientes</li>
-        <li>
-            <ul class="menu" id="listaNotificaciones"></ul>
-        </li>
+            <li style="font-size:12px;">
+                <ul class="menu text-bold" id="listaNotificaciones"></ul>
+            </li>
 
         @{
             if (User.IsInRole("Administrador"))
             {
                 <li class="footer">
-                    <label>@Html.ActionLink("Ver todas", "VerNotificaciones", "Manage")</label>
+                    @Html.ActionLink("Ver todas", "VerNotificaciones", "Manage")
                 </li>
             }
         }

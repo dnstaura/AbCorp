@@ -289,6 +289,7 @@
     <Compile Include="Models\SysModel\tblMunicipios.cs" />
     <Compile Include="Models\SysModel\tblOtorgante.cs" />
     <Compile Include="Models\SysModel\tblPersonal.cs" />
+    <Compile Include="ViewModels\AudienciasView.cs" />
     <Compile Include="ViewModels\clsNotification.cs" />
     <Compile Include="ViewModels\CumpleaniosView.cs" />
     <Compile Include="ViewModels\FuncionesEstaticas.cs" />
@@ -632,6 +633,7 @@
     <Content Include="Views\tblEditables\Edit.cshtml" />
     <Content Include="Views\tblEditables\Index.cshtml" />
     <Content Include="Views\Shared\_Cumpleanios.cshtml" />
+    <Content Include="Views\Shared\_Audiencias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
