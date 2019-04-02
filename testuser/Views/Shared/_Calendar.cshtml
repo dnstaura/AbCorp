@@ -1,53 +1,53 @@
-﻿@using Microsoft.AspNet.Identity
+﻿
+@using Microsoft.AspNet.Identity
 @{
 
-    var NotiAudiencia = testuser.ViewModels.AudienciasView.Audiencias();
+    var NotiEventos = testuser.ViewModels.calendarView.Calendar();
 }
 
 <script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>
 <li class="dropdown notifications-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 
-        <i class="fa fa-balance-scale" style="font-size:18px;">
+        <i class="glyphicon glyphicon-map-marker" style="font-size:18px;">
         </i>
 
         <span class="label label-info" style="font-family:'Century Gothic', Times, serif; font-size:13px;">
-            @NotiAudiencia.Count()
+            @NotiEventos.Count()
         </span>
 
     </a>
     <ul class="dropdown-menu">
 
-        @if (NotiAudiencia.Count() > 0)
+        @if (NotiEventos.Count() > 0)
         {
-            <li class="header text-bold">Tienes @NotiAudiencia.Count() Audiencias</li>
+            <li class="header text-bold">Tienes @NotiEventos.Count() Eventos</li>
         }
         else
         {
-            <li class="header text-bold">Tienes 0 Audiencias pendientes</li>
+            <li class="header text-bold">Tienes 0 Eventos</li>
 
         }
 
         <li>
             <ul class="menu" id="">
 
-                @foreach (var item in NotiAudiencia)
+                @foreach (var item in NotiEventos)
                 {
                     <li>
                         <a style="font-size:12px;">
-                            <i class="fa fa-bank text-aqua"></i>
+                            <i class="fa fa-bus text-aqua"></i>
                             @if (item.dias == 0)
                             {
                                 <label>
-                                    Audiencia de hoy: @item.nombreCLiente <br />
-                                    Juzgaddo: @item.juzgado
+                                    Evento de hoy: @item.TituloEvento
                                 </label>
                             }
                             else
                             {
                                 <label>
-                                Restan @item.dias dias para para proxima audiencia <br />
-                                Cliente: @item.nombreCLiente
+                                    Restan @item.dias dias para el proximo evento: <br />
+                                    @item.TituloEvento
                                 </label>
                             }
                         </a>

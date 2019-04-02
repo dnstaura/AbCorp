@@ -213,20 +213,13 @@
                     </div>
                     <div class="box-body table-responsive">
 
-                        @{
-                            if (User.IsInRole("Administrador") || User.IsInRole("Notario"))
-                            {
                                 <p>
                                     @Html.ActionLink("Nuevo registro", "Create", new { }, new { @class = "btn bg-navy" })
                                     @*<a href="../tblAfavorde/Index" class="btn bg-navy">A/F</a>*@
                                     @*<a href="../TblOtorgante/Index" class="btn bg-navy">Otorgantes</a>*@
                                 </p>
-                            }
-                            else
-                            {
 
-                            }
-                        }
+                       
                         <table class="table table-striped table-condensed" id="dtTablee">
                             <thead>
 

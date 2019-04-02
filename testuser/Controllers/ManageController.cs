@@ -56,7 +56,7 @@ namespace testuser.Controllers
         }
 
         //NOTIFICACIONES
-        [Authorize]
+        [Authorize(Roles ="Administrador")]
         public ActionResult VerNotificaciones()
        {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -81,7 +81,7 @@ namespace testuser.Controllers
             return View(notifiaciones);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public ActionResult ViewedAllNotifications()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -103,7 +103,7 @@ namespace testuser.Controllers
             return RedirectToAction("VerNotificaciones");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public ActionResult DeleteAllNotifications()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -122,7 +122,7 @@ namespace testuser.Controllers
             return RedirectToAction("VerNotificaciones");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public ActionResult MarcarLeido(int id)
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -135,7 +135,7 @@ namespace testuser.Controllers
             return RedirectToAction("VerNotificaciones");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public ActionResult NotificacionesLeidas()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -147,7 +147,7 @@ namespace testuser.Controllers
             return View("VerNotificaciones", notificaciones);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public ActionResult NotificacionesSinLeer()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -159,7 +159,7 @@ namespace testuser.Controllers
             return View("VerNotificaciones", notificaciones);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrador")]
         public ActionResult EliminarNotificacion(int id)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
