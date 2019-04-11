@@ -39,7 +39,7 @@ namespace testuser.ViewModels
 
                     TimeSpan faltan = proximoCumple.Subtract(DateTime.Now);
 
-                    if (faltan.Days >= 0 && faltan.Days <= 200)
+                    if (faltan.Days >= 0 && faltan.Days <= 3)
                     {
                         var clienteAF = new CumpleaniosView
                         {
@@ -83,7 +83,7 @@ namespace testuser.ViewModels
 
                     TimeSpan faltan = proximoCumple.Subtract(DateTime.Now);
 
-                    if (faltan.Days >= 0 && faltan.Days <= 200)
+                    if (faltan.Days >= 0 && faltan.Days <= 3)
                     {
                         var clienteOT = new CumpleaniosView
                         {
@@ -127,7 +127,7 @@ namespace testuser.ViewModels
 
                     TimeSpan faltan = proximoCumple.Subtract(DateTime.Now);
 
-                    if (faltan.Days >= 0 && faltan.Days <= 200)
+                    if (faltan.Days >= 0 && faltan.Days <= 3)
                     {
                         var clienteOT = new CumpleaniosView
                         {
@@ -170,7 +170,7 @@ namespace testuser.ViewModels
 
                     TimeSpan faltan = proximoCumple.Subtract(DateTime.Now);
 
-                    if (faltan.Days >= 0 && faltan.Days <= 200)
+                    if (faltan.Days >= 0 && faltan.Days <= 3)
                     {
                         var clienteOT = new CumpleaniosView
                         {

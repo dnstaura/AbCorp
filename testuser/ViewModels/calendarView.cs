@@ -37,7 +37,7 @@ namespace testuser.ViewModels
 
                     TimeSpan faltan = proximoEvent.Subtract(DateTime.Now);
 
-                    if (faltan.Days >= 0 && faltan.Days <=4)
+                    if (faltan.Days >= 0 && faltan.Days <=3)
                     {
                         var EventosCalendar = new calendarView
                         {

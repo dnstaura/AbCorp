@@ -72,6 +72,14 @@ namespace testuser.Controllers
                 ViewBag.No = usnoJoin;
                 /*Fin Usuarios con rol Notario*/
             }
+            if (roleManager.RoleExists("digitadornotario"))
+            {
+                /*Usuarios con rol Digitador Notario*/
+                var usdi = rollist.Where(x => x.Name == "digitadornotario").First();
+                var usdiJoin = db.UserRoles.Where(x => x.RoleId == usdi.Id).Count();
+                ViewBag.UsDi = usdiJoin;
+                /*Fin Usuarios con rol Digitador Notario*/
+            }
 
             if (roleManager.RoleExists("Abogado"))
             {
@@ -80,6 +88,15 @@ namespace testuser.Controllers
                 var usab = rollist.Where(x => x.Name == "Abogado").First();
                 var usabJoin = db.UserRoles.Where(x => x.RoleId == usab.Id).Count();
                 ViewBag.Ab = usabJoin;
+                /*Fin Usuarios con rol Abogacia*/
+            }
+            if (roleManager.RoleExists("digitadorabogado"))
+            {
+
+                /*Usuarios con rol Abogacia*/
+                var usdiab = rollist.Where(x => x.Name == "digitadorabogado").First();
+                var usdiabJoin = db.UserRoles.Where(x => x.RoleId == usdiab.Id).Count();
+                ViewBag.DiAb = usdiabJoin;
                 /*Fin Usuarios con rol Abogacia*/
             }
             if (roleManager.RoleExists("Observador"))

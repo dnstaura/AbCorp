@@ -1,19 +1,39 @@
 ﻿@using WebHelpers.Mvc5
+@using Microsoft.AspNet.Identity
+@{
+    var userId = User.Identity.GetUserId();
+    var usuario = testuser.ViewModels.FuncionesEstaticas.ObtenerHeader(userId);
+
+}
 
 <style>
+    hr {
+        border: 0;
+        height: 3px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0),rgba(23, 162, 184, 1), rgba(0, 0, 0, 0));
+    }
+
+    .imgshadow {
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(242,205,94,1);
+        -moz-box-shadow: 0px 0px 10px 0px rgba(242,205,94,1);
+        box-shadow: 0px 0px 10px 0px rgba(242,205,94,1);
+    }
+
     .skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
         background-color: #001a35;
-    
     }
+
     .skin-blue .sidebar-menu > li.active > a {
         /*border-left-color: #DE4D3A;*/
         border-left-color: #F2CBC1;
     }
+
     .skin-blue .sidebar-menu > li:hover > a, .skin-blue .sidebar-menu > li.active > a, .skin-blue .sidebar-menu > li.menu-open > a {
         color: #fff;
         /*background: #DE4D3A;*/
         background: #A38882;
     }
+
     .skin-blue .sidebar-menu > li > .treeview-menu {
         margin: 0 1px;
         background: #001a35;
@@ -21,7 +41,25 @@
 </style>
 <aside class="main-sidebar">
     <section class="sidebar">
+        <!--User profile-->
+        <hr style="margin-bottom:0px;" />
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="~/Content/img/miniIcon.png" class="img-circle imgshadow" alt="User Image"/>
+            </div>
+            <div class="pull-left info">
+                <p>@usuario.Nombre</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
 
+            <div class="pull-right btn-group col-lg-offset-1 col-sm-offset-1 col-md-offset-1 col-xs-offset-1" style="margin-top:55px;">
+                @Html.ActionLink(" ", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "btn fa fa-user", @title = "Perfil de usuario", @data_toggle = "tooltip", @data_placement = "top", style = "color:#ffffff;" })
+
+                <a href="javascript:document.getElementById('logoutForm').submit()" class="btn fa fa-power-off" style="color:#ffffff;" data-toggle="tooltip" data-placement="top" title="Cerrar Sesión"></a>
+            </div>
+        </div>
+        <hr style="margin-top:0px;" />
+        <!--Fin User profile-->
         @* BEGIN Menu *@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="@Url.Action("Index", "Home")">

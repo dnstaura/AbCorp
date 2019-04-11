@@ -39,7 +39,7 @@ namespace testuser.ViewModels
 
                     TimeSpan faltan = proximaAudi.Subtract(DateTime.Now);
 
-                    if (faltan.Days >= 0 && faltan.Days <= 200)
+                    if (faltan.Days >= 0 && faltan.Days <= 7)
                     {
                         var clienteAB = new AudienciasView
                         {

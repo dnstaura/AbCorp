@@ -66,17 +66,19 @@ namespace testuser.Controllers
                                  orderby n.Id descending
                                  select n).ToList();
 
-            foreach (var item in notifiaciones)
-            {
-                var diferencia = DateTime.Now - item.Date;
-                int dias = diferencia.Days;
+            //Eliminar notificaciones cada 30 dias ↓↓
 
-                if (dias > 30)
-                {
-                    db.Notification.Remove(item);
-                    db.SaveChanges();
-                }
-            }
+            //foreach (var item in notifiaciones)
+            //{
+            //    var diferencia = DateTime.Now - item.Date;
+            //    int dias = diferencia.Days;
+
+            //    if (dias > 30)
+            //    {
+            //        db.Notification.Remove(item);
+            //        db.SaveChanges();
+            //    }
+            //}
 
             return View(notifiaciones);
         }
