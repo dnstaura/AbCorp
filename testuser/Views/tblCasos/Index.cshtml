@@ -181,8 +181,7 @@
             </div>
         </div>
     </div>
-}
-@if (User.IsInRole("digitadorabogado"))
+}else if (User.IsInRole("digitadorabogado"))
 {
     <div class="row">
         <div class="col-xs-12 col-md-12">
