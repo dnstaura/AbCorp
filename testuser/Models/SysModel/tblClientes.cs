@@ -19,12 +19,15 @@ namespace testuser.Models.SysModel
         public int Id_Cliente { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Nombres { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Apellidos { get; set; }
+
+        public string NombreCompleto { get { return string.Format("{0} {1}", Nombres, Apellidos); } }
+
 
         [Required]
         [StringLength(15)]

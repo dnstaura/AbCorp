@@ -19,7 +19,7 @@ namespace testuser.Models.SysModel
 
         [Required]
         [Display(Name ="Categoria de Casos")]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Nombre_Categoria { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -18,14 +18,14 @@ namespace testuser.Models.SysModel
         public int Id_Juzgado { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(200)]
         public string Juzgado { get; set; }
 
         [StringLength(9)]
         [Display(Name = "Teléfono")]
         public string telefono { get; set; }
 
-        [StringLength(100)]
+        [StringLength(200)]
         [Display(Name = "Correo")]
         public string correo { get; set; }
 

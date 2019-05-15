@@ -20,7 +20,7 @@ namespace testuser.Models.SysModel
 
         [Required]
         [Display(Name = "Estado de registro")]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Estado { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

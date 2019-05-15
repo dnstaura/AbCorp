@@ -17,7 +17,7 @@ namespace testuser.Models.SysModel
         public DateTime fecha { get; set; }
 
         [Display(Name ="Correlativo")]
-        [StringLength(20)]
+        [StringLength(9000)]
         public string correlativo { get; set; }
 
         [Display(Name = "Instrumento")]

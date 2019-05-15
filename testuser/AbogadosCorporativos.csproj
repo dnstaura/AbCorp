@@ -51,6 +51,9 @@
     <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mvc.CascadeDropDown, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Mvc.CascadeDropDown.2.0.3\lib\Mvc.CascadeDropDown.dll</HintPath>
@@ -206,9 +209,6 @@
     <Reference Include="Microsoft.AI.Web">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -261,10 +261,6 @@
     <Compile Include="Migrations\201902071906063_notificaciones.cs" />
     <Compile Include="Migrations\201902071906063_notificaciones.Designer.cs">
       <DependentUpon>201902071906063_notificaciones.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904011706188_campo_required_Archivo_tblhistorial.cs" />
-    <Compile Include="Migrations\201904011706188_campo_required_Archivo_tblhistorial.Designer.cs">
-      <DependentUpon>201904011706188_campo_required_Archivo_tblhistorial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -672,9 +668,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902071906063_notificaciones.resx">
       <DependentUpon>201902071906063_notificaciones.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904011706188_campo_required_Archivo_tblhistorial.resx">
-      <DependentUpon>201904011706188_campo_required_Archivo_tblhistorial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

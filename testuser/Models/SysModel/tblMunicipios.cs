@@ -21,7 +21,7 @@ namespace testuser.Models.SysModel
         public int id_Municipio { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(200)]
         public string Municipio { get; set; }
 
         public int Id_Departamento { get; set; }

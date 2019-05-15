@@ -22,12 +22,12 @@ namespace testuser.Models.SysModel
 
         [Required]
         [Display(Name = "Nombre P/L")]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Nombres { get; set; }
 
         [Required]
         [Display(Name = "Apellidos P/L")]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Apellidos { get; set; }
 
         [Display(Name = "Red social")]
@@ -36,15 +36,15 @@ namespace testuser.Models.SysModel
 
         [Required]
         [Display(Name = "Teléfono")]
-        [StringLength(50)]
+        [StringLength(9)]
         public string Telefono { get; set; }
 
         [Display(Name = "Correo")]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Correo { get; set; }
 
         [Display(Name = "Dirección")]
-        [StringLength(100)]
+        [StringLength(200)]
         public string Direccion { get; set; }
 
         [DataType(DataType.Date)]

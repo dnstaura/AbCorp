@@ -15,7 +15,7 @@ namespace testuser.Models.SysModel
         public int Id_Caso { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [StringLength(200)]
         public string Archivo { get; set; }
 
         [StringLength(500)]

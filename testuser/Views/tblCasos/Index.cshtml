@@ -82,7 +82,8 @@
                                     @Html.DisplayNameFor(model => model.tblCategorias.Nombre_Categoria)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.tblClientes.Nombres)
+                                    @*@Html.DisplayNameFor(model => model.tblClientes.Nombres)*@
+                                    Cliente
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.tblDepartamentos.Departamento)
@@ -125,7 +126,7 @@
                                     @Html.DisplayFor(modelItem => item.tblCategorias.Nombre_Categoria)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.tblClientes.Nombres)
+                                    @Html.DisplayFor(modelItem => item.tblClientes.NombreCompleto)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.tblDepartamentos.Departamento)

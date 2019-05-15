@@ -21,11 +21,11 @@ namespace testuser.Models.SysModel
         public int idotorgante { get; set; }
 
         [Display(Name = "Nombres otorgante")]
-        [StringLength(60)]
+        [StringLength(100)]
         public string nombres { get; set; }
 
         [Display(Name = "Apellidos otorgante")]
-        [StringLength(60)]
+        [StringLength(100)]
         public string apellidos { get; set; }
 
         [Display(Name = "Red social")]
@@ -37,7 +37,7 @@ namespace testuser.Models.SysModel
         public string telefono { get; set; }
 
         [Display(Name = "Correo")]
-        [StringLength(100)]
+        [StringLength(200)]
         public string correo { get; set; }
 
         [DataType(DataType.Date)]

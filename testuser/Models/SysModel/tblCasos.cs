@@ -36,7 +36,7 @@ namespace testuser.Models.SysModel
         public string Titulo { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(200)]
         [Display(Name ="Número de Caso")]
         public string Numero_Caso { get; set; }
 

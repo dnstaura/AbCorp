@@ -18,7 +18,7 @@ namespace testuser.Models.SysModel
         public int Id_EstadoCaso { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(100)]
         [Display(Name = "Estado")]
         public string Nombre_Estado { get; set; }
 
