@@ -11,7 +11,6 @@ namespace testuser.Models.SysModel
         [Key]
         public int idEditable { get; set; }
 
-        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Fecha")]
         public DateTime fecha { get; set; }

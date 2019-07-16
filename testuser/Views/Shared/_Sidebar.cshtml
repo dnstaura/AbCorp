@@ -63,7 +63,7 @@
         @* BEGIN Menu *@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="@Url.Action("Index", "Home")">
-                <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span>Dashboard</span></a>
+                <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span>Principal</span></a>
             </li>
 
             @{
@@ -78,7 +78,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="~/tblLibros/Index">Libros</a></li>
-                            <li class="treeview">
+                            <li><a href="~/tblOtorgante/Index">Otorgantes</a></li>
+                            <li><a href="~/tblAfavorde/Index">A favor de</a></li>
+
+                            @*<li class="treeview">
                                 <a href="#">
                                     <i class="fa fa-gear"></i> <span>Clientes</span>
                                     <span class="pull-right-container">
@@ -89,7 +92,7 @@
                                     <li><a href="~/tblOtorgante/Index">Otorgantes</a></li>
                                     <li><a href="~/tblAfavorde/Index">A favor de</a></li>
                                 </ul>
-                            </li>
+                            </li>*@
                         </ul>
                     </li>
                 }
@@ -163,7 +166,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="~/tblPersonal/Index">Personal</a></li>
-                            <li class="treeview">
+                            <li><a href="~/tblCategoriaPersonal/Index">Categorias personal</a></li>
+                            <li><a href="~/tblEstadosRegistros/Index">Estados C/P</a></li>
+
+                            @*<li class="treeview">
                                 <a href="#">
                                     <i class="fa fa-gear"></i> <span>Categorias</span>
                                     <span class="pull-right-container">
@@ -175,7 +181,7 @@
                                     <li><a href="~/tblEstadosRegistros/Index">Estados C/P</a></li>
 
                                 </ul>
-                            </li>
+                            </li>*@
                         </ul>
 
                     </li>

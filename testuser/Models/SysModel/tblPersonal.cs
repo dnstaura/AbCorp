@@ -34,7 +34,6 @@ namespace testuser.Models.SysModel
         [StringLength(50)]
         public string redsocial { get; set; }
 
-        [Required]
         [Display(Name = "Teléfono")]
         [StringLength(9)]
         public string Telefono { get; set; }
@@ -47,7 +46,7 @@ namespace testuser.Models.SysModel
         [StringLength(200)]
         public string Direccion { get; set; }
 
-        [DataType(DataType.Date)]
+
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Fecha de Nacimiento")]
         [Column(TypeName = "date")]
@@ -57,7 +56,6 @@ namespace testuser.Models.SysModel
 
         public int? Id_EstadoRegistro { get; set; }
 
-        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Fecha de Agregado")]
         [Column(TypeName = "date")]

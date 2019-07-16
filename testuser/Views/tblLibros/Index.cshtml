@@ -94,6 +94,9 @@
                                         No.
                                     </th>
                                     <th>
+                                        @Html.DisplayNameFor(model => model.instrumento)
+                                    </th>
+                                    <th>
                                         @Html.DisplayNameFor(model => model.fecha)
                                     </th>
                                     <th>
@@ -107,9 +110,6 @@
                                     <th>
                                         @*@Html.DisplayNameFor(model => model.tblPersonal.Nombres)*@
                                         Notario
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.instrumento)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.folios)
@@ -135,65 +135,66 @@
                             </thead>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.idlibros)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.fecha)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.tblOtorgante.nombres)
-                                        @Html.DisplayFor(modelItem => item.tblOtorgante.apellidos)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.tblAfavorde.nombres)
-                                        @Html.DisplayFor(modelItem => item.tblAfavorde.apellidos)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.tblPersonal.Nombres)
-                                        @Html.DisplayFor(modelItem => item.tblPersonal.Apellidos)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.instrumento)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.folios)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.libro)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.correlativo)
-                                    </td>
-                                    <td>
-                                        <a href="@Html.DisplayFor(modelItem => item.img)" class="btn bg-red-active fa fa-file-pdf-o" target="_blank"></a>
-                                    </td>
-                                    <td>
-                                        <a href="@Html.DisplayFor(modelItem => item.word)" class="btn bg-primary fa fa-file-word-o" target="_blank"></a>
-                                    </td>
-                                    <td>
-                                        @{
-                                            if (User.IsInRole("Administrador"))
-                                            {
-                                                @Html.ActionLink(" ", "Edit", new { id = item.idlibros }, new { @class = "fa fa-edit btn bg-teal", style = "margin-right:4px;" })
-                                                @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy ", style = "margin-right:4px;" })
-                                                @Html.ActionLink(" ", "Delete", new { id = item.idlibros }, new { @class = "fa fa-trash btn bg-red ", style = "margin-right:4px;" })
-                                            }
-                                            if (User.IsInRole("Notario"))
-                                            {
-                                                @Html.ActionLink(" ", "Edit", new { id = item.idlibros }, new { @class = "fa fa-edit btn bg-teal", style = "margin-right:4px;" })
-                                                @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy " })
-                                            }
-                                            if (User.IsInRole("Observador"))
-                                            {
-                                                @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy " })
-                                            }
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.idlibros)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.instrumento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.fecha)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tblOtorgante.nombres)
+                                    @Html.DisplayFor(modelItem => item.tblOtorgante.apellidos)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tblAfavorde.nombres)
+                                    @Html.DisplayFor(modelItem => item.tblAfavorde.apellidos)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tblPersonal.Nombres)
+                                    @Html.DisplayFor(modelItem => item.tblPersonal.Apellidos)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.folios)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.libro)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.correlativo)
+                                </td>
+                                <td>
+                                    <a href="@Html.DisplayFor(modelItem => item.img)" class="btn bg-red-active fa fa-file-pdf-o" target="_blank"></a>
+                                </td>
+                                <td>
+                                    <a href="@Html.DisplayFor(modelItem => item.word)" class="btn bg-primary fa fa-file-word-o" target="_blank"></a>
+                                </td>
+                                <td>
+                                    @{
+                                        if (User.IsInRole("Administrador"))
+                                        {
+                                            @Html.ActionLink(" ", "Edit", new { id = item.idlibros }, new { @class = "fa fa-edit btn bg-teal", style = "margin-right:4px;" })
+                                            @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy ", style = "margin-right:4px;" })
+                                            @Html.ActionLink(" ", "Delete", new { id = item.idlibros }, new { @class = "fa fa-trash btn bg-red ", style = "margin-right:4px;" })
                                         }
+                                        if (User.IsInRole("Notario"))
+                                        {
+                                            @Html.ActionLink(" ", "Edit", new { id = item.idlibros }, new { @class = "fa fa-edit btn bg-teal", style = "margin-right:4px;" })
+                                            @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                        }
+                                        if (User.IsInRole("Observador"))
+                                        {
+                                            @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy " })
+                                        }
+                                    }
 
 
-                                    </td>
-                                </tr>
+                                </td>
+                            </tr>
                             }
 
                         </table>
@@ -227,6 +228,9 @@
                                         No.
                                     </th>
                                     <th>
+                                        @Html.DisplayNameFor(model => model.instrumento)
+                                    </th>
+                                    <th>
                                         @Html.DisplayNameFor(model => model.fecha)
                                     </th>
                                     <th>
@@ -241,9 +245,7 @@
                                         @*@Html.DisplayNameFor(model => model.tblPersonal.Nombres)*@
                                         Notario
                                     </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.instrumento)
-                                    </th>
+
                                     <th>
                                         @Html.DisplayNameFor(model => model.folios)
                                     </th>
@@ -268,51 +270,52 @@
                             </thead>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.idlibros)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.fecha)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.tblOtorgante.nombres)
-                                        @Html.DisplayFor(modelItem => item.tblOtorgante.apellidos)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.tblAfavorde.nombres)
-                                        @Html.DisplayFor(modelItem => item.tblAfavorde.apellidos)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.tblPersonal.Nombres)
-                                        @Html.DisplayFor(modelItem => item.tblPersonal.Apellidos)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.instrumento)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.folios)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.libro)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.correlativo)
-                                    </td>
-                                    <td>
-                                        <a href="@Html.DisplayFor(modelItem => item.img)" class="btn bg-red-active fa fa-file-pdf-o" target="_blank"></a>
-                                    </td>
-                                    <td>
-                                        <a href="@Html.DisplayFor(modelItem => item.word)" class="btn bg-primary fa fa-file-word-o" target="_blank"></a>
-                                    </td>
-                                    <td>
-                                        @{
-                                                @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy ", style = "margin-right:4px;" })
-                                        }
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.idlibros)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.instrumento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.fecha)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tblOtorgante.nombres)
+                                    @Html.DisplayFor(modelItem => item.tblOtorgante.apellidos)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tblAfavorde.nombres)
+                                    @Html.DisplayFor(modelItem => item.tblAfavorde.apellidos)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tblPersonal.Nombres)
+                                    @Html.DisplayFor(modelItem => item.tblPersonal.Apellidos)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.folios)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.libro)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.correlativo)
+                                </td>
+                                <td>
+                                    <a href="@Html.DisplayFor(modelItem => item.img)" class="btn bg-red-active fa fa-file-pdf-o" target="_blank"></a>
+                                </td>
+                                <td>
+                                    <a href="@Html.DisplayFor(modelItem => item.word)" class="btn bg-primary fa fa-file-word-o" target="_blank"></a>
+                                </td>
+                                <td>
+                                    @{
+                                        @Html.ActionLink(" ", "Details", new { id = item.idlibros }, new { @class = "fa fa-folder-open btn bg-navy ", style = "margin-right:4px;" })
+                                    }
 
 
-                                    </td>
-                                </tr>
+                                </td>
+                            </tr>
                             }
 
                         </table>

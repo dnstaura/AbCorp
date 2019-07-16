@@ -17,6 +17,7 @@ namespace testuser.Models.SysModel
 
         [Column(TypeName = "date")]
         [Display(Name ="Fecha Inicio")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Fecha_Inicio { get; set; }
 
         [Column(TypeName = "date")]

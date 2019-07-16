@@ -38,14 +38,14 @@ namespace testuser.Models.SysModel
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Fecha_Nacimiento { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(9)]
         public string Telefono { get; set; }
 
-        [StringLength(100)]
+        //[StringLength(100)]
         public string Direccion { get; set; }
 
-        [StringLength(50)]
+        //[StringLength(50)]
         public string Correo { get; set; }
 
         [Display(Name ="Estado de Registro")]
